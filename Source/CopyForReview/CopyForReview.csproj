@@ -177,6 +177,10 @@
     <Content Include="Resources\Package.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CopyForReview.Data\CopyForReview.Data.csproj">
+      <Project>{01f52133-28c0-4023-bd50-32727af92d7a}</Project>
+      <Name>CopyForReview.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CopyForReview.Formatters\CopyForReview.Formatters.csproj">
       <Project>{6fce5781-0b49-43cb-ac8a-78bb21b4ecc2}</Project>
       <Name>CopyForReview.Formatters</Name>

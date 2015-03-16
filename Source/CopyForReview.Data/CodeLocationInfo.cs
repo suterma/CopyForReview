@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CopyForReview.Formatters
 {
     /// <summary>
-    /// Provides Information about the code snippet to copy
+    /// Provides Information about the code snippet to copy.
     /// </summary>
-    public class CodeLocationInfo
+    public class SnippetInfo
     {
         /// <summary>
         /// Gets or sets the full filename, with path and extension.
@@ -13,7 +15,7 @@ namespace CopyForReview.Formatters
         /// <value>
         /// The the full filename, with path and extension.
         /// </value>
-        public String Filename { get; set; }
+        public String FullFilename { get; set; }
         /// <summary>
         /// Gets or sets the line number of the topmost line.
         /// </summary>
@@ -42,5 +44,21 @@ namespace CopyForReview.Formatters
         /// The method name where the snippet is in (if any).
         /// </value>
         public String Methodname { get; set; }
+
+        /// <summary>
+        /// Gets or sets the individual code lines of the snippet.
+        /// </summary>
+        /// <value>
+        /// The lines.
+        /// </value>
+        public IEnumerable<String> Lines { get; set; }
+
+        /// <summary>
+        /// Gets or sets the originally selected text as simple string.
+        /// </summary>
+        /// <value>
+        /// The selected text.
+        /// </value>
+        public string SelectedText { get; set; }
     }
 }

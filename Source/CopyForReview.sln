@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyForReview_UnitTests", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyForReview.Formatters", "CopyForReview.Formatters\CopyForReview.Formatters.csproj", "{6FCE5781-0B49-43CB-AC8A-78BB21B4ECC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyForReview.Data", "CopyForReview.Data\CopyForReview.Data.csproj", "{01F52133-28C0-4023-BD50-32727AF92D7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopyForReview.Formatters.UnitTests", "CopyForReview.Formatters.UnitTests\CopyForReview.Formatters.UnitTests.csproj", "{46AA814D-70A7-4F4F-8BC5-0EDAE9E7CE5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{6FCE5781-0B49-43CB-AC8A-78BB21B4ECC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FCE5781-0B49-43CB-AC8A-78BB21B4ECC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FCE5781-0B49-43CB-AC8A-78BB21B4ECC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01F52133-28C0-4023-BD50-32727AF92D7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01F52133-28C0-4023-BD50-32727AF92D7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01F52133-28C0-4023-BD50-32727AF92D7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01F52133-28C0-4023-BD50-32727AF92D7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46AA814D-70A7-4F4F-8BC5-0EDAE9E7CE5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46AA814D-70A7-4F4F-8BC5-0EDAE9E7CE5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46AA814D-70A7-4F4F-8BC5-0EDAE9E7CE5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46AA814D-70A7-4F4F-8BC5-0EDAE9E7CE5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

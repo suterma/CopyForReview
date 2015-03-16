@@ -81,20 +81,17 @@ namespace CopyForReview
         {
             var codeExaminer = new CodeModelExaminer((DTE2)GetService(typeof(DTE)));
 
-            //Get the selected text
-            var selectedText = codeExaminer.CopySelection();
-
             //Add file, class, method and line information to the text
-            var codeLocationInfo = new CodeLocationInfo
+            var snippet = new SnippetInfo
             {
-                Filename = codeExaminer.GetFilename()
+                FullFilename = codeExaminer.GetFilename(),
+                SelectedText = codeExaminer.CopySelection()
             };
-            codeExaminer.SetSelectionLineRange(codeLocationInfo);
-            codeExaminer.GetCodeContext(codeLocationInfo);
+            codeExaminer.SetSelectionLineRange(snippet);
+            codeExaminer.GetCodeContext(snippet);
 
 
-            var reviewableText = new CodeReviewFormatterCSharpToFoswiki().GetFormattedText(selectedText,
-                codeLocationInfo);
+            var reviewableText = new CodeReviewFormatterCSharpToFoswiki().Format(                snippet);
             Clipboard.SetText(reviewableText);
 
 

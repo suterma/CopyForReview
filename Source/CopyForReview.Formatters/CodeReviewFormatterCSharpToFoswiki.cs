@@ -6,58 +6,59 @@ namespace CopyForReview.Formatters
     /// <summary>
     ///     A formatter to format C-Sharp code suitable for display in a foswiki.
     /// </summary>
-    public class CodeReviewFormatterCSharpToFoswiki
+    public class CodeReviewFormatterCSharpToFoswiki:IFormatter
     {
         /// <summary>
-        ///     Gets the formatted text for the given selection and code location.
+        /// Gets the formatted text for the given selection and code location.
         /// </summary>
+        /// <param name="snippet">The snippet.</param>
+        /// <returns>
+        /// The specified code snippet in the output format.
+        /// </returns>
         /// <remarks>
-        ///     This uses the foswiki syntax highlighter plugin for multiline code, but the much simpler monospace styles for
-        ///     one-liners.
+        /// This uses the foswiki syntax highlighter plugin for multiline code, but the much simpler monospace styles for
+        /// one-liners.
         /// </remarks>
-        /// <param name="selectedText">The selected text.</param>
-        /// <param name="codeLocationInfo">The code location information.</param>
-        /// <returns></returns>
-        public String GetFormattedText(string selectedText, CodeLocationInfo codeLocationInfo)
+        public String Format(SnippetInfo snippet)
         {
             String reviewableText = String.Empty;
             const string formattingTag = "_";
             const string lineSeparator = " <br> ";
             //Single line styles with =
-            if (codeLocationInfo.LineNumberTop == codeLocationInfo.LineNumberBottom)
+            if (snippet.LineNumberTop == snippet.LineNumberBottom)
             {
-                reviewableText += "=" + selectedText + "=" + lineSeparator;
+                reviewableText += "=" + snippet.SelectedText + "=" + lineSeparator;
             }
             else
             {
             //Multiline styles with syntax highligher
             //http://www.w3c.br/System_bkp/DpSyntaxHighlighterPlugin
-                reviewableText += @"%CODE_DP{lang=""C#"" firstline=""" + codeLocationInfo.LineNumberTop + @"""}%" +
+                reviewableText += @"%CODE_DP{lang=""C#"" firstline=""" + snippet.LineNumberTop + @"""}%" +
                               Environment.NewLine +
-                              selectedText + Environment.NewLine +
+                              snippet.SelectedText + Environment.NewLine +
                               "%ENDCODE%" + Environment.NewLine;
             }
-            if (!String.IsNullOrEmpty(codeLocationInfo.Methodname))
+            if (!String.IsNullOrEmpty(snippet.Methodname))
             {
-                reviewableText += formattingTag + "in method " + EscapeWikiWord(codeLocationInfo.Methodname) + formattingTag +
+                reviewableText += formattingTag + "in method " + EscapeWikiWord(snippet.Methodname) + formattingTag +
                               lineSeparator;
             }
-            if (!String.IsNullOrEmpty(codeLocationInfo.FullClassname))
+            if (!String.IsNullOrEmpty(snippet.FullClassname))
             {
-                reviewableText += formattingTag + "in class " + codeLocationInfo.FullClassname + formattingTag + lineSeparator;
+                reviewableText += formattingTag + "in class " + snippet.FullClassname + formattingTag + lineSeparator;
             }
-            reviewableText += formattingTag + @"in file <a href=""file:///" + codeLocationInfo.Filename + @""">" +
-                          codeLocationInfo.Filename + "</a>" + formattingTag + lineSeparator;
+            reviewableText += formattingTag + @"in file <a href=""file:///" + snippet.FullFilename + @""">" +
+                          snippet.FullFilename + "</a>" + formattingTag + lineSeparator;
 
-            if (codeLocationInfo.LineNumberTop == codeLocationInfo.LineNumberBottom)
+            if (snippet.LineNumberTop == snippet.LineNumberBottom)
             {
-                reviewableText += formattingTag + "on line " + codeLocationInfo.LineNumberTop + formattingTag +
+                reviewableText += formattingTag + "on line " + snippet.LineNumberTop + formattingTag +
                               lineSeparator;
             }
             else
             {
-                reviewableText += formattingTag + "on lines " + codeLocationInfo.LineNumberTop + " to " +
-                              codeLocationInfo.LineNumberBottom + formattingTag + lineSeparator;
+                reviewableText += formattingTag + "on lines " + snippet.LineNumberTop + " to " +
+                              snippet.LineNumberBottom + formattingTag + lineSeparator;
             }
 
             return reviewableText;

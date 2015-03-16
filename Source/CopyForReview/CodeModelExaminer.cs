@@ -28,7 +28,7 @@ namespace CopyForReview
         /// Sets the line range of the code location according to the current selection.
         /// </summary>
         /// <param name="codeLocationInfo">The code location information.</param>
-        public void SetSelectionLineRange(CodeLocationInfo codeLocationInfo)
+        public void SetSelectionLineRange(SnippetInfo codeLocationInfo)
         {
             //get the text document
             TextDocument txt = (TextDocument) _applicationObject.ActiveDocument.Object("TextDocument");
@@ -52,7 +52,7 @@ namespace CopyForReview
         ///     Gets the code context where the selected code is located in.
         /// </summary>
         /// <param name="codeLocationInfo">The code location information.</param>
-        public void GetCodeContext(CodeLocationInfo codeLocationInfo)
+        public void GetCodeContext(SnippetInfo codeLocationInfo)
         {
             // get the solution
             Solution solution = _applicationObject.Solution;
@@ -60,7 +60,7 @@ namespace CopyForReview
             ExamineProjects(solution.Projects, _applicationObject.ActiveDocument, codeLocationInfo);
         }
 
-        private static void ExamineProjects(Projects projects, Document doc, CodeLocationInfo codeLocationInfo)
+        private static void ExamineProjects(Projects projects, Document doc, SnippetInfo codeLocationInfo)
         {
             // get all the projects
             foreach (Project project in projects)
@@ -72,7 +72,7 @@ namespace CopyForReview
         }
 
         private static void ExamineProjectItems(ProjectItems projectItems, Document doc,
-            CodeLocationInfo codeLocationInfo)
+            SnippetInfo codeLocationInfo)
         {
             // get all the items in each project
             foreach (ProjectItem item in projectItems)
@@ -106,7 +106,7 @@ namespace CopyForReview
 
 
         // examine an item
-        private static void ExamineItem(ProjectItem item, CodeLocationInfo codeLocationInfo)
+        private static void ExamineItem(ProjectItem item, SnippetInfo codeLocationInfo)
         {
             FileCodeModel2 model = (FileCodeModel2) item.FileCodeModel;
             foreach (CodeElement codeElement in model.CodeElements)
@@ -116,7 +116,7 @@ namespace CopyForReview
         }
 
         // recursively examine code elements
-        private static void ExamineCodeElement(CodeElement codeElement, CodeLocationInfo codeLocationInfo)
+        private static void ExamineCodeElement(CodeElement codeElement, SnippetInfo codeLocationInfo)
         {
             try
             {
@@ -157,7 +157,7 @@ namespace CopyForReview
         /// <param name="codeElement">The code element.</param>
         /// <param name="codeLocationInfo">The code location information with the selection.</param>
         /// <returns></returns>
-        private static bool Encloses(CodeElement codeElement, CodeLocationInfo codeLocationInfo)
+        private static bool Encloses(CodeElement codeElement, SnippetInfo codeLocationInfo)
         {
             if (
                 (codeElement.StartPoint.Line <= codeLocationInfo.LineNumberTop) &&
