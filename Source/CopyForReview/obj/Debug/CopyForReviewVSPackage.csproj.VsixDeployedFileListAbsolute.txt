@@ -1,0 +1,15 @@
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\Company\CopyForReviewVSPackage\1.0\\CopyForReviewVSPackage.dll
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\Company\CopyForReviewVSPackage\1.0\\CopyForReviewVSPackage.pkgdef
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\Company\CopyForReviewVSPackage\1.0\\extension.vsixmanifest
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\Company\CopyForReviewVSPackage\1.0\\CopyForReviewVSPackage.pdb
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\Company\CopyForReview\1.0\\CopyForReviewVSPackage.dll
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\Company\CopyForReview\1.0\\CopyForReviewVSPackage.pkgdef
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\Company\CopyForReview\1.0\\extension.vsixmanifest
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\Company\CopyForReview\1.0\\CopyForReviewVSPackage.pdb
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\Company\CopyForReview\1.0\\CopyForReview.dll
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\Company\CopyForReview\1.0\\CopyForReview.pkgdef
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\Company\CopyForReview\1.0\\CopyForReview.pdb
+c:\tmp\test.vsix\\CopyForReview.dll
+c:\tmp\test.vsix\\CopyForReview.pkgdef
+c:\tmp\test.vsix\\extension.vsixmanifest
+c:\tmp\test.vsix\\CopyForReview.pdb

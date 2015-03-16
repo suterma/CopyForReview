@@ -1,0 +1,9 @@
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\codeministry.ch\Copy for review\1.0\\CopyForReview.dll
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\codeministry.ch\Copy for review\1.0\\CopyForReview.Formatters.dll
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\codeministry.ch\Copy for review\1.0\\CopyForReview.pkgdef
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\codeministry.ch\Copy for review\1.0\\extension.vsixmanifest
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\codeministry.ch\Copy for review\1.0\\App-xeyes-icon.png
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\codeministry.ch\Copy for review\1.0\\ExtensionManagerPreview.png
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\codeministry.ch\Copy for review\1.0\\gpl.txt
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\codeministry.ch\Copy for review\1.0\\CopyForReview.pdb
+C:\Users\masu\AppData\Local\Microsoft\VisualStudio\12.0Exp\Extensions\codeministry.ch\Copy for review\1.0\\CopyForReview.Formatters.pdb

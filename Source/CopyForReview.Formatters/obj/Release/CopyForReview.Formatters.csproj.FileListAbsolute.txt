@@ -1,0 +1,4 @@
+C:\work\masu_personal\CopyForReview\CopyForReview.Formatters\bin\Release\CopyForReview.Formatters.dll
+C:\work\masu_personal\CopyForReview\CopyForReview.Formatters\bin\Release\CopyForReview.Formatters.pdb
+C:\work\masu_personal\CopyForReview\CopyForReview.Formatters\obj\Release\CopyForReview.Formatters.dll
+C:\work\masu_personal\CopyForReview\CopyForReview.Formatters\obj\Release\CopyForReview.Formatters.pdb

@@ -1,0 +1,11 @@
+C:\work\masu_personal\CopyForReview\CopyForReview\CopyForReviewVSPackage_UnitTests\bin\Debug\CopyForReview_UnitTests.dll
+C:\work\masu_personal\CopyForReview\CopyForReview\CopyForReviewVSPackage_UnitTests\bin\Debug\CopyForReview_UnitTests.pdb
+C:\work\masu_personal\CopyForReview\CopyForReview\CopyForReviewVSPackage_UnitTests\bin\Debug\CopyForReview.dll
+C:\work\masu_personal\CopyForReview\CopyForReview\CopyForReviewVSPackage_UnitTests\bin\Debug\Microsoft.VSSDK.TestHostFramework.dll
+C:\work\masu_personal\CopyForReview\CopyForReview\CopyForReviewVSPackage_UnitTests\bin\Debug\Microsoft.VSSDK.UnitTestLibrary.dll
+C:\work\masu_personal\CopyForReview\CopyForReview\CopyForReviewVSPackage_UnitTests\bin\Debug\CopyForReview.pdb
+C:\work\masu_personal\CopyForReview\CopyForReview\CopyForReviewVSPackage_UnitTests\bin\Debug\Microsoft.VSSDK.TestHostFramework.pdb
+C:\work\masu_personal\CopyForReview\CopyForReview\CopyForReviewVSPackage_UnitTests\obj\Debug\CopyForReview_UnitTests.csprojResolveAssemblyReference.cache
+C:\work\masu_personal\CopyForReview\CopyForReview\CopyForReviewVSPackage_UnitTests\obj\Debug\CopyForReview_UnitTests.dll
+C:\work\masu_personal\CopyForReview\CopyForReview\CopyForReviewVSPackage_UnitTests\obj\Debug\CopyForReview_UnitTests.pdb
+C:\work\masu_personal\CopyForReview\CopyForReview\CopyForReviewVSPackage_UnitTests\bin\Debug\ExtensionManagerPreview.png
