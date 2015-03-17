@@ -39,3 +39,4 @@ C:\masu_privat\CopyForReview\Source\CopyForReview\CopyForReviewVSPackage_UnitTes
 C:\masu_privat\CopyForReview\Source\CopyForReview\CopyForReviewVSPackage_UnitTests\bin\Debug\Microsoft.VSSDK.TestHostFramework.pdb
 C:\masu_privat\CopyForReview\Source\CopyForReview\CopyForReviewVSPackage_UnitTests\bin\Debug\CopyForReview.Data.pdb
 C:\masu_privat\CopyForReview\Source\CopyForReview\CopyForReviewVSPackage_UnitTests\bin\Debug\CopyForReview.Formatters.pdb
+c:\masu_privat\CopyForReview\Source\CopyForReview\CopyForReviewVSPackage_UnitTests\bin\Debug\DotLiquid.dll

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -17,7 +18,7 @@ namespace CopyForReview.Formatters
         /// </summary>
         /// <param name="resourceName">Name of the resource.</param>
         /// <returns>The resource with the given name from the currently executing assembly.</returns>
-        private String GetResource(String resourceName)
+        private String GetTextResource(String resourceName)
         {
             var assembly = Assembly.GetExecutingAssembly();
 
@@ -26,6 +27,21 @@ namespace CopyForReview.Formatters
             {
                 string result = reader.ReadToEnd();
                 return result;
+            }
+        }
+
+        /// <summary>
+        /// Gets the resource with the given name from the currently executing assembly.
+        /// </summary>
+        /// <param name="resourceName">Name of the resource.</param>
+        /// <returns>The resource with the given name from the currently executing assembly.</returns>
+        private Bitmap GetBitmapResource(String resourceName)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                return new Bitmap(Image.FromStream(stream));
             }
         }
 
@@ -44,7 +60,7 @@ namespace CopyForReview.Formatters
         {
             String output = String.Empty;
             //Load the dotLiquid Template
-            var templateSource = GetResource("CopyForReview.Formatters.CSharpToFoswiki.txt");
+            var templateSource = GetTextResource("CopyForReview.Formatters.CSharpToFoswiki.txt");
 
             //Parse and Compile
             Template template = Template.Parse(templateSource);  // Parses and compiles the template
@@ -52,6 +68,39 @@ namespace CopyForReview.Formatters
 
             //Output the formatted text
             return output;
+        }
+
+        /// <summary>
+        /// Gets the name of this formatter.
+        /// </summary>
+        /// <value>
+        /// The name of this formatter.
+        /// </value>
+        public string Name
+        {
+            get { return "Review in Foswiki"; }
+        }
+        /// <summary>
+        /// Gets the description for this formatter.
+        /// </summary>
+        /// <value>
+        /// The description for this formatter.
+        /// </value>
+        public string Description
+        {
+            get { return "Formats the snippet to use with the syntax highlighter plugin in Foswiki"; }
+        }
+
+        /// <summary>
+        /// Gets the icon image.
+        /// </summary>
+        /// <value>
+        /// The icon image.
+        /// </value>
+        public Bitmap IconImage
+        {
+            get { return GetBitmapResource("CopyForReview.Formatters.foswiki.png"); }
+            
         }
 
         /// <summary>

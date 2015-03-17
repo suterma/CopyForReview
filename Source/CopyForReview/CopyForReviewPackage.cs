@@ -10,6 +10,7 @@ using CopyForReview.Formatters;
 using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;
 
 namespace CopyForReview
 {
@@ -96,8 +97,15 @@ namespace CopyForReview
             Clipboard.SetText(reviewableText);
 
 
-            /*
+            
             // Show a Message Box to prove we were here
+
+            // Create the dialog instance without Help support. 
+            var d = new MyModalDialog(snippet);
+            // Show the dialog. 
+            var m = d.ShowModal();
+
+            /*
             IVsUIShell uiShell = (IVsUIShell)GetService(typeof(SVsUIShell));
             Guid clsid = Guid.Empty;
             int result;
@@ -114,6 +122,7 @@ namespace CopyForReview
                        0,        // false
                        out result));
              * */
+           
         }
     }
 }
