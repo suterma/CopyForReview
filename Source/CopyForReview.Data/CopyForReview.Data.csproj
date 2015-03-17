@@ -45,8 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodeLocationInfo.cs" />
+    <Compile Include="ISnippetInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Snippet.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CopyForReview.Data.snk" />

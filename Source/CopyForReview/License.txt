@@ -1,0 +1,5 @@
+﻿CopyForReview is licensed with the GPLv3 license.
+
+It uses:
+Icons from the the crystal icon set by Everaldo Coelho (LGPL License): http://commons.wikimedia.org/wiki/Category:Crystal_icons
+dotLiquid (Microsoft Public License Ms-PL): http://www.microsoft.com/opensource/licenses.mspx#Ms-PL

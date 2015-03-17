@@ -5,10 +5,12 @@ using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Company.CopyForReview;
+using CopyForReview.Data;
 using CopyForReview.Formatters;
 using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;
 
 namespace CopyForReview
 {
@@ -82,7 +84,7 @@ namespace CopyForReview
             var codeExaminer = new CodeModelExaminer((DTE2)GetService(typeof(DTE)));
 
             //Add file, class, method and line information to the text
-            var snippet = new SnippetInfo
+            var snippet = new Snippet
             {
                 FullFilename = codeExaminer.GetFilename(),
                 SelectedText = codeExaminer.CopySelection()
@@ -91,12 +93,19 @@ namespace CopyForReview
             codeExaminer.GetCodeContext(snippet);
 
 
-            var reviewableText = new CodeReviewFormatterCSharpToFoswiki().Format(                snippet);
+            var reviewableText = new CSharpToFoswiki().Format(                snippet);
             Clipboard.SetText(reviewableText);
 
 
-            /*
+            
             // Show a Message Box to prove we were here
+
+            // Create the dialog instance without Help support. 
+            var d = new MyModalDialog(snippet);
+            // Show the dialog. 
+            var m = d.ShowModal();
+
+            /*
             IVsUIShell uiShell = (IVsUIShell)GetService(typeof(SVsUIShell));
             Guid clsid = Guid.Empty;
             int result;
@@ -113,6 +122,7 @@ namespace CopyForReview
                        0,        // false
                        out result));
              * */
+           
         }
     }
 }

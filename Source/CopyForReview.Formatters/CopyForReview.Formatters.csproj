@@ -36,8 +36,12 @@
     <AssemblyOriginatorKeyFile>CopyForReview.Formatters.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotLiquid">
+      <HintPath>..\packages\DotLiquid.1.8.0\lib\NET45\DotLiquid.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,18 +49,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodeReviewFormatterCSharpToFoswiki.cs" />
+    <Compile Include="CSharpToFoswiki.cs" />
+    <Compile Include="Factory.cs" />
     <Compile Include="IFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CopyForReview.Formatters.snk" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CopyForReview.Data\CopyForReview.Data.csproj">
       <Project>{01f52133-28c0-4023-bd50-32727af92d7a}</Project>
       <Name>CopyForReview.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CSharpToFoswiki.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="foswiki.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
