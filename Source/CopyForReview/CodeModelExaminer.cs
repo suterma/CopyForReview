@@ -46,6 +46,15 @@ namespace CopyForReview
         {
             //get the text document
             TextDocument txt = (TextDocument) _applicationObject.ActiveDocument.Object("TextDocument");
+
+            var topLine = txt.Selection.TopLine;
+            var bottomLine = txt.Selection.BottomLine;
+
+            //Adapt the selection to include only full lines
+            txt.Selection.MoveTo(topLine, 0, true);
+            txt.Selection.StartOfLine(vsStartOfLineOptions.vsStartOfLineOptionsFirstColumn,true);
+            txt.Selection.MoveTo(bottomLine, 0,true);
+            txt.Selection.EndOfLine(true);
             return txt.Selection.Text;
         }
 

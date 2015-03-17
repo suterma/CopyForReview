@@ -1,0 +1,11 @@
+﻿<platformUi:DialogWindow x:Class="CopyForReview.Controls.FormatSelector"
+                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                         xmlns:ui="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.11.0"
+                         xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.12.0"
+                         Title="Copy for..." SizeToContent="WidthAndHeight" WindowStyle="ToolWindow"
+                         ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <StackPanel Name="StackPanelFormatters" Margin="1" />
+    </Grid>
+</platformUi:DialogWindow>

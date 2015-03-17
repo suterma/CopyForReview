@@ -1,0 +1,9 @@
+﻿{% comment %}
+This is a dotLiquid template that allows to output a code snippet in with the code markup
+used for StackOverflow questions.
+Just the file name is provided for brevity
+{% endcomment %}
+{{Filename}}
+{% for line in Lines -%}
+    {{line}}
+{% endfor -%}

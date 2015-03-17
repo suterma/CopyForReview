@@ -3,14 +3,12 @@ using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 using Company.CopyForReview;
+using CopyForReview.Controls;
 using CopyForReview.Data;
-using CopyForReview.Formatters;
 using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
 
 namespace CopyForReview
 {
@@ -81,29 +79,30 @@ namespace CopyForReview
         /// </summary>
         private void MenuItemCallback(object sender, EventArgs e)
         {
-            var codeExaminer = new CodeModelExaminer((DTE2)GetService(typeof(DTE)));
 
-            //Add file, class, method and line information to the text
-            var snippet = new Snippet
-            {
-                FullFilename = codeExaminer.GetFilename(),
-                SelectedText = codeExaminer.CopySelection()
-            };
-            codeExaminer.SetSelectionLineRange(snippet);
-            codeExaminer.GetCodeContext(snippet);
+            var selector = new FormatSelector();
 
-
-            var reviewableText = new CSharpToFoswiki().Format(                snippet);
-            Clipboard.SetText(reviewableText);
-
-
-            
-            // Show a Message Box to prove we were here
-
-            // Create the dialog instance without Help support. 
-            var d = new MyModalDialog(snippet);
             // Show the dialog. 
-            var m = d.ShowModal();
+            if (selector.ShowModal() == true)
+            {
+                using (new WaitCursor())
+                {
+                    var codeExaminer = new CodeModelExaminer((DTE2) GetService(typeof (DTE)));
+
+                    //Add file, class, method and line information to the text
+                    var snippet = new Snippet
+                    {
+                        FullFilename = codeExaminer.GetFilename(),
+                        SelectedText = codeExaminer.CopySelection()
+                    };
+                    codeExaminer.SetSelectionLineRange(snippet);
+                    codeExaminer.GetCodeContext(snippet);
+
+                    var output = selector.SelectedFormatter.Format(snippet);
+                    System.Windows.Clipboard.SetDataObject(output);
+                }
+            }
+
 
             /*
             IVsUIShell uiShell = (IVsUIShell)GetService(typeof(SVsUIShell));
@@ -122,7 +121,7 @@ namespace CopyForReview
                        0,        // false
                        out result));
              * */
-           
         }
+
     }
 }

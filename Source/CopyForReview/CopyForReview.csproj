@@ -129,13 +129,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeModelExaminer.cs" />
-    <Compile Include="FormatterButton.xaml.cs">
+    <Compile Include="Controls\FormatterButton.xaml.cs">
       <DependentUpon>FormatterButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FormatterImageButton.cs" />
     <Compile Include="Guids.cs" />
-    <Compile Include="MyModalDialog.xaml.cs">
-      <DependentUpon>MyModalDialog.xaml</DependentUpon>
+    <Compile Include="Controls\FormatSelector.xaml.cs">
+      <DependentUpon>FormatSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -146,6 +145,7 @@
     <Compile Include="CopyForReviewPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PkgCmdID.cs" />
+    <Compile Include="WaitCursor.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx">
@@ -199,11 +199,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="FormatterButton.xaml">
+    <Page Include="Controls\FormatterButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MyModalDialog.xaml">
+    <Page Include="Controls\FormatSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
