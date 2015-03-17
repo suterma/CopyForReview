@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
+using System.Text;
 
-namespace CopyForReview.Formatters
+namespace CopyForReview.Data
 {
     /// <summary>
-    /// Provides Information about the code snippet to copy.
+    /// A code snippet to copy for formatted output.
     /// </summary>
-    public class SnippetInfo
+    public class Snippet : ISnippet
     {
         /// <summary>
         /// Gets or sets the full filename, with path and extension.
@@ -15,7 +17,7 @@ namespace CopyForReview.Formatters
         /// <value>
         /// The the full filename, with path and extension.
         /// </value>
-        public String FullFilename { get; set; }
+        public string FullFilename { get; set; }
         /// <summary>
         /// Gets or sets the line number of the topmost line.
         /// </summary>
@@ -36,23 +38,30 @@ namespace CopyForReview.Formatters
         /// <value>
         /// The fully qualified class name where the snippet is in (if any).
         /// </value>
-        public String FullClassname { get; set; }
+        public string FullClassname { get; set; }
         /// <summary>
         /// Gets or sets the method name where the snippet is in (if any).
         /// </summary>
         /// <value>
         /// The method name where the snippet is in (if any).
         /// </value>
-        public String Methodname { get; set; }
+        public string Methodname { get; set; }
 
         /// <summary>
-        /// Gets or sets the individual code lines of the snippet.
+        /// Gets the individual code lines of the snippet.
         /// </summary>
         /// <value>
         /// The lines.
         /// </value>
-        public IEnumerable<String> Lines { get; set; }
-
+        public IEnumerable<string> Lines
+        {
+            get
+            {
+                //parse the selected text along the line breaks.
+                string[] lines = SelectedText.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+                return lines;
+            }
+        }
         /// <summary>
         /// Gets or sets the originally selected text as simple string.
         /// </summary>

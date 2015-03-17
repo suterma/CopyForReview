@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Company.CopyForReview;
+using CopyForReview.Data;
 using CopyForReview.Formatters;
 using EnvDTE;
 using EnvDTE80;
@@ -82,7 +83,7 @@ namespace CopyForReview
             var codeExaminer = new CodeModelExaminer((DTE2)GetService(typeof(DTE)));
 
             //Add file, class, method and line information to the text
-            var snippet = new SnippetInfo
+            var snippet = new Snippet
             {
                 FullFilename = codeExaminer.GetFilename(),
                 SelectedText = codeExaminer.CopySelection()
@@ -91,7 +92,7 @@ namespace CopyForReview
             codeExaminer.GetCodeContext(snippet);
 
 
-            var reviewableText = new CodeReviewFormatterCSharpToFoswiki().Format(                snippet);
+            var reviewableText = new CSharpToFoswiki().Format(                snippet);
             Clipboard.SetText(reviewableText);
 
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CopyForReview.Data;
 
 namespace CopyForReview.Formatters
 {
@@ -15,6 +16,6 @@ namespace CopyForReview.Formatters
         /// </summary>
         /// <param name="snippet">The snippet.</param>
         /// <returns>The specified code snippet in the output format.</returns>
-        String Format(SnippetInfo snippet);
+        String Format(ISnippet snippet);
     }
 }

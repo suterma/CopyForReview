@@ -45,6 +45,9 @@
     <Reference Include="FluentAssertions.Core">
       <HintPath>..\packages\FluentAssertions.3.3.0\lib\net45\FluentAssertions.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -66,7 +69,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CodeReviewFormatterCSharpToFoswikiTests.cs" />
+    <Compile Include="CSharpToFoswikiTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CopyForReview.Data\CopyForReview.Data.csproj">
