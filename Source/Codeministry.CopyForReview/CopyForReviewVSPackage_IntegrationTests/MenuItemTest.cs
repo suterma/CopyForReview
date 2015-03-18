@@ -18,6 +18,7 @@
 using System.ComponentModel.Design;
 using System.Globalization;
 using Codeministry.CopyForReview;
+using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VsSDK.IntegrationTestLibrary;
 using Microsoft.VSSDK.Tools.VsIdeTesting;
@@ -44,8 +45,10 @@ namespace Codeministry.CopyForReview_IntegrationTests
         /// <summary>
         ///     A test for lauching the command and closing the associated dialogbox
         /// </summary>
+        /// <devdoc>Ignored, because we do not use the tested dialog box currently.</devdoc>
         [TestMethod()]
         [HostType("VS IDE")]
+        [Ignore()]
         public void LaunchCommand()
         {
             UIThreadInvoker.Invoke((ThreadInvoker) delegate()

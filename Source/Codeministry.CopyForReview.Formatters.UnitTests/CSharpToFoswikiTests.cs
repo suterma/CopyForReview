@@ -69,7 +69,7 @@ namespace Codeministry.CopyForReview.Formatters.UnitTests
             var actual = new CSharpToFoswiki().Format(testSnippet);
 
             //Assert
-            actual.Should().Be("\r\n%CODE_DP{lang=\"C#\" firstline=\"10\"}%\r\n        public const string guidCopyForReviewPkgString = \"193eba43-9462-4945-ba4e-79f04dbadc94\";\r\n        public const string guidCopyForReviewCmdSetString = \"4ae6ff5a-6e7e-48bd-86b0-37fd9ab20629\";\r\n\r\n        public static readonly Guid guidCopyForReviewCmdSet = new Guid(guidCopyForReviewCmdSetString);\r\n\r\n%ENDCODE%\r\n_in class_ =Company.CopyForReview.GuidList= <br> _in file <a href=\"c:\\test\\TestFileName.cs\">c:\\test\\TestFileName.cs</a>_ <br> _on lines 10 to 13_ <br> ");
+            actual.Should().Be("\r\n%CODE_DP{lang=\"C#\" firstline=\"10\"}%\r\npublic const string guidCopyForReviewPkgString = \"193eba43-9462-4945-ba4e-79f04dbadc94\";\r\npublic const string guidCopyForReviewCmdSetString = \"4ae6ff5a-6e7e-48bd-86b0-37fd9ab20629\";\r\n\r\npublic static readonly Guid guidCopyForReviewCmdSet = new Guid(guidCopyForReviewCmdSetString);\r\n\r\n%ENDCODE%\r\n_in class_ =Company.CopyForReview.GuidList= <br> _in file <a href=\"c:\\test\\TestFileName.cs\">c:\\test\\TestFileName.cs</a>_ <br> _on lines 10 to 13_ <br> ");
         }
     }
 }

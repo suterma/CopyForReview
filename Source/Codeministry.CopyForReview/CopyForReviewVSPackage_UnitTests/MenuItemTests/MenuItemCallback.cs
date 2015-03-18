@@ -26,7 +26,9 @@ namespace Codeministry.CopyForReview_UnitTests.MenuItemTests
         /// Verify that a new menu command object gets added to the OleMenuCommandService. 
         /// This action takes place In the Initialize method of the Package object
         /// </summary>
+        /// <devdoc>Ignored, because we do not use the tested item.</devdoc>
         [TestMethod]
+        [Ignore]
         public void InitializeMenuCommand()
         {
             // Create the package
@@ -47,7 +49,9 @@ namespace Codeministry.CopyForReview_UnitTests.MenuItemTests
             Assert.IsNotNull(mcs.FindCommand(menuCommandID));
         }
 
+        /// <devdoc>Ignored, because we do not use the tested item.</devdoc>
         [TestMethod]
+        [Ignore]
         public void MenuItemCallback()
         {
             // Create the package
