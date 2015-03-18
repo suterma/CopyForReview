@@ -40,9 +40,11 @@ namespace CopyForReview
 
 
         /// <summary>
-        ///     Gets the text of the current selection in the application
+        /// Gets the text of the current selection in the application
         /// </summary>
-        public String CopySelection()
+        /// <param name="isSelectFullLines">if set to <c>true</c> full lines are selected before copying.</param>
+        /// <returns></returns>
+        public String CopySelection(bool isSelectFullLines)
         {
             //get the text document
             TextDocument txt = (TextDocument) _applicationObject.ActiveDocument.Object("TextDocument");
@@ -51,8 +53,10 @@ namespace CopyForReview
             var bottomLine = txt.Selection.BottomLine;
 
             //Adapt the selection to include only full lines
-            txt.Selection.MoveTo(topLine, 0, true);
-            txt.Selection.StartOfLine(vsStartOfLineOptions.vsStartOfLineOptionsFirstColumn,true);
+            txt.Selection.GotoLine(topLine, true);
+            //txt.Selection.AnchorPoint.
+            //txt.Selection.MoveTo(topLine, 0, false);
+            //txt.Selection.StartOfLine(vsStartOfLineOptions.vsStartOfLineOptionsFirstColumn,true);
             txt.Selection.MoveTo(bottomLine, 0,true);
             txt.Selection.EndOfLine(true);
             return txt.Selection.Text;

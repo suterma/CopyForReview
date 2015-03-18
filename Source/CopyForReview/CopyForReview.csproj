@@ -136,6 +136,9 @@
     <Compile Include="Controls\FormatSelector.xaml.cs">
       <DependentUpon>FormatSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OptionPageGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

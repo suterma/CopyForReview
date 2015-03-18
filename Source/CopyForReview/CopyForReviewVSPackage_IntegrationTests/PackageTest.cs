@@ -1,4 +1,5 @@
 ﻿using System;
+using CopyForReview;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VSSDK.Tools.VsIdeTesting;
@@ -44,7 +45,7 @@ namespace CopyForReview_IntegrationTests
 
                 //Validate package load
                 IVsPackage package;
-                Guid packageGuid = new Guid(Company.CopyForReview.GuidList.guidCopyForReviewPkgString);
+                Guid packageGuid = new Guid(GuidList.guidCopyForReviewPkgString);
                 Assert.IsTrue(0 == shellService.LoadPackage(ref packageGuid, out package));
                 Assert.IsNotNull(package, "Package failed to load");
 

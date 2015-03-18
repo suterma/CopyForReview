@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.Design;
 using System.Globalization;
+using CopyForReview;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VsSDK.IntegrationTestLibrary;
 using Microsoft.VSSDK.Tools.VsIdeTesting;
@@ -38,7 +39,7 @@ namespace CopyForReview_IntegrationTests
         {
             UIThreadInvoker.Invoke((ThreadInvoker)delegate()
             {
-                CommandID menuItemCmd = new CommandID(Company.CopyForReview.GuidList.guidCopyForReviewCmdSet, (int)Company.CopyForReview.PkgCmdIDList.cmdidCopyForReview);
+                CommandID menuItemCmd = new CommandID(GuidList.guidCopyForReviewCmdSet, (int)Company.CopyForReview.PkgCmdIDList.cmdidCopyForReview);
 
                 // Create the DialogBoxListener Thread.
                 string expectedDialogBoxText = string.Format(CultureInfo.CurrentCulture, "{0}\n\nInside {1}.MenuItemCallback()", "CopyForReview", "Company.CopyForReview.CopyForReviewPackage");

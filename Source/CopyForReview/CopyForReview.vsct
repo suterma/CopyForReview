@@ -78,7 +78,6 @@
         </Strings>
       </Button>
 
-
     </Buttons>
 
     <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
@@ -102,7 +101,6 @@
       <IDSymbol name="MyMenuGroup" value="0x1020" />
       <IDSymbol name="cmdidCopyForReview" value="0x0100" />
     </GuidSymbol>
-
 
     <GuidSymbol name="guidCopyForReviewCommandImages" value="{3eb1aa0b-96aa-4364-a870-ca588a9491b5}" >
       <IDSymbol name="PicEyes" value="1" />

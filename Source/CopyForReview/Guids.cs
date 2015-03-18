@@ -1,8 +1,9 @@
 ﻿// Guids.cs
 // MUST match guids.h
+
 using System;
 
-namespace Company.CopyForReview
+namespace CopyForReview
 {
     static class GuidList
     {

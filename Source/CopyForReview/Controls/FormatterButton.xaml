@@ -5,11 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" >
     <Grid>
-        <Button Name="EmbeddedButton" Width="150" >
-            <StackPanel Orientation="Horizontal">
+        <RadioButton Name="EmbeddedButton"   GroupName="FormatterSelection">
+            <StackPanel Orientation="Horizontal" Width="150">
                 <Image Name="IconImage" Source="App-xeyes-icon.png" Width="48" Height="48"/>
                 <TextBlock Width="96" TextAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Name="Caption">Review in Foswiki xxxxxxxxx</TextBlock>
             </StackPanel>
-        </Button>
+        </RadioButton>
     </Grid>
 </UserControl>

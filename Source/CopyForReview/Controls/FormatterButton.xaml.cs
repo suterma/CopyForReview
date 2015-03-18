@@ -34,6 +34,14 @@ namespace CopyForReview
         /// <summary>
         /// Initializes a new instance of the <see cref="FormatterButton"/> class.
         /// </summary>
+        /// <remarks>Used just for the designer.</remarks>
+        public FormatterButton()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FormatterButton"/> class.
+        /// </summary>
         /// <param name="formatter">The formatter.</param>
         public FormatterButton(IFormatter formatter)
         {
@@ -89,5 +97,13 @@ namespace CopyForReview
         /// The name of the formatter.
         /// </value>
         public string FormatterName { get { return _formatter.Name; } }
+
+        /// <summary>
+        /// Checks the RadioButton.
+        /// </summary>
+        internal void CheckRadioButton()
+        {
+            EmbeddedButton.IsChecked = true;
+        }
     }
 }

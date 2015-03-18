@@ -30,6 +30,13 @@ namespace CopyForReview
     // This attribute is needed to let the shell know that this package exposes some menus.
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(GuidList.guidCopyForReviewPkgString)]
+
+
+
+
+    [ProvideOptionPage(typeof(OptionPageGrid),
+        "CopyForReview", "General", 0, 0, true)]
+
     public sealed class CopyForReviewPackage : Package
     {
         /// <summary>
@@ -79,27 +86,39 @@ namespace CopyForReview
         /// </summary>
         private void MenuItemCallback(object sender, EventArgs e)
         {
+            DTE2 dte = (DTE2) GetService(typeof (DTE));
 
-            var selector = new FormatSelector();
+            //Apply the stored options to the selector
+                EnvDTE.Properties props =
+        dte.get_Properties("CopyForReview", "General");
+
+    var selectedFormatterName  = (String)props.Item("SelectedFormatterName").Value;
+    var selectFullLines  = (bool)props.Item("SelectFullLines").Value;
+    var formatSelector = new FormatSelector(selectedFormatterName, selectFullLines);
+
 
             // Show the dialog. 
-            if (selector.ShowModal() == true)
+            if (formatSelector.ShowDialog() == true)
             {
                 using (new WaitCursor())
                 {
-                    var codeExaminer = new CodeModelExaminer((DTE2) GetService(typeof (DTE)));
+                    var codeExaminer = new CodeModelExaminer(dte);
 
                     //Add file, class, method and line information to the text
                     var snippet = new Snippet
                     {
                         FullFilename = codeExaminer.GetFilename(),
-                        SelectedText = codeExaminer.CopySelection()
+                        SelectedText = codeExaminer.CopySelection(formatSelector.IsSelectionFullLines)
                     };
                     codeExaminer.SetSelectionLineRange(snippet);
                     codeExaminer.GetCodeContext(snippet);
 
-                    var output = selector.SelectedFormatter.Format(snippet);
+                    var output = formatSelector.SelectedFormatter.Format(snippet);
                     System.Windows.Clipboard.SetDataObject(output);
+
+                    //Apply the eventually changed options
+                    props.Item("SelectedFormatterName").Value = formatSelector.SelectedFormatter.Name;
+                    props.Item("SelectFullLines").Value = formatSelector.IsSelectionFullLines;
                 }
             }
 

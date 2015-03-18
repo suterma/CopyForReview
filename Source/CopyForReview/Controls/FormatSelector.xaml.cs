@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using CopyForReview.Data;
 using CopyForReview.Formatters;
@@ -8,17 +9,8 @@ using Microsoft.VisualStudio.PlatformUI;
 namespace CopyForReview.Controls
 {
     // Use this constructor to enable F1 Help. 
-    public partial class FormatSelector : DialogWindow
+    public partial class FormatSelector : VsUIDialogWindow
     {
-        // Use this constructor to provide a Help button and F1 support. 
-        public FormatSelector(string helpTopic)
-            : base(helpTopic)
-        {
-            InitializeComponent();
-            InitializeFormatterButtons();
-
-        }
-
         /// <summary>
         /// Gets the selected formatter.
         /// </summary>
@@ -30,7 +22,8 @@ namespace CopyForReview.Controls
         /// <summary>
         /// Initializes the formatter buttons.
         /// </summary>
-        private void InitializeFormatterButtons()
+        /// <param name="selectedFormatterName">Name of the selected formatter.</param>
+        private void InitializeFormatterButtons(String selectedFormatterName)
         {
             //Initialize Formatter Buttons
             var formatters = Factory.GetFormatters();
@@ -39,6 +32,11 @@ namespace CopyForReview.Controls
                 var button = new FormatterButton(formatter);
                 button.Click += ButtonReviewInFoswiki_Click;
                 StackPanelFormatters.Children.Add(button);
+                if (formatter.Name == selectedFormatterName)
+                {
+                    button.CheckRadioButton();
+                    SelectedFormatter = formatter;
+                }
             }
         }
 
@@ -46,11 +44,14 @@ namespace CopyForReview.Controls
         /// <summary>
         /// Initializes a new instance of the <see cref="FormatSelector"/> class.
         /// </summary>
-        public FormatSelector()
+        /// <param name="selectedFormatterName">Name of the selected formatter.</param>
+        /// <param name="selectFullLines">if set to <c>true</c> [select full lines].</param>
+        public FormatSelector(string selectedFormatterName, bool selectFullLines)
         {
-
             InitializeComponent();
-            InitializeFormatterButtons();
+            InitializeFormatterButtons(selectedFormatterName);
+
+            CheckBoxSelectionFullLines.IsChecked = selectFullLines;
         }
 
         private void ButtonReviewInFoswiki_Click(object sender, RoutedEventArgs e)
@@ -58,8 +59,28 @@ namespace CopyForReview.Controls
             //find the formatter in question and invoke it
             var button = sender as FormatterButton;
             SelectedFormatter = Factory.GetFormatters().Single(item => item.Name == button.FormatterName); //TODO later use better matching, possibly using a GUID
+        }
+
+        /// <summary>
+        /// Handles the Click event of the ButtonCopy control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        private void ButtonCopy_Click(object sender, RoutedEventArgs e)
+        {
             DialogResult = true;
             this.Close();
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether this full lines should be selected.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if full lines should be selected; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsSelectionFullLines
+        {
+            get { return (CheckBoxSelectionFullLines.IsChecked == true); }
         }
     }
 }
