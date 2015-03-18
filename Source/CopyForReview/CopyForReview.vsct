@@ -74,7 +74,7 @@
         <Parent guid="guidCopyForReviewCmdSet" id="MyMenuGroup" />
         <Icon guid="guidCopyForReviewCommandImages" id="PicEyes" />
         <Strings>
-          <ButtonText>Copy for review (foswiki)</ButtonText>
+          <ButtonText>Copy for review...</ButtonText>
         </Strings>
       </Button>
 

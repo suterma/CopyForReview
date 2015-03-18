@@ -67,6 +67,12 @@ namespace CopyForReview
                 MenuCommand menuItem = new MenuCommand(MenuItemCallback, menuCommandID);
                 mcs.AddCommand(menuItem);
             }
+
+            //TODO set default, later do that only on install
+            DTE2 dte = (DTE2)GetService(typeof(DTE));
+            EnvDTE.Properties props =
+                dte.get_Properties("CopyForReview", "General");
+                props.Item("SelectFullLines").Value = true;
         }
 
         #endregion

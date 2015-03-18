@@ -1,16 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace CopyForReview
 {
-    public class WaitCursor : IDisposable
+    /// <summary>
+    ///     A wait cursor that disposes itself after usage.
+    /// </summary>
+    public sealed class WaitCursor : IDisposable
     {
         private readonly Cursor _previousCursor;
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="WaitCursor" /> class.
+        /// </summary>
         public WaitCursor()
         {
             _previousCursor = Mouse.OverrideCursor;
@@ -20,6 +22,9 @@ namespace CopyForReview
 
         #region IDisposable Members
 
+        /// <summary>
+        ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             Mouse.OverrideCursor = _previousCursor;

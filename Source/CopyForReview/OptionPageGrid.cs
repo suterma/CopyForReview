@@ -9,11 +9,7 @@ namespace CopyForReview
     [CLSCompliant(false), ComVisible(true)]
     public class OptionPageGrid : DialogPage
     {
-        /// <summary>
-        ///     Determines whether the selection is expanded to contain full lines.
-        /// </summary>
-        /// <remarks>Default is true.</remarks>
-        private bool _selectFullLines = true;
+
 
         [Category("CopyForReview")]
         [DisplayName("Selected formatter")]
@@ -34,9 +30,18 @@ namespace CopyForReview
         [Description("Determines whether the selection is expanded to contain full lines")]
         [DefaultValue(typeof (bool), "true")]
         public bool SelectFullLines
+
+        { get; set; }
+
+        /// <summary>
+        /// Reset settings to their default values.
+        /// </summary>
+        public override void ResetSettings()
         {
-            get { return _selectFullLines; }
-            set { _selectFullLines = value; }
+            base.ResetSettings();
+
+            //TODO does not work
+            SelectFullLines = true;
         }
     }
 }

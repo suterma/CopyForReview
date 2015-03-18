@@ -1,11 +1,9 @@
 ﻿<platformUi:VsUIDialogWindow x:Class="CopyForReview.Controls.FormatSelector"
                          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                         xmlns:ui="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.11.0"
                          xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.12.0"
-                         xmlns:copyForReview="clr-namespace:CopyForReview"
                          Title="Copy for..." SizeToContent="WidthAndHeight"
-                         ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+                         ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/CopyForReview;component/Resources/App-xeyes-icon_16x16.png">
     <Grid>
         <StackPanel>
         <StackPanel Name="StackPanelFormatters" x:FieldModifier="private">

@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="193eba43-9462-4945-ba4e-79f04dbadc94" Version="1.0" Language="en-US" Publisher="codeministry.ch" />
+    <Identity Id="193eba43-9462-4945-ba4e-79f04dbadc94" Version="1.1" Language="en-US" Publisher="codeministry.ch" />
     <DisplayName>Copy for review</DisplayName>
-    <Description xml:space="preserve">Allows to copy code, with file, class, method and line info, suitable for code reviews.</Description>
+    <Description xml:space="preserve">[Beta Version] Allows to copy code with a formatting. Provides file, class, method and line info, suitable for written code reviews. Two output formats are currently supported: Stackoverflow and Foswiki.</Description>
+    <MoreInfo>https://github.com/suterma/CopyForReview</MoreInfo>
     <License>gpl.txt</License>
     <Icon>App-xeyes-icon.png</Icon>
     <PreviewImage>ExtensionManagerPreview.png</PreviewImage>
-    <Tags>Copy Review Foswiki Format Output</Tags>
+    <Tags>Copy Pase Code Review Foswiki Stackoverflow Format Output</Tags>
   </Metadata>
   <Installation InstalledByMsi="false">
     <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[12.0]" />
