@@ -88,7 +88,7 @@ namespace CopyForReview
                 dte.get_Properties("CopyForReview", "General");
 
             var selectedFormatterName = (String) props.Item("SelectedFormatterName").Value;
-            var selectFullLines = (bool) props.Item("SelectFullLines").Value;
+            var selectFullLines = (bool)props.Item("SelectFullLines").Value;
             var formatSelector = new FormatSelector(selectedFormatterName, selectFullLines);
 
 
