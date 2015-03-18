@@ -1,0 +1,12 @@
+﻿Release 1.2-beta
+Updated: March 16, 2015 (Build)
+
+This release of CopyForReview features some UI improvements plus a second formatter.
+
+Major Features
+- Better UI, with more options
+- Dedicated Visual Studio options page
+- Restructured the Visual Studio Solution and reformatted most code
+
+Fixed Issues
+- various
