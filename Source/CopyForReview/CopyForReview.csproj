@@ -128,6 +128,9 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="CodeModelExaminer.cs" />
     <Compile Include="Controls\FormatterButton.xaml.cs">
       <DependentUpon>FormatterButton.xaml</DependentUpon>
