@@ -8,8 +8,10 @@ using Microsoft.VisualStudio.PlatformUI;
 
 namespace CopyForReview.Controls
 {
-    // Use this constructor to enable F1 Help. 
-    public partial class FormatSelector : VsUIDialogWindow
+    /// <summary>
+    /// A selector for a formatter
+    /// </summary>
+  public partial class FormatSelector : VsUIDialogWindow
     {
         /// <summary>
         /// Gets the selected formatter.
@@ -38,6 +40,15 @@ namespace CopyForReview.Controls
                     SelectedFormatter = formatter;
                 }
             }
+
+            if ((SelectedFormatter == null) && formatters.Any())
+            {
+                //just select the first one
+                var firstButton = StackPanelFormatters.Children.Cast<FormatterButton>().First<FormatterButton>();
+                firstButton.CheckRadioButton();
+                SelectedFormatter = firstButton.Formatter;
+
+            }
         }
 
 
@@ -58,7 +69,7 @@ namespace CopyForReview.Controls
         {
             //find the formatter in question and invoke it
             var button = sender as FormatterButton;
-            SelectedFormatter = Factory.GetFormatters().Single(item => item.Name == button.FormatterName); //TODO later use better matching, possibly using a GUID
+            SelectedFormatter = Factory.GetFormatters().Single(item => item.Name == button.Formatter.Name); //TODO later use better matching, possibly using a GUID
         }
 
         /// <summary>

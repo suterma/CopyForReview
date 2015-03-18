@@ -3,7 +3,8 @@ This is a dotLiquid template that allows to output a code snippet in with the co
 used for StackOverflow questions.
 Just the file name is provided for brevity
 {% endcomment %}
-{{Filename}}
-{% for line in Lines -%}
+Here's my code (in {{Filename}}):
+
+{% for line in DeindentedLines -%}
     {{line}}
 {% endfor -%}

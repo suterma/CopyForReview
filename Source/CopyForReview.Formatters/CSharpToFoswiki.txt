@@ -4,6 +4,6 @@ It uses the foswiki plugin "SyntaxHighlightingPlugin".
 Method and class are optional and not provided if null
 {% endcomment %}
 %CODE_DP{lang="C#" firstline="{{LineNumberTop}}"}%
-{{SelectedText}}
+{{DeindentedSelectedText}}
 %ENDCODE%
 {% if Methodname %}_in method_ ={{Methodname}}= <br> {% endif %}{% if FullClassname %}_in class_ ={{FullClassname}}= {% endif %}<br> _in file <a href="{{FullFilename}}">{{FullFilename}}</a>_ <br> _on lines {{LineNumberTop}} to {{LineNumberBottom}}_ <br> 

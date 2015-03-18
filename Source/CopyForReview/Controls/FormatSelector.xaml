@@ -6,7 +6,7 @@
                          xmlns:copyForReview="clr-namespace:CopyForReview"
                          Title="Copy for..." SizeToContent="WidthAndHeight"
                          ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
-    <Grid Margin="3">
+    <Grid>
         <StackPanel>
         <StackPanel Name="StackPanelFormatters" x:FieldModifier="private">
         </StackPanel>

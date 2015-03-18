@@ -15,6 +15,15 @@ namespace CopyForReview.Data
         /// The the full filename, with path and extension.
         /// </value>
         String FullFilename { get; set; }
+
+        /// <summary>
+        /// Gets or sets the filename, without path.
+        /// </summary>
+        /// <value>
+        /// The the filename, without path.
+        /// </value>
+        String Filename { get; set; }
+
         /// <summary>
         /// Gets or sets the line number of the topmost line.
         /// </summary>
@@ -51,6 +60,14 @@ namespace CopyForReview.Data
         /// The lines.
         /// </value>
         IEnumerable<String> Lines { get; }
+
+        /// <summary>
+        /// Gets the individual code lines of the snippet with the indentation removed as much as possible.
+        /// </summary>
+        /// <value>
+        /// The individual code lines of the snippet with the indentation removed as much as possible.
+        /// </value>
+        IEnumerable<String> DeindentedLines { get; }
 
         /// <summary>
         /// Gets or sets the originally selected text as simple string.

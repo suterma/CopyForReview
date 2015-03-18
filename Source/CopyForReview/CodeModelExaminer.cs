@@ -1,6 +1,5 @@
 ﻿using System;
 using CopyForReview.Data;
-using CopyForReview.Formatters;
 using EnvDTE;
 using EnvDTE80;
 
@@ -26,7 +25,7 @@ namespace CopyForReview
         }
 
         /// <summary>
-        /// Sets the line range of the code location according to the current selection.
+        ///     Sets the line range of the code location according to the current selection.
         /// </summary>
         /// <param name="codeLocationInfo">The code location information.</param>
         public void SetSelectionLineRange(ISnippet codeLocationInfo)
@@ -40,7 +39,7 @@ namespace CopyForReview
 
 
         /// <summary>
-        /// Gets the text of the current selection in the application
+        ///     Gets the text of the current selection in the application
         /// </summary>
         /// <param name="isSelectFullLines">if set to <c>true</c> full lines are selected before copying.</param>
         /// <returns></returns>
@@ -49,16 +48,16 @@ namespace CopyForReview
             //get the text document
             TextDocument txt = (TextDocument) _applicationObject.ActiveDocument.Object("TextDocument");
 
-            var topLine = txt.Selection.TopLine;
-            var bottomLine = txt.Selection.BottomLine;
+            if (isSelectFullLines)
+            {
+                var topLine = txt.Selection.TopLine;
+                var bottomLine = txt.Selection.BottomLine;
 
-            //Adapt the selection to include only full lines
-            txt.Selection.GotoLine(topLine, true);
-            //txt.Selection.AnchorPoint.
-            //txt.Selection.MoveTo(topLine, 0, false);
-            //txt.Selection.StartOfLine(vsStartOfLineOptions.vsStartOfLineOptionsFirstColumn,true);
-            txt.Selection.MoveTo(bottomLine, 0,true);
-            txt.Selection.EndOfLine(true);
+                //Adapt the selection to include only full lines
+                txt.Selection.GotoLine(topLine, true);
+                txt.Selection.MoveTo(bottomLine, 0, true);
+                txt.Selection.EndOfLine(true);
+            }
             return txt.Selection.Text;
         }
 
@@ -184,10 +183,19 @@ namespace CopyForReview
         }
 
         /// <summary>
-        /// Gets the full filename of the currently active document.
+        ///     Gets the filename of the currently active document.
         /// </summary>
         /// <returns>The filename</returns>
         internal string GetFilename()
+        {
+            return _applicationObject.ActiveDocument.Name;
+        }
+
+        /// <summary>
+        ///     Gets the full filename of the currently active document.
+        /// </summary>
+        /// <returns>The filename</returns>
+        internal string GetFullFilename()
         {
             return _applicationObject.ActiveDocument.FullName;
         }

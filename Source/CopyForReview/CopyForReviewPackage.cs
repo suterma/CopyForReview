@@ -30,13 +30,8 @@ namespace CopyForReview
     // This attribute is needed to let the shell know that this package exposes some menus.
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(GuidList.guidCopyForReviewPkgString)]
-
-
-
-
-    [ProvideOptionPage(typeof(OptionPageGrid),
+    [ProvideOptionPage(typeof (OptionPageGrid),
         "CopyForReview", "General", 0, 0, true)]
-
     public sealed class CopyForReviewPackage : Package
     {
         /// <summary>
@@ -89,12 +84,12 @@ namespace CopyForReview
             DTE2 dte = (DTE2) GetService(typeof (DTE));
 
             //Apply the stored options to the selector
-                EnvDTE.Properties props =
-        dte.get_Properties("CopyForReview", "General");
+            EnvDTE.Properties props =
+                dte.get_Properties("CopyForReview", "General");
 
-    var selectedFormatterName  = (String)props.Item("SelectedFormatterName").Value;
-    var selectFullLines  = (bool)props.Item("SelectFullLines").Value;
-    var formatSelector = new FormatSelector(selectedFormatterName, selectFullLines);
+            var selectedFormatterName = (String) props.Item("SelectedFormatterName").Value;
+            var selectFullLines = (bool) props.Item("SelectFullLines").Value;
+            var formatSelector = new FormatSelector(selectedFormatterName, selectFullLines);
 
 
             // Show the dialog. 
@@ -107,7 +102,8 @@ namespace CopyForReview
                     //Add file, class, method and line information to the text
                     var snippet = new Snippet
                     {
-                        FullFilename = codeExaminer.GetFilename(),
+                        FullFilename = codeExaminer.GetFullFilename(),
+                        Filename = codeExaminer.GetFilename(),
                         SelectedText = codeExaminer.CopySelection(formatSelector.IsSelectionFullLines)
                     };
                     codeExaminer.SetSelectionLineRange(snippet);
@@ -121,26 +117,6 @@ namespace CopyForReview
                     props.Item("SelectFullLines").Value = formatSelector.IsSelectionFullLines;
                 }
             }
-
-
-            /*
-            IVsUIShell uiShell = (IVsUIShell)GetService(typeof(SVsUIShell));
-            Guid clsid = Guid.Empty;
-            int result;
-            Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(uiShell.ShowMessageBox(
-                       0,
-                       ref clsid,
-                       "CopyForReview",
-                       string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.ToString()),
-                       string.Empty,
-                       0,
-                       OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                       OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST,
-                       OLEMSGICON.OLEMSGICON_INFO,
-                       0,        // false
-                       out result));
-             * */
         }
-
     }
 }

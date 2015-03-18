@@ -11,9 +11,9 @@ namespace CopyForReview.Formatters
         ///     Gets the available formatters.
         /// </summary>
         /// <returns></returns>
-        public static IEnumerable<IFormatter> GetFormatters()
+        public static IList<IFormatter> GetFormatters()
         {
-            var formatters = new List<IFormatter> {new CSharpToFoswiki(), new CSharpToStackOverflow()};
+            var formatters = new List<IFormatter> { new CSharpToStackOverflow(), new CSharpToFoswiki(), };
             return formatters;
         }
     }
