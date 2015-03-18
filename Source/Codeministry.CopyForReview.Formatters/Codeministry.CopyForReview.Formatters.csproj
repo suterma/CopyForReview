@@ -76,7 +76,7 @@
     <EmbeddedResource Include="CSharpToStackOverflow.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="so-icon.png" />
+    <EmbeddedResource Include="so-icon.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="foswiki-logo-simple.png" />
