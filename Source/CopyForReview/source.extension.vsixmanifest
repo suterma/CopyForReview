@@ -8,7 +8,7 @@
     <License>gpl.txt</License>
     <Icon>App-xeyes-icon.png</Icon>
     <PreviewImage>ExtensionManagerPreview.png</PreviewImage>
-    <Tags>Copy Pase Code Review Foswiki Stackoverflow Format Output</Tags>
+    <Tags>Copy Paste Code Review Foswiki Stackoverflow Format Output</Tags>
   </Metadata>
   <Installation InstalledByMsi="false">
     <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[12.0]" />
