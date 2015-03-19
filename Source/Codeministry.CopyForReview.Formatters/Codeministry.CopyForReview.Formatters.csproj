@@ -52,6 +52,7 @@
     <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="CSharpToText.cs" />
     <Compile Include="CSharpToStackOverflow.cs" />
     <Compile Include="CSharpToFoswiki.cs" />
     <Compile Include="DotLiquidFormatter.cs" />
@@ -80,6 +81,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="foswiki-logo-simple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CSharpToText.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="txt_48x48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

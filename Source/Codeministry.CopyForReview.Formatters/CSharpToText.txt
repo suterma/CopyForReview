@@ -1,0 +1,11 @@
+﻿{% comment %}
+This is a dotLiquid template that allows to output a code snippet for a text editor. 
+Method and class are optional and not provided if null
+{% endcomment %}
+8<------------------------------------------------------------------------------
+{{DeindentedSelectedText}}
+8<------------------------------------------------------------------------------
+{% if Methodname %}in method "{{Methodname}}"
+{% endif %}{% if FullClassname %}in class "{{FullClassname}}"
+{% endif %}in file {{FullFilename}}
+on lines {{LineNumberTop}} to {{LineNumberBottom}}

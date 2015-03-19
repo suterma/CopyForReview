@@ -30,7 +30,12 @@ namespace Codeministry.CopyForReview.Formatters
         /// <returns></returns>
         public static IList<IFormatter> GetFormatters()
         {
-            var formatters = new List<IFormatter> {new CSharpToStackOverflow(), new CSharpToFoswiki(),};
+            var formatters = new List<IFormatter>
+            {
+                new CSharpToText(),
+                new CSharpToStackOverflow(), 
+                new CSharpToFoswiki(),
+            };
             return formatters;
         }
     }
