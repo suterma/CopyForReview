@@ -22,7 +22,6 @@ using System.Globalization;
 using System.Runtime.InteropServices;
 using Codeministry.CopyForReview.Controls;
 using Codeministry.CopyForReview.Data;
-using CopyForReview;
 using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
