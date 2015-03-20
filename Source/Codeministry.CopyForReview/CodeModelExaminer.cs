@@ -77,58 +77,19 @@ namespace Codeministry.CopyForReview {
         /// </summary>
         /// <param name="codeLocationInfo">The code location information.</param>
         public void GetCodeContext(ISnippet codeLocationInfo) {
-            //TODO Test to get the code context via selection points
-            Document doc = (Document) _applicationObject.ActiveDocument.Object("Document");
-            var item = doc.ProjectItem;
+            ProjectItem item = _applicationObject.ActiveDocument.ProjectItem;
             ExamineItem(item, codeLocationInfo);
-            return;
-
-
-            // get the solution
-            Solution solution = _applicationObject.Solution;
-            Console.WriteLine(solution.FullName);
-            ExamineProjects(solution.Projects, _applicationObject.ActiveDocument, codeLocationInfo);
-        }
-
-        private static void ExamineProjects(Projects projects, Document doc, ISnippet codeLocationInfo) {
-            // get all the projects
-            foreach (Project project in projects) {
-                Console.WriteLine("\t{0}", project.FullName);
-
-                ExamineProjectItems(project.ProjectItems, doc, codeLocationInfo);
-            }
-        }
-
-        private static void ExamineProjectItems(ProjectItems projectItems, Document doc,
-            ISnippet codeLocationInfo) {
-            // get all the items in each project
-            foreach (ProjectItem item in projectItems) {
-                Console.WriteLine("\t\t{0}", item.Name);
-
-                if (item.SubProject != null) {
-                    ExamineProjectItems(item.SubProject.ProjectItems, doc, codeLocationInfo);
-                }
-
-                if (item.ProjectItems != null) {
-                    ExamineProjectItems(item.ProjectItems, doc, codeLocationInfo);
-                }
-
-                // find this file and examine it
-                if (item.Name.Contains(".cs")) {
-                    if (item.Document != null) {
-                        var document = item.Document;
-                        if (document.Name == doc.Name) {
-                            ExamineItem(item, codeLocationInfo);
-                        }
-                    }
-                }
-            }
         }
 
 
         // examine an item
         private static void ExamineItem(ProjectItem item, ISnippet codeLocationInfo) {
             FileCodeModel2 model = (FileCodeModel2) item.FileCodeModel;
+            if (model == null) {
+                //no model, no elements, nothing to examine. 
+                //Most probably, the item is from a non-object oriented language
+                return;
+            }
             foreach (CodeElement codeElement in model.CodeElements) {
                 ExamineCodeElement(codeElement, codeLocationInfo);
             }
@@ -137,9 +98,6 @@ namespace Codeministry.CopyForReview {
         // recursively examine code elements
         private static void ExamineCodeElement(CodeElement codeElement, ISnippet codeLocationInfo) {
             try {
-                Console.WriteLine("{0} {1}",
-                    codeElement.Name, codeElement.Kind.ToString());
-
                 if (codeElement.Kind == vsCMElement.vsCMElementClass) {
                     //Encloses selection?
                     if (Encloses(codeElement, codeLocationInfo)) {
@@ -158,7 +116,7 @@ namespace Codeministry.CopyForReview {
                 }
             }
             catch {
-                Console.WriteLine("codeElement without name: {0}", codeElement.Kind.ToString());
+                //just swallow, leave codeLocationInfo as is
             }
         }
 
