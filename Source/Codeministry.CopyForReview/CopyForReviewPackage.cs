@@ -26,8 +26,7 @@ using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 
-namespace Codeministry.CopyForReview
-{
+namespace Codeministry.CopyForReview {
     /// <summary>
     ///     This is the class that implements the package exposed by this assembly.
     ///     The minimum requirement for a class to be considered a valid package for Visual Studio
@@ -48,8 +47,7 @@ namespace Codeministry.CopyForReview
     [Guid(GuidList.GuidCopyForReviewPkgString)]
     [ProvideOptionPage(typeof (OptionPageGrid),
         "CopyForReview", "General", 0, 0, true)]
-    public sealed class CopyForReviewPackage : Package
-    {
+    public sealed class CopyForReviewPackage : Package {
         /// <summary>
         ///     Default constructor of the package.
         ///     Inside this method you can place any initialization code that does not require
@@ -57,8 +55,7 @@ namespace Codeministry.CopyForReview
         ///     not sited yet inside Visual Studio environment. The place to do all the other
         ///     initialization is the Initialize method.
         /// </summary>
-        public CopyForReviewPackage()
-        {
+        public CopyForReviewPackage() {
             Debug.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering constructor for: {0}", ToString()));
         }
 
@@ -68,8 +65,7 @@ namespace Codeministry.CopyForReview
         ///     Initialization of the package; this method is called right after the package is sited, so this is the place
         ///     where you can put all the initialization code that rely on services provided by VisualStudio.
         /// </summary>
-        protected override void Initialize()
-        {
+        protected override void Initialize() {
             Debug.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", ToString()));
             base.Initialize();
 
@@ -100,8 +96,7 @@ namespace Codeministry.CopyForReview
         ///     See the Initialize method to see how the menu item is associated to this function using
         ///     the OleMenuCommandService service and the MenuCommand class.
         /// </summary>
-        private void MenuItemCallback(object sender, EventArgs e)
-        {
+        private void MenuItemCallback(object sender, EventArgs e) {
             DTE2 dte = (DTE2) GetService(typeof (DTE));
 
             //Apply the stored options to the selector

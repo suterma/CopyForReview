@@ -1,28 +1,29 @@
-﻿/***************************************************************************
+﻿// 
+//     Copy for review, code sharing made simple.
+//     Copyright (C) 2015 by marcel suter, marcel@codeministry.ch
+// 
+//     This program is free software: you can redistribute it and/or modify
+//     it under the terms of the GNU General Public License as published by
+//     the Free Software Foundation, either version 3 of the License, or
+//     (at your option) any later version.
+// 
+//     This program is distributed in the hope that it will be useful,
+//     but WITHOUT ANY WARRANTY; without even the implied warranty of
+//     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//     GNU General Public License for more details.
+// 
+//     You should have received a copy of the GNU General Public License
+//     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-Copyright (c) Microsoft Corporation. All rights reserved.
-This code is licensed under the Visual Studio SDK license terms.
-THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+using System;
+using System.Runtime.InteropServices;
+using System.Text;
 
-***************************************************************************/
-
-namespace Microsoft.VsSDK.IntegrationTestLibrary
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Runtime.InteropServices;
-    using System.Threading;
-    using Microsoft.VisualStudio.Shell.Interop;
-
+namespace Microsoft.VsSDK.IntegrationTestLibrary {
     /// <summary>
-    /// Defines pinvoked utility methods and internal VS Constants
+    ///     Defines pinvoked utility methods and internal VS Constants
     /// </summary>
-    internal static class NativeMethods
-    {
+    internal static class NativeMethods {
         internal delegate bool CallBack(IntPtr hwnd, IntPtr lParam);
 
         // Declare two overloaded SendMessage functions
@@ -59,8 +60,9 @@ namespace Microsoft.VsSDK.IntegrationTestLibrary
 
         [DllImport("user32")]
         internal static extern int GetClassName(IntPtr hWnd,
-                                               StringBuilder className,
-                                               int stringLength);
+            StringBuilder className,
+            int stringLength);
+
         [DllImport("user32")]
         internal static extern int GetWindowText(IntPtr hWnd, StringBuilder className, int stringLength);
 
@@ -72,43 +74,40 @@ namespace Microsoft.VsSDK.IntegrationTestLibrary
         internal static extern long GetLastError();
 
         internal const int QS_KEY = 0x0001,
-                        QS_MOUSEMOVE = 0x0002,
-                        QS_MOUSEBUTTON = 0x0004,
-                        QS_POSTMESSAGE = 0x0008,
-                        QS_TIMER = 0x0010,
-                        QS_PAINT = 0x0020,
-                        QS_SENDMESSAGE = 0x0040,
-                        QS_HOTKEY = 0x0080,
-                        QS_ALLPOSTMESSAGE = 0x0100,
-                        QS_MOUSE = QS_MOUSEMOVE | QS_MOUSEBUTTON,
-                        QS_INPUT = QS_MOUSE | QS_KEY,
-                        QS_ALLEVENTS = QS_INPUT | QS_POSTMESSAGE | QS_TIMER | QS_PAINT | QS_HOTKEY,
-                        QS_ALLINPUT = QS_INPUT | QS_POSTMESSAGE | QS_TIMER | QS_PAINT | QS_HOTKEY | QS_SENDMESSAGE;
+            QS_MOUSEMOVE = 0x0002,
+            QS_MOUSEBUTTON = 0x0004,
+            QS_POSTMESSAGE = 0x0008,
+            QS_TIMER = 0x0010,
+            QS_PAINT = 0x0020,
+            QS_SENDMESSAGE = 0x0040,
+            QS_HOTKEY = 0x0080,
+            QS_ALLPOSTMESSAGE = 0x0100,
+            QS_MOUSE = QS_MOUSEMOVE | QS_MOUSEBUTTON,
+            QS_INPUT = QS_MOUSE | QS_KEY,
+            QS_ALLEVENTS = QS_INPUT | QS_POSTMESSAGE | QS_TIMER | QS_PAINT | QS_HOTKEY,
+            QS_ALLINPUT = QS_INPUT | QS_POSTMESSAGE | QS_TIMER | QS_PAINT | QS_HOTKEY | QS_SENDMESSAGE;
 
         internal const int Facility_Win32 = 7;
 
         internal const int WM_CLOSE = 0x0010;
 
         internal const int
-                       S_FALSE = 0x00000001,
-                       S_OK = 0x00000000,
+            S_FALSE = 0x00000001,
+            S_OK = 0x00000000,
+            IDOK = 1,
+            IDCANCEL = 2,
+            IDABORT = 3,
+            IDRETRY = 4,
+            IDIGNORE = 5,
+            IDYES = 6,
+            IDNO = 7,
+            IDCLOSE = 8,
+            IDHELP = 9,
+            IDTRYAGAIN = 10,
+            IDCONTINUE = 11;
 
-                       IDOK = 1,
-                       IDCANCEL = 2,
-                       IDABORT = 3,
-                       IDRETRY = 4,
-                       IDIGNORE = 5,
-                       IDYES = 6,
-                       IDNO = 7,
-                       IDCLOSE = 8,
-                       IDHELP = 9,
-                       IDTRYAGAIN = 10,
-                       IDCONTINUE = 11;
-
-        internal static long HResultFromWin32(long error)
-        {
-            if (error <= 0)
-            {
+        internal static long HResultFromWin32(long error) {
+            if (error <= 0) {
                 return error;
             }
 
@@ -116,39 +115,32 @@ namespace Microsoft.VsSDK.IntegrationTestLibrary
         }
 
         /// <devdoc>
-        /// Please use this "approved" method to compare file names.
+        ///     Please use this "approved" method to compare file names.
         /// </devdoc>
-        public static bool IsSamePath(string file1, string file2)
-        {
-            if (file1 == null || file1.Length == 0)
-            {
+        public static bool IsSamePath(string file1, string file2) {
+            if (file1 == null || file1.Length == 0) {
                 return (file2 == null || file2.Length == 0);
             }
 
             Uri uri1 = null;
             Uri uri2 = null;
 
-            try
-            {
-                if (!Uri.TryCreate(file1, UriKind.Absolute, out uri1) || !Uri.TryCreate(file2, UriKind.Absolute, out uri2))
-                {
+            try {
+                if (!Uri.TryCreate(file1, UriKind.Absolute, out uri1) || !Uri.TryCreate(file2, UriKind.Absolute, out uri2)) {
                     return false;
                 }
 
-                if (uri1 != null && uri1.IsFile && uri2 != null && uri2.IsFile)
-                {
+                if (uri1 != null && uri1.IsFile && uri2 != null && uri2.IsFile) {
                     return 0 == String.Compare(uri1.LocalPath, uri2.LocalPath, StringComparison.OrdinalIgnoreCase);
                 }
 
                 return file1 == file2;
             }
-            catch (UriFormatException e)
-            {
+            catch (UriFormatException e) {
                 System.Diagnostics.Trace.WriteLine("Exception " + e.Message);
             }
 
             return false;
         }
-
     }
 }

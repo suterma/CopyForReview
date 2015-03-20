@@ -22,20 +22,17 @@ using System.Reflection;
 using Codeministry.CopyForReview.Data;
 using DotLiquid;
 
-namespace Codeministry.CopyForReview.Formatters
-{
+namespace Codeministry.CopyForReview.Formatters {
     /// <summary>
     ///     A formatter to format code using a dotLiquid template.
     /// </summary>
-    public abstract class DotLiquidFormatter : IFormatter
-    {
+    public abstract class DotLiquidFormatter : IFormatter {
         /// <summary>
         ///     Gets the text resource with the given name from the currently executing assembly.
         /// </summary>
         /// <param name="resourceName">Name of the resource.</param>
         /// <returns>The resource with the given name from the currently executing assembly.</returns>
-        protected String GetTextResource(String resourceName)
-        {
+        protected String GetTextResource(String resourceName) {
             var assembly = Assembly.GetExecutingAssembly();
 
             using (Stream stream = assembly.GetManifestResourceStream(resourceName)) {
@@ -51,8 +48,7 @@ namespace Codeministry.CopyForReview.Formatters
         /// </summary>
         /// <param name="resourceName">Name of the resource.</param>
         /// <returns>The resource with the given name from the currently executing assembly.</returns>
-        protected Bitmap GetBitmapResource(String resourceName)
-        {
+        protected Bitmap GetBitmapResource(String resourceName) {
             var assembly = Assembly.GetExecutingAssembly();
 
             using (Stream stream = assembly.GetManifestResourceStream(resourceName)) {
@@ -80,8 +76,7 @@ namespace Codeministry.CopyForReview.Formatters
         ///     This uses the foswiki syntax highlighter plugin for multiline code, but the much simpler monospace styles for
         ///     one-liners.
         /// </remarks>
-        public String Format(ISnippet snippet)
-        {
+        public String Format(ISnippet snippet) {
             //Parse and Compile
             Template template = Template.Parse(TemplateSource); // Parses and compiles the template
             var output = template.Render(Hash.FromAnonymousObject(snippet)); // Renders the output

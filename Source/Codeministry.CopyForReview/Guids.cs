@@ -17,10 +17,8 @@
 
 using System;
 
-namespace Codeministry.CopyForReview
-{
-    internal static class GuidList
-    {
+namespace Codeministry.CopyForReview {
+    internal static class GuidList {
         public const string GuidCopyForReviewPkgString = "193eba43-9462-4945-ba4e-79f04dbadc94";
         public const string GuidCopyForReviewCmdSetString = "4ae6ff5a-6e7e-48bd-86b0-37fd9ab20629";
 

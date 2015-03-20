@@ -21,13 +21,11 @@ using System.Windows;
 using Codeministry.CopyForReview.Formatters;
 using Microsoft.VisualStudio.PlatformUI;
 
-namespace Codeministry.CopyForReview.Controls
-{
+namespace Codeministry.CopyForReview.Controls {
     /// <summary>
     ///     A selector for a formatter
     /// </summary>
-    public partial class FormatSelector : VsUIDialogWindow
-    {
+    public partial class FormatSelector : VsUIDialogWindow {
         /// <summary>
         ///     Gets the selected formatter.
         /// </summary>
@@ -40,8 +38,7 @@ namespace Codeministry.CopyForReview.Controls
         ///     Initializes the formatter buttons.
         /// </summary>
         /// <param name="selectedFormatterName">Name of the selected formatter.</param>
-        private void InitializeFormatterButtons(String selectedFormatterName)
-        {
+        private void InitializeFormatterButtons(String selectedFormatterName) {
             //Initialize Formatter Buttons
             var formatters = Factory.GetFormatters();
             foreach (var formatter in formatters) {
@@ -68,16 +65,14 @@ namespace Codeministry.CopyForReview.Controls
         /// </summary>
         /// <param name="selectedFormatterName">Name of the selected formatter.</param>
         /// <param name="selectFullLines">if set to <c>true</c> [select full lines].</param>
-        public FormatSelector(string selectedFormatterName, bool selectFullLines)
-        {
+        public FormatSelector(string selectedFormatterName, bool selectFullLines) {
             InitializeComponent();
             InitializeFormatterButtons(selectedFormatterName);
 
             CheckBoxSelectionFullLines.IsChecked = selectFullLines;
         }
 
-        private void ButtonReviewInFoswiki_Click(object sender, RoutedEventArgs e)
-        {
+        private void ButtonReviewInFoswiki_Click(object sender, RoutedEventArgs e) {
             //find the formatter in question and invoke it
             var button = sender as FormatterButton;
             SelectedFormatter = Factory.GetFormatters().Single(item => item.Name == button.Formatter.Name); //TODO later use better matching, possibly using a GUID
@@ -88,8 +83,7 @@ namespace Codeministry.CopyForReview.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
-        private void ButtonCopy_Click(object sender, RoutedEventArgs e)
-        {
+        private void ButtonCopy_Click(object sender, RoutedEventArgs e) {
             DialogResult = true;
             this.Close();
         }
@@ -100,8 +94,7 @@ namespace Codeministry.CopyForReview.Controls
         /// <value>
         ///     <c>true</c> if full lines should be selected; otherwise, <c>false</c>.
         /// </value>
-        public bool IsSelectionFullLines
-        {
+        public bool IsSelectionFullLines {
             get { return (CheckBoxSelectionFullLines.IsChecked == true); }
         }
     }

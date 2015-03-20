@@ -18,13 +18,11 @@
 using System;
 using System.Collections.Generic;
 
-namespace Codeministry.CopyForReview.Data
-{
+namespace Codeministry.CopyForReview.Data {
     /// <summary>
     ///     Defines a code snippet to copy for formatted output.
     /// </summary>
-    public interface ISnippet
-    {
+    public interface ISnippet {
         /// <summary>
         ///     Gets or sets the full filename, with path and extension.
         /// </summary>

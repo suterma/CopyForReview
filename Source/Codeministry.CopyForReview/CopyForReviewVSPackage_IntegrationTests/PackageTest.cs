@@ -21,14 +21,12 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VSSDK.Tools.VsIdeTesting;
 
-namespace Codeministry.CopyForReview_IntegrationTests
-{
+namespace Codeministry.CopyForReview_IntegrationTests {
     /// <summary>
     ///     Integration test for package validation
     /// </summary>
     [TestClass]
-    public class PackageTest
-    {
+    public class PackageTest {
         private delegate void ThreadInvoker();
 
         private TestContext testContextInstance;
@@ -37,16 +35,14 @@ namespace Codeministry.CopyForReview_IntegrationTests
         ///     Gets or sets the test context which provides
         ///     information about and functionality for the current test run.
         /// </summary>
-        public TestContext TestContext
-        {
+        public TestContext TestContext {
             get { return testContextInstance; }
             set { testContextInstance = value; }
         }
 
         [TestMethod]
         [HostType("VS IDE")]
-        public void PackageLoadTest()
-        {
+        public void PackageLoadTest() {
             UIThreadInvoker.Invoke((ThreadInvoker) delegate()
             {
                 //Get the Shell Service

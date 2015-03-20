@@ -81,16 +81,13 @@
     <EmbeddedResource Include="CSharpToStackOverflow.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="so-icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="foswiki-logo-simple.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="CSharpToText.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="txt_48x48.png" />
+    <EmbeddedResource Include="applixware_48x48.png" />
+    <EmbeddedResource Include="email_48x48.png" />
+    <EmbeddedResource Include="foswiki-logo-simple_48x48.png" />
+    <EmbeddedResource Include="so-icon_48x48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

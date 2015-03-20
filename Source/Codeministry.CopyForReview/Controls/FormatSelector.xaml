@@ -1,15 +1,16 @@
 ﻿<platformUi:VsUIDialogWindow x:Class="Codeministry.CopyForReview.Controls.FormatSelector"
-                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                         xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.12.0"
-                         Title="Copy for..." SizeToContent="WidthAndHeight"
-                         ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Codeministry.CopyForReview;component/Resources/App-xeyes-icon_16x16.png">
+                             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                             xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.12.0"
+                             Title="Copy for..." SizeToContent="WidthAndHeight"
+                             ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+                             Icon="/Codeministry.CopyForReview;component/Resources/App-xeyes-icon_16x16.png">
     <Grid>
         <StackPanel>
-        <StackPanel Name="StackPanelFormatters" x:FieldModifier="private">
-        </StackPanel>
-            <CheckBox Name="CheckBoxSelectionFullLines" Content="Expand selection to full lines." IsChecked="True"  Margin="3"/>
-            <Button Content="Copy to clipboard." Click="ButtonCopy_Click" Height="48" IsDefault="True" />
+            <StackPanel Name="StackPanelFormatters" x:FieldModifier="private" />
+            <CheckBox Name="CheckBoxSelectionFullLines" Content="Expand selection to full lines." IsChecked="True"
+                      Margin="2" />
+            <Button Content="Copy to clipboard." Click="ButtonCopy_Click" Height="48" IsDefault="True" Margin="2" />
         </StackPanel>
     </Grid>
 </platformUi:VsUIDialogWindow>

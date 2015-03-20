@@ -19,13 +19,11 @@ using System;
 using System.Drawing;
 using Codeministry.CopyForReview.Data;
 
-namespace Codeministry.CopyForReview.Formatters
-{
+namespace Codeministry.CopyForReview.Formatters {
     /// <summary>
     ///     Defines a formatter for a code snippet.
     /// </summary>
-    public interface IFormatter
-    {
+    public interface IFormatter {
         /// <summary>
         ///     Formats the specified code snippet into the output format.
         /// </summary>

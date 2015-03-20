@@ -22,13 +22,11 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using Codeministry.CopyForReview.Formatters;
 
-namespace Codeministry.CopyForReview.Controls
-{
+namespace Codeministry.CopyForReview.Controls {
     /// <summary>
     ///     A Button for invoking a formatter.
     /// </summary>
-    public partial class FormatterButton : UserControl
-    {
+    public partial class FormatterButton : UserControl {
         public IFormatter Formatter { get; private set; }
 
         /// <summary>
@@ -46,8 +44,7 @@ namespace Codeministry.CopyForReview.Controls
         ///     Initializes a new instance of the <see cref="FormatterButton" /> class.
         /// </summary>
         /// <param name="formatter">The formatter.</param>
-        public FormatterButton(IFormatter formatter)
-        {
+        public FormatterButton(IFormatter formatter) {
             Formatter = formatter;
 
             InitializeComponent();
@@ -75,8 +72,7 @@ namespace Codeministry.CopyForReview.Controls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
-        private void EmbeddedButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void EmbeddedButton_Click(object sender, RoutedEventArgs e) {
             if (Click != null) {
                 Click(this, e);
             }
@@ -85,8 +81,7 @@ namespace Codeministry.CopyForReview.Controls
         /// <summary>
         ///     Checks the RadioButton.
         /// </summary>
-        internal void CheckRadioButton()
-        {
+        internal void CheckRadioButton() {
             EmbeddedButton.IsChecked = true;
         }
     }

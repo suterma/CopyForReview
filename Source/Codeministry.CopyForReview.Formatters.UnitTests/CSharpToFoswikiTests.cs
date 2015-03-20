@@ -19,14 +19,11 @@ using Codeministry.CopyForReview.Data;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Codeministry.CopyForReview.Formatters.UnitTests
-{
+namespace Codeministry.CopyForReview.Formatters.UnitTests {
     [TestClass]
-    public class CSharpToFoswikiTests
-    {
+    public class CSharpToFoswikiTests {
         [TestMethod]
-        public void TestFormatMultiline1()
-        {
+        public void TestFormatMultiline1() {
             //Arrange
             const string selectedText = "class test";
             var testSnippet = new Snippet
@@ -47,8 +44,7 @@ namespace Codeministry.CopyForReview.Formatters.UnitTests
         }
 
         [TestMethod]
-        public void TestFormatMultilineWithoutMethod()
-        {
+        public void TestFormatMultilineWithoutMethod() {
             //Arrange
             var selectedText = new System.Text.StringBuilder(305);
             selectedText.AppendLine(@"        public const string guidCopyForReviewPkgString = ""193eba43-9462-4945-ba4e-79f04dbadc94"";");

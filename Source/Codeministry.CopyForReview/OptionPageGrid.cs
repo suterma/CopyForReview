@@ -20,12 +20,10 @@ using System.ComponentModel;
 using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.Shell;
 
-namespace Codeministry.CopyForReview
-{
+namespace Codeministry.CopyForReview {
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [CLSCompliant(false), ComVisible(true)]
-    public class OptionPageGrid : DialogPage
-    {
+    public class OptionPageGrid : DialogPage {
         [Category("CopyForReview")]
         [DisplayName("Selected formatter")]
         [Description("Name of the selected formatter")]
@@ -49,8 +47,7 @@ namespace Codeministry.CopyForReview
         /// <summary>
         ///     Reset settings to their default values.
         /// </summary>
-        public override void ResetSettings()
-        {
+        public override void ResetSettings() {
             base.ResetSettings();
 
             //TODO does not work

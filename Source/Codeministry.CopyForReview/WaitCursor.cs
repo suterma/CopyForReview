@@ -18,20 +18,17 @@
 using System;
 using System.Windows.Input;
 
-namespace Codeministry.CopyForReview
-{
+namespace Codeministry.CopyForReview {
     /// <summary>
     ///     A wait cursor that disposes itself after usage.
     /// </summary>
-    public sealed class WaitCursor : IDisposable
-    {
+    public sealed class WaitCursor : IDisposable {
         private readonly Cursor _previousCursor;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="WaitCursor" /> class.
         /// </summary>
-        public WaitCursor()
-        {
+        public WaitCursor() {
             _previousCursor = Mouse.OverrideCursor;
 
             Mouse.OverrideCursor = Cursors.Wait;
@@ -42,8 +39,7 @@ namespace Codeministry.CopyForReview
         /// <summary>
         ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
-        public void Dispose()
-        {
+        public void Dispose() {
             Mouse.OverrideCursor = _previousCursor;
         }
 

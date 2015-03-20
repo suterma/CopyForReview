@@ -18,16 +18,13 @@
 using System.ComponentModel.Design;
 using System.Globalization;
 using Codeministry.CopyForReview;
-using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VsSDK.IntegrationTestLibrary;
 using Microsoft.VSSDK.Tools.VsIdeTesting;
 
-namespace Codeministry.CopyForReview_IntegrationTests
-{
+namespace Codeministry.CopyForReview_IntegrationTests {
     [TestClass()]
-    public class MenuItemTest
-    {
+    public class MenuItemTest {
         private delegate void ThreadInvoker();
 
         private TestContext testContextInstance;
@@ -36,8 +33,7 @@ namespace Codeministry.CopyForReview_IntegrationTests
         ///     Gets or sets the test context which provides
         ///     information about and functionality for the current test run.
         /// </summary>
-        public TestContext TestContext
-        {
+        public TestContext TestContext {
             get { return testContextInstance; }
             set { testContextInstance = value; }
         }
@@ -49,8 +45,7 @@ namespace Codeministry.CopyForReview_IntegrationTests
         [TestMethod()]
         [HostType("VS IDE")]
         [Ignore()]
-        public void LaunchCommand()
-        {
+        public void LaunchCommand() {
             UIThreadInvoker.Invoke((ThreadInvoker) delegate()
             {
                 CommandID menuItemCmd = new CommandID(GuidList.GuidCopyForReviewCmdSet, (int) PkgCmdIDList.cmdidCopyForReview);

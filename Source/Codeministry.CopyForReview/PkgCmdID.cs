@@ -15,10 +15,8 @@
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Codeministry.CopyForReview
-{
-    internal static class PkgCmdIDList
-    {
+namespace Codeministry.CopyForReview {
+    internal static class PkgCmdIDList {
         public const uint cmdidCopyForReview = 0x100;
     };
 }

@@ -17,21 +17,18 @@
 
 using System.Drawing;
 
-namespace Codeministry.CopyForReview.Formatters
-{
+namespace Codeministry.CopyForReview.Formatters {
     /// <summary>
     ///     A formatter to format C-Sharp code as markup suitable for StackOverflow questions.
     /// </summary>
-    public class CSharpToStackOverflow : DotLiquidFormatter
-    {
+    public class CSharpToStackOverflow : DotLiquidFormatter {
         /// <summary>
         ///     Gets the template source.
         /// </summary>
         /// <value>
         ///     The template source.
         /// </value>
-        public override string TemplateSource
-        {
+        public override string TemplateSource {
             get { return GetTextResource("Codeministry.CopyForReview.Formatters.CSharpToStackOverflow.txt"); }
         }
 
@@ -41,8 +38,7 @@ namespace Codeministry.CopyForReview.Formatters
         /// <value>
         ///     The name of this formatter.
         /// </value>
-        public override string Name
-        {
+        public override string Name {
             get { return "Question in Stackoverflow"; }
         }
 
@@ -52,8 +48,7 @@ namespace Codeministry.CopyForReview.Formatters
         /// <value>
         ///     The description for this formatter.
         /// </value>
-        public override string Description
-        {
+        public override string Description {
             get { return "Formats the snippet with the code markup for a question on the StackOverflow Q&A site."; }
         }
 
@@ -63,9 +58,8 @@ namespace Codeministry.CopyForReview.Formatters
         /// <value>
         ///     The icon image.
         /// </value>
-        public override Bitmap IconImage
-        {
-            get { return GetBitmapResource("Codeministry.CopyForReview.Formatters.so-icon.png"); }
+        public override Bitmap IconImage {
+            get { return GetBitmapResource("Codeministry.CopyForReview.Formatters.so-icon_48x48.png"); }
         }
     }
 }

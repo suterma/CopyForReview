@@ -22,11 +22,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VsSDK.IntegrationTestLibrary;
 using Microsoft.VSSDK.Tools.VsIdeTesting;
 
-namespace Codeministry.CopyForReview_IntegrationTests
-{
+namespace Codeministry.CopyForReview_IntegrationTests {
     [TestClass]
-    public class CPPProjectTests
-    {
+    public class CPPProjectTests {
         #region fields
 
         private delegate void ThreadInvoker();
@@ -41,8 +39,7 @@ namespace Codeministry.CopyForReview_IntegrationTests
         ///     Gets or sets the test context which provides
         ///     information about and functionality for the current test run.
         /// </summary>
-        public TestContext TestContext
-        {
+        public TestContext TestContext {
             get { return _testContext; }
             set { _testContext = value; }
         }
@@ -81,8 +78,7 @@ namespace Codeministry.CopyForReview_IntegrationTests
 
         [HostType("VS IDE")]
         [TestMethod]
-        public void CPPWinformsApplication()
-        {
+        public void CPPWinformsApplication() {
             UIThreadInvoker.Invoke((ThreadInvoker) delegate()
             {
                 //Solution and project creation parameters

@@ -19,14 +19,11 @@ using System;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Codeministry.CopyForReview.Data.UnitTests
-{
+namespace Codeministry.CopyForReview.Data.UnitTests {
     [TestClass]
-    public class SnippetTest
-    {
+    public class SnippetTest {
         [TestMethod]
-        public void DeindentSnippetWithLargeIndent()
-        {
+        public void DeindentSnippetWithLargeIndent() {
             //Arrange
             var sb = new System.Text.StringBuilder(229);
             sb.AppendLine(@"                        var document = item.Document;");
@@ -48,8 +45,7 @@ namespace Codeministry.CopyForReview.Data.UnitTests
         }
 
         [TestMethod]
-        public void CommonIndentWithLargeIndent()
-        {
+        public void CommonIndentWithLargeIndent() {
             //Arrange
             var sb = new System.Text.StringBuilder(229);
             sb.AppendLine(@"                        var document = item.Document;");
@@ -64,15 +60,32 @@ namespace Codeministry.CopyForReview.Data.UnitTests
             };
 
             //Act
-            var actual = testSnippet.CommonIndent();
+            var actual = testSnippet.GetCommonIndent();
 
             //Assert
             actual.Should().Be(24);
         }
 
         [TestMethod]
-        public void GetLeadingWhiteSpaceCountWithLargeWhitespaceTest()
-        {
+        public void CommonIndentWithWhitespaceLine() {
+            //Arrange
+            var sb = new System.Text.StringBuilder(229);
+            sb.AppendLine(@"                      ");
+
+            var testSnippet = new Snippet
+            {
+                SelectedText = sb.ToString(),
+            };
+
+            //Act
+            var actual = testSnippet.GetCommonIndent();
+
+            //Assert
+            actual.Should().Be(0);
+        }
+
+        [TestMethod]
+        public void GetLeadingWhiteSpaceCountWithLargeWhitespaceTest() {
             //Arrange
             String line = @"                        var document = item.Document;";
 
@@ -84,8 +97,7 @@ namespace Codeministry.CopyForReview.Data.UnitTests
         }
 
         [TestMethod]
-        public void DeindentWithLargeWhitespaceTest()
-        {
+        public void DeindentWithLargeWhitespaceTest() {
             //Arrange
             String line = @"                        var document = item.Document;";
 
@@ -97,8 +109,7 @@ namespace Codeministry.CopyForReview.Data.UnitTests
         }
 
         [TestMethod]
-        public void DeindentWithNoWhitespaceTest()
-        {
+        public void DeindentWithNoWhitespaceTest() {
             //Arrange
             String line = @"var document = item.Document;";
 
@@ -110,8 +121,7 @@ namespace Codeministry.CopyForReview.Data.UnitTests
         }
 
         [TestMethod]
-        public void DeindentWith1WhitespaceTest()
-        {
+        public void DeindentWith1WhitespaceTest() {
             //Arrange
             String line = @" var document = item.Document;";
 
@@ -123,8 +133,7 @@ namespace Codeministry.CopyForReview.Data.UnitTests
         }
 
         [TestMethod]
-        public void DeindentWithEmptyLineTest()
-        {
+        public void DeindentWithEmptyLineTest() {
             //Arrange
             String line = @"";
 

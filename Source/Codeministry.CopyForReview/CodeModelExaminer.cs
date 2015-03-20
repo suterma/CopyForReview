@@ -20,13 +20,11 @@ using Codeministry.CopyForReview.Data;
 using EnvDTE;
 using EnvDTE80;
 
-namespace Codeministry.CopyForReview
-{
+namespace Codeministry.CopyForReview {
     /// <summary>
     ///     Examines a code model by looking for the class and method that encloses a code location.
     /// </summary>
-    public class CodeModelExaminer
-    {
+    public class CodeModelExaminer {
         /// <summary>
         ///     The application object to use to examine the code.
         /// </summary>
@@ -36,8 +34,7 @@ namespace Codeministry.CopyForReview
         ///     Initializes a new instance of the <see cref="CodeModelExaminer" /> class.
         /// </summary>
         /// <param name="applicationObject">The application object.</param>
-        public CodeModelExaminer(DTE2 applicationObject)
-        {
+        public CodeModelExaminer(DTE2 applicationObject) {
             _applicationObject = applicationObject;
         }
 
@@ -45,8 +42,7 @@ namespace Codeministry.CopyForReview
         ///     Sets the line range of the code location according to the current selection.
         /// </summary>
         /// <param name="codeLocationInfo">The code location information.</param>
-        public void SetSelectionLineRange(ISnippet codeLocationInfo)
-        {
+        public void SetSelectionLineRange(ISnippet codeLocationInfo) {
             //get the text document
             TextDocument txt = (TextDocument) _applicationObject.ActiveDocument.Object("TextDocument");
 
@@ -60,8 +56,7 @@ namespace Codeministry.CopyForReview
         /// </summary>
         /// <param name="isSelectFullLines">if set to <c>true</c> full lines are selected before copying.</param>
         /// <returns></returns>
-        public String CopySelection(bool isSelectFullLines)
-        {
+        public String CopySelection(bool isSelectFullLines) {
             //get the text document
             TextDocument txt = (TextDocument) _applicationObject.ActiveDocument.Object("TextDocument");
 
@@ -81,16 +76,21 @@ namespace Codeministry.CopyForReview
         ///     Gets the code context where the selected code is located in.
         /// </summary>
         /// <param name="codeLocationInfo">The code location information.</param>
-        public void GetCodeContext(ISnippet codeLocationInfo)
-        {
+        public void GetCodeContext(ISnippet codeLocationInfo) {
+            //TODO Test to get the code context via selection points
+            Document doc = (Document) _applicationObject.ActiveDocument.Object("Document");
+            var item = doc.ProjectItem;
+            ExamineItem(item, codeLocationInfo);
+            return;
+
+
             // get the solution
             Solution solution = _applicationObject.Solution;
             Console.WriteLine(solution.FullName);
             ExamineProjects(solution.Projects, _applicationObject.ActiveDocument, codeLocationInfo);
         }
 
-        private static void ExamineProjects(Projects projects, Document doc, ISnippet codeLocationInfo)
-        {
+        private static void ExamineProjects(Projects projects, Document doc, ISnippet codeLocationInfo) {
             // get all the projects
             foreach (Project project in projects) {
                 Console.WriteLine("\t{0}", project.FullName);
@@ -100,8 +100,7 @@ namespace Codeministry.CopyForReview
         }
 
         private static void ExamineProjectItems(ProjectItems projectItems, Document doc,
-            ISnippet codeLocationInfo)
-        {
+            ISnippet codeLocationInfo) {
             // get all the items in each project
             foreach (ProjectItem item in projectItems) {
                 Console.WriteLine("\t\t{0}", item.Name);
@@ -128,8 +127,7 @@ namespace Codeministry.CopyForReview
 
 
         // examine an item
-        private static void ExamineItem(ProjectItem item, ISnippet codeLocationInfo)
-        {
+        private static void ExamineItem(ProjectItem item, ISnippet codeLocationInfo) {
             FileCodeModel2 model = (FileCodeModel2) item.FileCodeModel;
             foreach (CodeElement codeElement in model.CodeElements) {
                 ExamineCodeElement(codeElement, codeLocationInfo);
@@ -137,8 +135,7 @@ namespace Codeministry.CopyForReview
         }
 
         // recursively examine code elements
-        private static void ExamineCodeElement(CodeElement codeElement, ISnippet codeLocationInfo)
-        {
+        private static void ExamineCodeElement(CodeElement codeElement, ISnippet codeLocationInfo) {
             try {
                 Console.WriteLine("{0} {1}",
                     codeElement.Name, codeElement.Kind.ToString());
@@ -171,8 +168,7 @@ namespace Codeministry.CopyForReview
         /// <param name="codeElement">The code element.</param>
         /// <param name="codeLocationInfo">The code location information with the selection.</param>
         /// <returns></returns>
-        private static bool Encloses(CodeElement codeElement, ISnippet codeLocationInfo)
-        {
+        private static bool Encloses(CodeElement codeElement, ISnippet codeLocationInfo) {
             if (
                 (codeElement.StartPoint.Line <= codeLocationInfo.LineNumberTop) &&
                 (codeElement.EndPoint.Line >= codeLocationInfo.LineNumberBottom)
@@ -186,8 +182,7 @@ namespace Codeministry.CopyForReview
         ///     Gets the filename of the currently active document.
         /// </summary>
         /// <returns>The filename</returns>
-        internal string GetFilename()
-        {
+        internal string GetFilename() {
             return _applicationObject.ActiveDocument.Name;
         }
 
@@ -195,8 +190,7 @@ namespace Codeministry.CopyForReview
         ///     Gets the full filename of the currently active document.
         /// </summary>
         /// <returns>The filename</returns>
-        internal string GetFullFilename()
-        {
+        internal string GetFullFilename() {
             return _applicationObject.ActiveDocument.FullName;
         }
     }

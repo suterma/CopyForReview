@@ -1,40 +1,41 @@
-﻿/***************************************************************************
-
-Copyright (c) Microsoft Corporation. All rights reserved.
-This code is licensed under the Visual Studio SDK license terms.
-THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-
-***************************************************************************/
+﻿// 
+//     Copy for review, code sharing made simple.
+//     Copyright (C) 2015 by marcel suter, marcel@codeministry.ch
+// 
+//     This program is free software: you can redistribute it and/or modify
+//     it under the terms of the GNU General Public License as published by
+//     the Free Software Foundation, either version 3 of the License, or
+//     (at your option) any later version.
+// 
+//     This program is distributed in the hope that it will be useful,
+//     but WITHOUT ANY WARRANTY; without even the implied warranty of
+//     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//     GNU General Public License for more details.
+// 
+//     You should have received a copy of the GNU General Public License
+//     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using Codeministry.CopyForReview;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VsSDK.UnitTestLibrary;
 
-namespace Codeministry.CopyForReview_UnitTests
-{
+namespace Codeministry.CopyForReview_UnitTests {
     [TestClass()]
-    public class PackageTest
-    {
+    public class PackageTest {
         [TestMethod()]
-        public void CreateInstance()
-        {
+        public void CreateInstance() {
             CopyForReviewPackage package = new CopyForReviewPackage();
         }
 
         [TestMethod()]
-        public void IsIVsPackage()
-        {
+        public void IsIVsPackage() {
             CopyForReviewPackage package = new CopyForReviewPackage();
             Assert.IsNotNull(package as IVsPackage, "The object does not implement IVsPackage");
         }
 
         [TestMethod()]
-        public void SetSite()
-        {
+        public void SetSite() {
             // Create the package
             IVsPackage package = new CopyForReviewPackage() as IVsPackage;
             Assert.IsNotNull(package, "The object does not implement IVsPackage");

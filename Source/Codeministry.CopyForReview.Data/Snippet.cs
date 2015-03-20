@@ -20,21 +20,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace Codeministry.CopyForReview.Data
-{
+namespace Codeministry.CopyForReview.Data {
     /// <summary>
     ///     A code snippet to copy for formatted output.
     /// </summary>
-    public class Snippet : ISnippet
-    {
+    public class Snippet : ISnippet {
         /// <summary>
         ///     Gets the selected text as simple string, with the indentation removed as much as possible.
         /// </summary>
         /// <value>
         ///     The selected text, with the indentation removed as much as possible.
         /// </value>
-        public String DeindentedSelectedText
-        {
+        public String DeindentedSelectedText {
             get { return String.Join(Environment.NewLine, DeindentedLines); }
         }
 
@@ -92,12 +89,10 @@ namespace Codeministry.CopyForReview.Data
         /// <value>
         ///     The lines.
         /// </value>
-        public IEnumerable<string> Lines
-        {
-            get
-            {
+        public IEnumerable<string> Lines {
+            get {
                 //parse the selected text along the line breaks.
-                string[] lines = SelectedText.Split(new string[] {"\r\n", "\n"}, StringSplitOptions.None);
+                string[] lines = SelectedText.Split(new[] {"\r\n", "\n"}, StringSplitOptions.None);
                 return lines;
             }
         }
@@ -108,11 +103,9 @@ namespace Codeministry.CopyForReview.Data
         /// <value>
         ///     The individual code lines of the snippet with the indentation removed as much as possible.
         /// </value>
-        public IEnumerable<string> DeindentedLines
-        {
-            get
-            {
-                var commonIndent = CommonIndent();
+        public IEnumerable<string> DeindentedLines {
+            get {
+                var commonIndent = GetCommonIndent();
                 var deindented = Lines.Select(line => Deindent(line, commonIndent));
                 return deindented;
             }
@@ -132,19 +125,29 @@ namespace Codeministry.CopyForReview.Data
         /// <param name="line">The line.</param>
         /// <param name="indentCount">The indent character removal count.</param>
         /// <returns></returns>
-        public static String Deindent(String line, int indentCount)
-        {
+        public static String Deindent(String line, int indentCount) {
             int maxRemoval = Math.Min(line.Length, indentCount);
             return line.Substring(maxRemoval);
         }
 
-        public int CommonIndent()
-        {
-            var commonIndent =
-                (from line in Lines
-                    where (IsNonEmpty(line))
-                    select GetLeadingWhitespaceCount(line)).Min();
-            return commonIndent;
+        /// <summary>
+        ///     Gets the common indent of the snippet's (non-empty) lines.
+        /// </summary>
+        /// <returns></returns>
+        public int GetCommonIndent() {
+            var codeLines = Lines.Where(line => (IsNonEmpty(line)));
+
+            if (codeLines.Any()) {
+                var commonIndent =
+                    (from line in Lines
+                        where (IsNonEmpty(line))
+                        select GetLeadingWhitespaceCount(line)).Min();
+                return commonIndent;
+            }
+            else {
+                //no common indetation applicable
+                return 0;
+            }
         }
 
         /// <summary>
@@ -152,8 +155,7 @@ namespace Codeministry.CopyForReview.Data
         /// </summary>
         /// <param name="line">The line.</param>
         /// <returns>Whether the specified line is not emtpy.</returns>
-        private bool IsNonEmpty(string line)
-        {
+        private bool IsNonEmpty(string line) {
             return !String.IsNullOrWhiteSpace(line);
         }
 
@@ -162,8 +164,7 @@ namespace Codeministry.CopyForReview.Data
         /// </summary>
         /// <param name="line">The line.</param>
         /// <returns></returns>
-        public static int GetLeadingWhitespaceCount(string line)
-        {
+        public static int GetLeadingWhitespaceCount(string line) {
             return Regex.Match(line, @"^([\s]+)").Groups[1].Value.Length;
         }
     }
