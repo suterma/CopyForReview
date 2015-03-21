@@ -20,7 +20,7 @@ using System.Collections.Generic;
 
 namespace Codeministry.CopyForReview.Data {
     /// <summary>
-    ///     Defines a code snippet to copy for formatted output.
+    ///     Defines a code snippet, which contains all information to create a formatted output.
     /// </summary>
     public interface ISnippet {
         /// <summary>
@@ -94,5 +94,21 @@ namespace Codeministry.CopyForReview.Data {
         ///     The selected text.
         /// </value>
         string SelectedText { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the file extension.
+        /// </summary>
+        /// <value>
+        ///     The file extension.
+        /// </value>
+        String FileExtension { get; set; }
+
+        /// <summary>
+        ///     Gets the selected text as simple string, with the indentation removed as much as possible.
+        /// </summary>
+        /// <value>
+        ///     The selected text, with the indentation removed as much as possible.
+        /// </value>
+        String DeindentedSelectedText { get; }
     }
 }

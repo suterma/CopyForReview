@@ -16,13 +16,14 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.IO;
 using Codeministry.CopyForReview.Data;
 using EnvDTE;
 using EnvDTE80;
 
 namespace Codeministry.CopyForReview {
     /// <summary>
-    ///     Examines a code model by looking for the class and method that encloses a code location.
+    ///     Examines a code model by looking for the required information to compile a snippet.
     /// </summary>
     public class CodeModelExaminer {
         /// <summary>
@@ -42,7 +43,7 @@ namespace Codeministry.CopyForReview {
         ///     Sets the line range of the code location according to the current selection.
         /// </summary>
         /// <param name="codeLocationInfo">The code location information.</param>
-        public void SetSelectionLineRange(ISnippet codeLocationInfo) {
+        private void SetSelectionLineRange(ISnippet codeLocationInfo) {
             //get the text document
             TextDocument txt = (TextDocument) _applicationObject.ActiveDocument.Object("TextDocument");
 
@@ -56,7 +57,7 @@ namespace Codeministry.CopyForReview {
         /// </summary>
         /// <param name="isSelectFullLines">if set to <c>true</c> full lines are selected before copying.</param>
         /// <returns></returns>
-        public String CopySelection(bool isSelectFullLines) {
+        private String CopySelection(bool isSelectFullLines) {
             //get the text document
             TextDocument txt = (TextDocument) _applicationObject.ActiveDocument.Object("TextDocument");
 
@@ -76,7 +77,7 @@ namespace Codeministry.CopyForReview {
         ///     Gets the code context where the selected code is located in.
         /// </summary>
         /// <param name="codeLocationInfo">The code location information.</param>
-        public void GetCodeContext(ISnippet codeLocationInfo) {
+        private void GetCodeContext(ISnippet codeLocationInfo) {
             ProjectItem item = _applicationObject.ActiveDocument.ProjectItem;
             ExamineItem(item, codeLocationInfo);
         }
@@ -140,7 +141,7 @@ namespace Codeministry.CopyForReview {
         ///     Gets the filename of the currently active document.
         /// </summary>
         /// <returns>The filename</returns>
-        internal string GetFilename() {
+        private string GetFilename() {
             return _applicationObject.ActiveDocument.Name;
         }
 
@@ -148,8 +149,36 @@ namespace Codeministry.CopyForReview {
         ///     Gets the full filename of the currently active document.
         /// </summary>
         /// <returns>The filename</returns>
-        internal string GetFullFilename() {
+        private string GetFullFilename() {
             return _applicationObject.ActiveDocument.FullName;
+        }
+
+        /// <summary>
+        /// Gets the snippet using the DTE
+        /// </summary>
+        /// <param name="isSelectionFullLines">if set to <c>true</c> the selection will be expanded to full lines.</param>
+        /// <returns></returns>
+        public ISnippet GetSnippet(bool isSelectionFullLines)
+        {
+            var snippet = new Snippet
+            {
+                FullFilename = GetFullFilename(),
+                Filename = GetFilename(),
+                FileExtension = GetFileExtension(),
+                SelectedText = CopySelection(isSelectionFullLines)
+            };
+            SetSelectionLineRange(snippet);
+            GetCodeContext(snippet);
+            return snippet;
+        }
+
+        /// <summary>
+        /// Gets the file extension.
+        /// </summary>
+        /// <returns></returns>
+        private string GetFileExtension()
+        {
+            return Path.GetExtension(_applicationObject.ActiveDocument.FullName);
         }
     }
 }

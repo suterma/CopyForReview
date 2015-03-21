@@ -21,7 +21,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using Codeministry.CopyForReview.Controls;
-using Codeministry.CopyForReview.Data;
 using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
@@ -111,18 +110,7 @@ namespace Codeministry.CopyForReview {
             // Show the dialog. 
             if (formatSelector.ShowDialog() == true) {
                 using (new WaitCursor()) {
-                    var codeExaminer = new CodeModelExaminer(dte);
-
-                    //Add file, class, method and line information to the text
-                    var snippet = new Snippet
-                    {
-                        FullFilename = codeExaminer.GetFullFilename(),
-                        Filename = codeExaminer.GetFilename(),
-                        SelectedText = codeExaminer.CopySelection(formatSelector.IsSelectionFullLines)
-                    };
-                    codeExaminer.SetSelectionLineRange(snippet);
-                    codeExaminer.GetCodeContext(snippet);
-
+                    var snippet = new CodeModelExaminer(dte).GetSnippet(formatSelector.IsSelectionFullLines);
                     var output = formatSelector.SelectedFormatter.Format(snippet);
                     System.Windows.Clipboard.SetDataObject(output);
 

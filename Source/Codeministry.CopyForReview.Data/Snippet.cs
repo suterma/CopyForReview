@@ -120,6 +120,14 @@ namespace Codeministry.CopyForReview.Data {
         public string SelectedText { get; set; }
 
         /// <summary>
+        ///     Gets or sets the file extension.
+        /// </summary>
+        /// <value>
+        ///     The file extension.
+        /// </value>
+        public String FileExtension { get; set; }
+
+        /// <summary>
         ///     Deindents the specified line.
         /// </summary>
         /// <param name="line">The line.</param>
