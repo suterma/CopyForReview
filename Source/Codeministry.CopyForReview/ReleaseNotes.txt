@@ -1,4 +1,18 @@
-﻿Release 1.2-beta
+﻿Release 1.3-beta
+Updated: March 22, 2015 (Build)
+
+This release of CopyForReview has a third formatter, and supportes more languages.
+
+Major Features
+- Added Text formatter
+- Changed Icons to look nicer
+- Removed restriction to *.cs files, allowing all files. (except the Foswiki Formatter)
+- Added VS2012 Pro as target
+
+Fixed Issues
+- various Exceptions
+
+Release 1.2-beta
 Updated: March 16, 2015 (Build)
 
 This release of CopyForReview features some UI improvements plus a second formatter.

@@ -4,15 +4,36 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d">
+
+
     <Grid Margin="2">
-        <RadioButton Name="EmbeddedButton" GroupName="FormatterSelection">
-            <StackPanel Orientation="Horizontal" Width="150">
-                <Image Name="IconImage" Source="App-xeyes-icon.png" Width="48" Height="48" />
-                <TextBlock Width="96" TextAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"
-                           VerticalAlignment="Center" Name="Caption">
-                    Review in Foswiki xxxxxxxxx
-                </TextBlock>
-            </StackPanel>
-        </RadioButton>
+        <Grid.Resources>
+            <!--<Style TargetType="{x:Type Button}">
+                <Style.Triggers>
+                    <Trigger Property="IsFocused" Value="True">
+                        <Setter Property="Background" Value="CadetBlue"/>
+                        <Setter Property="FontWeight" Value="Bold" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>-->
+            <!--<Style x:Key="MyFocusVisualStyle">
+                <Setter Property="Control.Background" Value="Chartreuse">
+                </Setter>
+            </Style>-->
+        </Grid.Resources>
+
+        <!--Setting styles for focused buttons really do not work. Dunno why!-->
+        <!--<Button Name="EmbeddedButton" Margin="2" FocusVisualStyle="{DynamicResource MyFocusVisualStyle}" >-->
+        <Button Name="EmbeddedButton" Margin="2">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="IconImage" Source="App-xeyes-icon.png" Width="48" Height="48" />
+                    <TextBlock Width="96" TextAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"
+                               VerticalAlignment="Center" Name="Caption">
+                        Review in Foswiki xxxxxxxxx
+                    </TextBlock>
+                </StackPanel>
+            </Button.Content>
+        </Button>
     </Grid>
 </UserControl>

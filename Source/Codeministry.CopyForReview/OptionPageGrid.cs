@@ -45,6 +45,21 @@ namespace Codeministry.CopyForReview {
         public bool SelectFullLines { get; set; }
 
         /// <summary>
+        ///     Determines whether the selections leading whitespace is deindeted.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if deindented; otherwise, <c>false</c>.
+        /// </value>
+        /// <remarks>
+        ///     Default is true.
+        /// </remarks>
+        [Category("CopyForReview")]
+        [DisplayName("Deindent")]
+        [Description("Determines whether non-empty lines are deindented by removing leading whitespace")]
+        [DefaultValue(typeof(bool), "true")]
+        public bool Deindent { get; set; }
+
+        /// <summary>
         ///     Reset settings to their default values.
         /// </summary>
         public override void ResetSettings() {
@@ -52,6 +67,7 @@ namespace Codeministry.CopyForReview {
 
             //TODO does not work
             SelectFullLines = true;
+            Deindent = true;
         }
     }
 }

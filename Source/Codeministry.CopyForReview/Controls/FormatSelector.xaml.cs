@@ -19,13 +19,12 @@ using System;
 using System.Linq;
 using System.Windows;
 using Codeministry.CopyForReview.Formatters;
-using Microsoft.VisualStudio.PlatformUI;
 
 namespace Codeministry.CopyForReview.Controls {
     /// <summary>
     ///     A selector for a formatter
     /// </summary>
-    public partial class FormatSelector : VsUIDialogWindow {
+    public partial class FormatSelector {
         /// <summary>
         ///     Gets the selected formatter.
         /// </summary>
@@ -43,10 +42,10 @@ namespace Codeministry.CopyForReview.Controls {
             var formatters = Factory.GetFormatters();
             foreach (var formatter in formatters) {
                 var button = new FormatterButton(formatter);
-                button.Click += ButtonReviewInFoswiki_Click;
+                button.Click += ButtonFormatter_Click;
                 StackPanelFormatters.Children.Add(button);
                 if (formatter.Name == selectedFormatterName) {
-                    button.CheckRadioButton();
+                    button.SetDefault();
                     SelectedFormatter = formatter;
                 }
             }
@@ -54,38 +53,39 @@ namespace Codeministry.CopyForReview.Controls {
             if ((SelectedFormatter == null) && formatters.Any()) {
                 //just select the first one
                 var firstButton = StackPanelFormatters.Children.Cast<FormatterButton>().First<FormatterButton>();
-                firstButton.CheckRadioButton();
+                firstButton.SetDefault();
                 SelectedFormatter = firstButton.Formatter;
             }
         }
+
+        
 
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="FormatSelector" /> class.
         /// </summary>
         /// <param name="selectedFormatterName">Name of the selected formatter.</param>
-        /// <param name="selectFullLines">if set to <c>true</c> [select full lines].</param>
-        public FormatSelector(string selectedFormatterName, bool selectFullLines) {
+        /// <param name="isSelectFullLines">if set to <c>true</c> [is select full lines].</param>
+        /// <param name="isDeindent">if set to <c>true</c>, the code is deindented.</param>
+        public FormatSelector(string selectedFormatterName, bool isSelectFullLines, bool isDeindent) {
             InitializeComponent();
             InitializeFormatterButtons(selectedFormatterName);
 
-            CheckBoxSelectionFullLines.IsChecked = selectFullLines;
-        }
-
-        private void ButtonReviewInFoswiki_Click(object sender, RoutedEventArgs e) {
-            //find the formatter in question and invoke it
-            var button = sender as FormatterButton;
-            SelectedFormatter = Factory.GetFormatters().Single(item => item.Name == button.Formatter.Name); //TODO later use better matching, possibly using a GUID
+            CheckBoxSelectionFullLines.IsChecked = isSelectFullLines;
+            CheckBoxDeindent.IsChecked = isDeindent;
         }
 
         /// <summary>
-        ///     Handles the Click event of the ButtonCopy control.
+        /// Handles the Click event of the ButtonFormatted control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
-        private void ButtonCopy_Click(object sender, RoutedEventArgs e) {
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        private void ButtonFormatter_Click(object sender, RoutedEventArgs e) {
+            //find the formatter in question and invoke it
+            var button = sender as FormatterButton;
+            SelectedFormatter = Factory.GetFormatters().Single(item => item.Name == button.Formatter.Name); //TODO later use better matching, possibly using a GUID
             DialogResult = true;
-            this.Close();
+            Close();
         }
 
         /// <summary>
@@ -96,6 +96,16 @@ namespace Codeministry.CopyForReview.Controls {
         /// </value>
         public bool IsSelectionFullLines {
             get { return (CheckBoxSelectionFullLines.IsChecked == true); }
+        }
+
+        /// <summary>
+        ///     Gets a value indicating whether deindent is selected.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if deindent is selected; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsDeindent {
+            get { return (CheckBoxDeindent.IsChecked == true); }
         }
     }
 }

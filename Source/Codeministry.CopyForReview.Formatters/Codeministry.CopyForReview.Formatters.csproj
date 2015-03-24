@@ -46,6 +46,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,9 +57,12 @@
     <Compile Include="..\Solution Items\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="CSharpToText.cs" />
-    <Compile Include="CSharpToStackOverflow.cs" />
-    <Compile Include="CSharpToFoswiki.cs" />
+    <Compile Include="ToEmailClient.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ToText.cs" />
+    <Compile Include="ToStackOverflow.cs" />
+    <Compile Include="ToFoswiki.cs" />
     <Compile Include="DotLiquidFormatter.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="IFormatter.cs" />
@@ -75,13 +79,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CSharpToFoswiki.txt" />
+    <EmbeddedResource Include="ToFoswiki.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CSharpToStackOverflow.txt" />
+    <EmbeddedResource Include="ToStackOverflow.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CSharpToText.txt" />
+    <EmbeddedResource Include="ToText.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="applixware_48x48.png" />

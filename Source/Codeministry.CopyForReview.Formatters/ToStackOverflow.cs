@@ -19,9 +19,9 @@ using System.Drawing;
 
 namespace Codeministry.CopyForReview.Formatters {
     /// <summary>
-    ///     A formatter to format C-Sharp code as markup suitable for StackOverflow questions.
+    ///     A formatter to format code as markup suitable for StackOverflow questions.
     /// </summary>
-    public class CSharpToStackOverflow : DotLiquidFormatter {
+    public class ToStackOverflow : DotLiquidFormatter {
         /// <summary>
         ///     Gets the template source.
         /// </summary>
@@ -29,7 +29,7 @@ namespace Codeministry.CopyForReview.Formatters {
         ///     The template source.
         /// </value>
         public override string TemplateSource {
-            get { return GetTextResource("Codeministry.CopyForReview.Formatters.CSharpToStackOverflow.txt"); }
+            get { return GetTextResource("Codeministry.CopyForReview.Formatters.ToStackOverflow.txt"); }
         }
 
         /// <summary>

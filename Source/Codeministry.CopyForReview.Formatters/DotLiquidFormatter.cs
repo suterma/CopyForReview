@@ -76,7 +76,7 @@ namespace Codeministry.CopyForReview.Formatters {
         ///     This uses the foswiki syntax highlighter plugin for multiline code, but the much simpler monospace styles for
         ///     one-liners.
         /// </remarks>
-        public String Format(ISnippet snippet) {
+        public virtual String Format(ISnippet snippet) {
             //Parse and Compile
             Template template = Template.Parse(TemplateSource); // Parses and compiles the template
             var output = template.Render(Hash.FromAnonymousObject(snippet)); // Renders the output

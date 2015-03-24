@@ -79,10 +79,10 @@ namespace Codeministry.CopyForReview.Controls {
         }
 
         /// <summary>
-        ///     Checks the RadioButton.
+        ///     Sets the embedded button as default.
         /// </summary>
-        internal void CheckRadioButton() {
-            EmbeddedButton.IsChecked = true;
+        internal void SetDefault() {
+            EmbeddedButton.IsDefault = true;
         }
     }
 }

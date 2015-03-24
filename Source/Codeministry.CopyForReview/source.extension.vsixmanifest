@@ -3,15 +3,15 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011"
                  xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="193eba43-9462-4945-ba4e-79f04dbadc94" Version="1.2" Language="en-US" Publisher="codeministry.ch" />
+    <Identity Id="193eba43-9462-4945-ba4e-79f04dbadc94" Version="1.3" Language="en-US" Publisher="codeministry.ch" />
     <DisplayName>Copy for review</DisplayName>
-    <Description xml:space="preserve">[Beta Version] Copy code with customized formatting. Provides additional file, class, method and line info, suitable for written code reviews. Two output formats are currently supported: Stack Overflow and Foswiki.</Description>
+    <Description xml:space="preserve">[Beta Version] Copy code with a formatting. It removes unecessary whitespace and additionally provides file, class, method and line info, suitable for written code reviews. Three output formats are currently supported: Text, Stack Overflow Markdown and Foswiki Markup.</Description>
     <MoreInfo>https://github.com/suterma/CopyForReview/wiki</MoreInfo>
     <License>gpl-3.0.txt</License>
     <ReleaseNotes>ReleaseNotes.txt</ReleaseNotes>
     <Icon>App-xeyes-icon.png</Icon>
     <PreviewImage>ExtensionManagerPreview.png</PreviewImage>
-    <Tags>Copy Paste Code Review Foswiki Stackoverflow Format Output</Tags>
+    <Tags>Copy Paste Code Review Text Foswiki Stackoverflow Format Output</Tags>
   </Metadata>
   <Installation InstalledByMsi="false">
     <InstallationTarget Version="[12.0,13.0)" Id="Microsoft.VisualStudio.Pro" />

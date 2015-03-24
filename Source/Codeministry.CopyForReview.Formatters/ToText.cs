@@ -19,9 +19,9 @@ using System.Drawing;
 
 namespace Codeministry.CopyForReview.Formatters {
     /// <summary>
-    ///     A formatter to format C-Sharp code suitable for display in a foswiki.
+    ///     A formatter to format code suitable for display in a simple text editor.
     /// </summary>
-    public class CSharpToFoswiki : DotLiquidFormatter {
+    public class ToText : DotLiquidFormatter {
         /// <summary>
         ///     Gets the template source.
         /// </summary>
@@ -29,7 +29,7 @@ namespace Codeministry.CopyForReview.Formatters {
         ///     The template source.
         /// </value>
         public override string TemplateSource {
-            get { return GetTextResource("Codeministry.CopyForReview.Formatters.CSharpToFoswiki.txt"); }
+            get { return GetTextResource("Codeministry.CopyForReview.Formatters.ToText.txt"); }
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Codeministry.CopyForReview.Formatters {
         ///     The name of this formatter.
         /// </value>
         public override string Name {
-            get { return "Review in Foswiki"; }
+            get { return "Text editor"; }
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Codeministry.CopyForReview.Formatters {
         ///     The description for this formatter.
         /// </value>
         public override string Description {
-            get { return "Formats the snippet to use with the syntax highlighter plugin in Foswiki"; }
+            get { return "Formats the snippet to use with a simple text editor"; }
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Codeministry.CopyForReview.Formatters {
         ///     The icon image.
         /// </value>
         public override Bitmap IconImage {
-            get { return GetBitmapResource("Codeministry.CopyForReview.Formatters.foswiki-logo-simple_48x48.png"); }
+            get { return GetBitmapResource("Codeministry.CopyForReview.Formatters.applixware_48x48.png"); }
         }
     }
 }

@@ -83,6 +83,7 @@ namespace Codeministry.CopyForReview {
             EnvDTE.Properties props =
                 dte.get_Properties("CopyForReview", "General");
             props.Item("SelectFullLines").Value = true;
+            props.Item("Deindent").Value = true;
         }
 
         #endregion
@@ -103,8 +104,9 @@ namespace Codeministry.CopyForReview {
                 dte.get_Properties("CopyForReview", "General");
 
             var selectedFormatterName = (String) props.Item("SelectedFormatterName").Value;
-            var selectFullLines = (bool) props.Item("SelectFullLines").Value;
-            var formatSelector = new FormatSelector(selectedFormatterName, selectFullLines);
+            var selectFullLines = (bool)props.Item("SelectFullLines").Value;
+            var deindent = (bool)props.Item("Deindent").Value;
+            var formatSelector = new FormatSelector(selectedFormatterName, selectFullLines, deindent);
 
 
             // Show the dialog. 
@@ -112,11 +114,15 @@ namespace Codeministry.CopyForReview {
                 using (new WaitCursor()) {
                     var snippet = new CodeModelExaminer(dte).GetSnippet(formatSelector.IsSelectionFullLines);
                     var output = formatSelector.SelectedFormatter.Format(snippet);
-                    System.Windows.Clipboard.SetDataObject(output);
+
+                    if (!String.IsNullOrEmpty(output)) {
+                        System.Windows.Clipboard.SetDataObject(output);
+                    }
 
                     //Apply the eventually changed options
                     props.Item("SelectedFormatterName").Value = formatSelector.SelectedFormatter.Name;
                     props.Item("SelectFullLines").Value = formatSelector.IsSelectionFullLines;
+                    props.Item("Deindent").Value = formatSelector.IsDeindent;
                 }
             }
         }
