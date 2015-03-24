@@ -41,11 +41,19 @@
          must be a menu. -->
     <Groups>
 
+      <!--Menu item for the source code editor window-->
       <Group guid="guidCopyForReviewCmdSet" id="MyMenuGroup" priority="0x0600">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
         <!--id="IDM_VS_CTXT_ITEMNODE"/>-->
         <!--instead of IDM_VS_MENU_EDIT-->
       </Group>
+
+      <!--Menu item for the aspx/ascx editor window-->
+      <!--TODO does not work, the context menu button is not displayed-->
+      <Group guid="guidCopyForReviewCmdSet" id="MyMenuGroup" priority="0x0600">
+        <Parent guid="guidEditorAsFiles" id="EditorAsFilesContextMenuGroup" />
+      </Group>
+
 
       <!--//TODO hier weiterfahren. Eine Andere Konstante als IDM_VS_CTXT_ITEMNODE verwenden.
       //Aktuelle Anleitung siehe hier: http://www.diaryofaninja.com/blog/2014/02/18/who-said-building-visual-studio-extensions-was-hard
@@ -98,6 +106,13 @@
       <IDSymbol name="MyMenuGroup" value="0x1020" />
       <IDSymbol name="cmdidCopyForReview" value="0x0100" />
     </GuidSymbol>
+
+    <!-- This is the guid for the context menu in ascx/aspx files -->
+    <!--The values have been found using the following link http://blogs.msdn.com/b/dr._ex/archive/2007/04/17/using-enablevsiplogging-to-identify-menus-and-commands-with-vs-2005-sp1.aspx-->
+    <GuidSymbol name="guidEditorAsFiles" value="{D7E8C5E1-BDB8-11D0-9C88-0000F8040A53}">
+      <IDSymbol name="EditorAsFilesContextMenuGroup" value="271" />
+    </GuidSymbol>
+
 
     <GuidSymbol name="guidCopyForReviewCommandImages" value="{3eb1aa0b-96aa-4364-a870-ca588a9491b5}">
       <IDSymbol name="PicEyes" value="1" />
