@@ -5,13 +5,13 @@
   <Metadata>
     <Identity Id="193eba43-9462-4945-ba4e-79f04dbadc94" Version="1.4" Language="en-US" Publisher="codeministry.ch" />
     <DisplayName>Copy for review</DisplayName>
-    <Description xml:space="preserve">[Beta Version] Copy code with a formatting. It removes unecessary whitespace and additionally provides file, class, method and line info, suitable for written code reviews. Three output formats are currently supported: Text, Stack Overflow Markdown and Foswiki Markup.</Description>
+    <Description xml:space="preserve">[Beta Version] Copy code with a formatting. Removes unecessary whitespace, adds file, class, method and line info, suitable for sharing code or writing code reviews. Four output formats are currently supported: Text, Send via Email , Stack Overflow Markdown and Foswiki Markup.</Description>
     <MoreInfo>https://github.com/suterma/CopyForReview/wiki</MoreInfo>
     <License>gpl-3.0.txt</License>
     <ReleaseNotes>ReleaseNotes.txt</ReleaseNotes>
     <Icon>App-xeyes-icon.png</Icon>
     <PreviewImage>ExtensionManagerPreview.png</PreviewImage>
-    <Tags>Copy Paste Code Review Text Foswiki Stackoverflow Format Output</Tags>
+    <Tags>Copy Paste Code Review Text email send Foswiki Stackoverflow Format Output line numbers method class</Tags>
   </Metadata>
   <Installation InstalledByMsi="false">
     <InstallationTarget Version="[12.0,13.0)" Id="Microsoft.VisualStudio.Pro" />
