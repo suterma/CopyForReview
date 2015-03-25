@@ -3,7 +3,7 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011"
                  xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="193eba43-9462-4945-ba4e-79f04dbadc94" Version="1.3" Language="en-US" Publisher="codeministry.ch" />
+    <Identity Id="193eba43-9462-4945-ba4e-79f04dbadc94" Version="1.3.1" Language="en-US" Publisher="codeministry.ch" />
     <DisplayName>Copy for review</DisplayName>
     <Description xml:space="preserve">[Beta Version] Copy code with a formatting. It removes unecessary whitespace and additionally provides file, class, method and line info, suitable for written code reviews. Three output formats are currently supported: Text, Stack Overflow Markdown and Foswiki Markup.</Description>
     <MoreInfo>https://github.com/suterma/CopyForReview/wiki</MoreInfo>

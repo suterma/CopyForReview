@@ -1,4 +1,15 @@
-﻿Release 1.3-beta
+﻿_______________________________________________________________________________
+Release 1.3.1-beta
+Updated March 25, 2015 (Build)
+
+This release has a fourth formatter, and main edit menu entry
+
+Major Features
+- Added email formatter
+- Added menu entry as workaround for missing context menu entries in some windows
+
+_______________________________________________________________________________
+Release 1.3-beta
 Updated: March 22, 2015 (Build)
 
 This release of CopyForReview has a third formatter, and supportes more languages.
@@ -12,6 +23,7 @@ Major Features
 Fixed Issues
 - various Exceptions
 
+_______________________________________________________________________________
 Release 1.2-beta
 Updated: March 16, 2015 (Build)
 
