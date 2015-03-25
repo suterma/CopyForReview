@@ -79,11 +79,11 @@ namespace Codeministry.CopyForReview {
             }
 
             //TODO set default, later do that only on install
-            DTE2 dte = (DTE2) GetService(typeof (DTE));
-            EnvDTE.Properties props =
-                dte.get_Properties("CopyForReview", "General");
-            props.Item("SelectFullLines").Value = true;
-            props.Item("Deindent").Value = true;
+            //DTE2 dte = (DTE2) GetService(typeof (DTE));
+            //EnvDTE.Properties props =
+            //    dte.get_Properties("CopyForReview", "General");
+            //props.Item("SelectFullLines").Value = true;
+            //props.Item("Deindent").Value = true;
         }
 
         #endregion

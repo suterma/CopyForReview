@@ -42,7 +42,18 @@ namespace Codeministry.CopyForReview {
         [DisplayName("Select full lines")]
         [Description("Determines whether the selection is expanded to contain full lines")]
         [DefaultValue(typeof (bool), "true")]
-        public bool SelectFullLines { get; set; }
+        public bool SelectFullLines {
+            get { return SelectFulLinesStore == 1; }
+            set { SelectFulLinesStore = value ? 1 : 0; }
+        }
+
+        /// <summary>
+        ///     Gets or sets a value as backing storage for the SelectFullLines property.
+        /// </summary>
+        /// <value>
+        ///     The storable value. The original value type, bool, is not supported on the storage layer.
+        /// </value>
+        public int SelectFulLinesStore { get; set; }
 
         /// <summary>
         ///     Determines whether the selections leading whitespace is deindeted.
@@ -56,7 +67,7 @@ namespace Codeministry.CopyForReview {
         [Category("CopyForReview")]
         [DisplayName("Deindent")]
         [Description("Determines whether non-empty lines are deindented by removing leading whitespace")]
-        [DefaultValue(typeof(bool), "true")]
+        [DefaultValue(typeof (bool), "true")]
         public bool Deindent { get; set; }
 
         /// <summary>

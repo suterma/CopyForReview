@@ -24,7 +24,7 @@
 
         <!--Setting styles for focused buttons really do not work. Dunno why!-->
         <!--<Button Name="EmbeddedButton" Margin="2" FocusVisualStyle="{DynamicResource MyFocusVisualStyle}" >-->
-        <Button Name="EmbeddedButton" Margin="2">
+        <Button Name="EmbeddedButton" Margin="0">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
                     <Image Name="IconImage" Source="App-xeyes-icon.png" Width="48" Height="48" />

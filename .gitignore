@@ -152,5 +152,7 @@ $RECYCLE.BIN/
 # Mac crap
 .DS_Store
 
-# Owncloud sync logs
-.csync_journal.db*
+# owncloud sync
+.csync_journal.db
+.csync_journal.db-shm
+.csync_journal.db-wal

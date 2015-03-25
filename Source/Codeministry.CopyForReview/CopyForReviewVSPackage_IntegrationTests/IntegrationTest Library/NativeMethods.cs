@@ -19,7 +19,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Microsoft.VsSDK.IntegrationTestLibrary {
+namespace Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library {
     /// <summary>
     ///     Defines pinvoked utility methods and internal VS Constants
     /// </summary>

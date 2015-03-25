@@ -21,8 +21,9 @@ using System.Text;
 using System.Threading;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using Microsoft.VsSDK.IntegrationTestLibrary;
 
-namespace Microsoft.VsSDK.IntegrationTestLibrary {
+namespace Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library {
     /// <summary>
     ///     This class is responsible to close dialog boxes that pop up during different VS Calls
     /// </summary>

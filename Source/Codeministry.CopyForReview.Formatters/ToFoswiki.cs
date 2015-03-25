@@ -39,7 +39,7 @@ namespace Codeministry.CopyForReview.Formatters {
         ///     The name of this formatter.
         /// </value>
         public override string Name {
-            get { return "Review in Foswiki"; }
+            get { return "Review in Foswiki (with syntax highlighter)"; }
         }
 
         /// <summary>
