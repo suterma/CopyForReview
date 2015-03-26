@@ -99,6 +99,11 @@ namespace Codeministry.CopyForReview {
         private void MenuItemCallback(object sender, EventArgs e) {
             DTE2 dte = (DTE2) GetService(typeof (DTE));
 
+            //Check prerequisites
+            if (dte.ActiveDocument == null) {
+                return;
+            }
+
             //Apply the stored options to the selector
             EnvDTE.Properties props =
                 dte.get_Properties("CopyForReview", "General");
