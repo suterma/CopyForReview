@@ -16,10 +16,12 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.InteropServices;
+using System.Windows.Documents;
 using Codeministry.CopyForReview.Controls;
 using EnvDTE;
 using EnvDTE80;
@@ -45,7 +47,7 @@ namespace Codeministry.CopyForReview {
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(GuidList.GuidCopyForReviewPkgString)]
     [ProvideOptionPage(typeof (OptionPageGrid),
-        "CopyForReview", "General", 0, 0, true)]
+        "Copy For Review", "General", 0, 0, true)]
     public sealed class CopyForReviewPackage : Package {
         /// <summary>
         ///     Default constructor of the package.
@@ -77,13 +79,6 @@ namespace Codeministry.CopyForReview {
                 MenuCommand menuItem = new MenuCommand(MenuItemCallback, menuCommandID);
                 mcs.AddCommand(menuItem);
             }
-
-            //TODO set default, later do that only on install
-            //DTE2 dte = (DTE2) GetService(typeof (DTE));
-            //EnvDTE.Properties props =
-            //    dte.get_Properties("CopyForReview", "General");
-            //props.Item("SelectFullLines").Value = true;
-            //props.Item("Deindent").Value = true;
         }
 
         #endregion
@@ -106,18 +101,22 @@ namespace Codeministry.CopyForReview {
 
             //Apply the stored options to the selector
             EnvDTE.Properties props =
-                dte.get_Properties("CopyForReview", "General");
+                dte.get_Properties("Copy For Review", "General");
 
             var selectedFormatterName = (String) props.Item("SelectedFormatterName").Value;
             var selectFullLines = (bool)props.Item("SelectFullLines").Value;
-            var deindent = (bool)props.Item("Deindent").Value;
-            var formatSelector = new FormatSelector(selectedFormatterName, selectFullLines, deindent);
+
+            List<String> templateSources = new List<String>
+            {
+                (String)props.Item("CustomFormatterTemplateSource").Value
+            };
+            FormatSelector formatSelector = new FormatSelector(selectedFormatterName, Formatters.Factory.GetFormatters(templateSources));
 
 
             // Show the dialog. 
             if (formatSelector.ShowDialog() == true) {
                 using (new WaitCursor()) {
-                    var snippet = new CodeModelExaminer(dte).GetSnippet(formatSelector.IsSelectionFullLines);
+                    var snippet = new CodeModelExaminer(dte).GetSnippet(selectFullLines);
                     var output = formatSelector.SelectedFormatter.Format(snippet);
 
                     if (!String.IsNullOrEmpty(output)) {
@@ -126,8 +125,6 @@ namespace Codeministry.CopyForReview {
 
                     //Apply the eventually changed options
                     props.Item("SelectedFormatterName").Value = formatSelector.SelectedFormatter.Name;
-                    props.Item("SelectFullLines").Value = formatSelector.IsSelectionFullLines;
-                    props.Item("Deindent").Value = formatSelector.IsDeindent;
                 }
             }
         }

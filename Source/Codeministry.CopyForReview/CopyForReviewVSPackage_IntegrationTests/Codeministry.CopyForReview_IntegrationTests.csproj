@@ -79,6 +79,10 @@
     <None Include="Key.snk" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Codeministry.CopyForReview.Formatters\Codeministry.CopyForReview.Formatters.csproj">
+      <Project>{6fce5781-0b49-43cb-ac8a-78bb21b4ecc2}</Project>
+      <Name>Codeministry.CopyForReview.Formatters</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Codeministry.CopyForReview.csproj">
       <Project>{6F8DA4FD-CCE6-4025-B66E-F346E562FE23}</Project>
       <Name>Codeministry.CopyForReview</Name>

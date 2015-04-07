@@ -8,12 +8,6 @@
     <Grid>
         <StackPanel>
             <StackPanel Name="StackPanelFormatters" x:FieldModifier="private" Margin="2"/>
-            <StackPanel Name="StackPanelOptions" x:FieldModifier="private" Margin="2">
-            <CheckBox Name="CheckBoxSelectionFullLines" Content="Expand selection to full lines" IsChecked="True"
-                      Margin="2" />
-            <CheckBox Name="CheckBoxDeindent" Content="Deindent leading whitespace" IsChecked="True"
-                      Margin="2" />
-        </StackPanel>
         </StackPanel>
     </Grid>
 </platformUi:VsUIDialogWindow>

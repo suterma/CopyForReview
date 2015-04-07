@@ -10,6 +10,9 @@
 *.user
 *.sln.docstates
 
+# But not the project file which contains the startup project info
+!Source/Codeministry.CopyForReview/Codeministry.CopyForReview.csproj.user
+
 # Build results
 
 [Dd]ebug/

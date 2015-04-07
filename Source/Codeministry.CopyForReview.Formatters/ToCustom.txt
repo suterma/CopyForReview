@@ -1,0 +1,12 @@
+﻿{% comment %}
+This is an example dotLiquid template that shows the capabilities of a custom template.
+Method and class are optional and not provided if null
+{% endcomment %}
+This is an example template. See the online doc at https://github.com/suterma/CopyForReview/wiki for more information.
+8<------------------------------------------------------------------------------
+{{DeindentedSelectedText}}
+8<------------------------------------------------------------------------------
+{% if Methodname %}in method "{{Methodname}}"
+{% endif %}{% if FullClassname %}in class "{{FullClassname}}"
+{% endif %}in file {{FullFilename}}
+on lines {{LineNumberTop}} to {{LineNumberBottom}}

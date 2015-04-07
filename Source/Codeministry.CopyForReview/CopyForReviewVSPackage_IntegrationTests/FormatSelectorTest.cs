@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Windows.Documents;
 using Codeministry.CopyForReview.Controls;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace Codeministry.CopyForReview_IntegrationTests
 {
@@ -13,7 +15,7 @@ namespace Codeministry.CopyForReview_IntegrationTests
         [TestMethod]
         [Ignore] //because this is just for visual testing
         public void TestVisualAppearance() {
-            FormatSelector target = new FormatSelector("test", true, true);
+            FormatSelector target = new FormatSelector("test", new List<Codeministry.CopyForReview.Formatters.IFormatter>());
             target.ShowDialog();
             Assert.Inconclusive("Test for visual inspection");
         }

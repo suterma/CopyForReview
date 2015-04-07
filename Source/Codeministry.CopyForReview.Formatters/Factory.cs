@@ -15,6 +15,7 @@
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using System;
 using System.Collections.Generic;
 
 namespace Codeministry.CopyForReview.Formatters {
@@ -26,7 +27,7 @@ namespace Codeministry.CopyForReview.Formatters {
         ///     Gets the available formatters.
         /// </summary>
         /// <returns></returns>
-        public static IList<IFormatter> GetFormatters() {
+        private static IList<IFormatter> GetFormatters() {
             var formatters = new List<IFormatter>
             {
                 new ToText(),
@@ -34,6 +35,19 @@ namespace Codeministry.CopyForReview.Formatters {
                 new ToStackOverflow(),
                 new ToFoswiki(),
             };
+            return formatters;
+        }
+
+        /// <summary>
+        ///     Gets the available formatters, plus one for each template URI.
+        /// </summary>
+        /// <param name="templateSources">The template sources.</param>
+        /// <returns></returns>
+        public static IEnumerable<IFormatter> GetFormatters(IEnumerable<String> templateSources) {
+            var formatters = GetFormatters();
+            foreach (var templateSource in templateSources) {
+                formatters.Add(new ToCustom(templateSource));
+            }
             return formatters;
         }
     }

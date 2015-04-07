@@ -16,6 +16,7 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using Codeministry.CopyForReview.Formatters;
@@ -39,8 +40,7 @@ namespace Codeministry.CopyForReview.Controls {
         /// <param name="selectedFormatterName">Name of the selected formatter.</param>
         private void InitializeFormatterButtons(String selectedFormatterName) {
             //Initialize Formatter Buttons
-            var formatters = Factory.GetFormatters();
-            foreach (var formatter in formatters) {
+            foreach (var formatter in Formatters) {
                 var button = new FormatterButton(formatter);
                 button.Click += ButtonFormatter_Click;
                 StackPanelFormatters.Children.Add(button);
@@ -50,7 +50,7 @@ namespace Codeministry.CopyForReview.Controls {
                 }
             }
 
-            if ((SelectedFormatter == null) && formatters.Any()) {
+            if ((SelectedFormatter == null) && Formatters.Any()) {
                 //just select the first one
                 var firstButton = StackPanelFormatters.Children.Cast<FormatterButton>().First<FormatterButton>();
                 firstButton.SetDefault();
@@ -58,21 +58,19 @@ namespace Codeministry.CopyForReview.Controls {
             }
         }
 
-        
+
 
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="FormatSelector" /> class.
+        /// Initializes a new instance of the <see cref="FormatSelector" /> class.
         /// </summary>
         /// <param name="selectedFormatterName">Name of the selected formatter.</param>
-        /// <param name="isSelectFullLines">if set to <c>true</c> [is select full lines].</param>
-        /// <param name="isDeindent">if set to <c>true</c>, the code is deindented.</param>
-        public FormatSelector(string selectedFormatterName, bool isSelectFullLines, bool isDeindent) {
+        /// <param name="formatters">The available formatters.</param>
+        public FormatSelector(string selectedFormatterName, IEnumerable<IFormatter> formatters) {
             InitializeComponent();
-            InitializeFormatterButtons(selectedFormatterName);
 
-            CheckBoxSelectionFullLines.IsChecked = isSelectFullLines;
-            CheckBoxDeindent.IsChecked = isDeindent;
+            Formatters = formatters;
+            InitializeFormatterButtons(selectedFormatterName);
         }
 
         /// <summary>
@@ -83,29 +81,17 @@ namespace Codeministry.CopyForReview.Controls {
         private void ButtonFormatter_Click(object sender, RoutedEventArgs e) {
             //find the formatter in question and invoke it
             var button = sender as FormatterButton;
-            SelectedFormatter = Factory.GetFormatters().Single(item => item.Name == button.Formatter.Name); //TODO later use better matching, possibly using a GUID
+            SelectedFormatter = Formatters.Single(item => item.Name == button.Formatter.Name); //TODO later use better matching, possibly using a GUID
             DialogResult = true;
             Close();
         }
 
         /// <summary>
-        ///     Gets a value indicating whether this full lines should be selected.
+        /// Gets or sets the available formatters.
         /// </summary>
         /// <value>
-        ///     <c>true</c> if full lines should be selected; otherwise, <c>false</c>.
+        /// The formatters.
         /// </value>
-        public bool IsSelectionFullLines {
-            get { return (CheckBoxSelectionFullLines.IsChecked == true); }
-        }
-
-        /// <summary>
-        ///     Gets a value indicating whether deindent is selected.
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if deindent is selected; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsDeindent {
-            get { return (CheckBoxDeindent.IsChecked == true); }
-        }
+        protected IEnumerable<IFormatter> Formatters { get; set; }
     }
 }
