@@ -39,7 +39,7 @@ namespace Codeministry.CopyForReview.Data {
         ///     Gets or sets the full filename, with path and extension.
         /// </summary>
         /// <value>
-        ///     The the full filename, with path and extension.
+        ///     The full filename, with path and extension.
         /// </value>
         public string FullFilename { get; set; }
 
@@ -47,7 +47,7 @@ namespace Codeministry.CopyForReview.Data {
         ///     Gets or sets the filename, without path.
         /// </summary>
         /// <value>
-        ///     The the filename, without path.
+        ///     The filename, without path.
         /// </value>
         public string Filename { get; set; }
 
@@ -55,7 +55,7 @@ namespace Codeministry.CopyForReview.Data {
         ///     Gets or sets the line number of the topmost line.
         /// </summary>
         /// <value>
-        ///     The line line number of the topmost line.
+        ///     The line number of the topmost line.
         /// </value>
         public int LineNumberTop { get; set; }
 
@@ -87,7 +87,7 @@ namespace Codeministry.CopyForReview.Data {
         ///     Gets the individual code lines of the snippet.
         /// </summary>
         /// <value>
-        ///     The lines.
+        ///     The individual code lines of the snippet.
         /// </value>
         public IEnumerable<string> Lines {
             get {

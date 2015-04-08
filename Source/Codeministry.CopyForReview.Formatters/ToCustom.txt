@@ -1,12 +1,41 @@
 ﻿{% comment %}
-This is an example dotLiquid template that shows the capabilities of a custom template.
-Method and class are optional and not provided if null
+This is an example dotLiquid template that shows the capabilities of a custom template. 
+Everything inside this comment tag will not show up in the output.
 {% endcomment %}
-This is an example template. See the online doc at https://github.com/suterma/CopyForReview/wiki for more information.
+This is an example template. See the online doc at https://github.com/suterma/CopyForReview/wiki/Template-format for more information.
+
+Here is an example with the source code deindented as much as possible and some additional information:
+Method and class are optional and not provided if null:
 8<------------------------------------------------------------------------------
 {{DeindentedSelectedText}}
-8<------------------------------------------------------------------------------
 {% if Methodname %}in method "{{Methodname}}"
 {% endif %}{% if FullClassname %}in class "{{FullClassname}}"
 {% endif %}in file {{FullFilename}}
 on lines {{LineNumberTop}} to {{LineNumberBottom}}
+8<------------------------------------------------------------------------------
+
+If you want, you can also only provide the file name without path:
+{{Filename}}
+Or only the file extension:
+{{FileExtension}}
+
+Here is the selected text, with the original indentation
+8<------------------------------------------------------------------------------
+{{SelectedText}}
+8<------------------------------------------------------------------------------
+
+You can also print out the individual lines, for example if you need specific HTML around each line:
+8<------------------------------------------------------------------------------
+{% for Line in DeindentedLines %}
+<span>{{Line}}</span>
+{% endfor %}
+8<------------------------------------------------------------------------------
+
+Or, with the original indentation
+8<------------------------------------------------------------------------------
+<pre>
+{% for Line in Lines %}
+> {{Line}}
+{% endfor %}
+</pre>
+8<------------------------------------------------------------------------------

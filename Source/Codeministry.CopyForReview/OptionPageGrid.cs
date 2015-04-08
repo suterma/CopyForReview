@@ -75,19 +75,49 @@ namespace Codeministry.CopyForReview {
             //TODO does this work?
             SelectFullLines = true;
             SelectedFormatterName = "Send by email";
-            var sb = new System.Text.StringBuilder(687);
+            var sb = new System.Text.StringBuilder(1861);
             sb.AppendLine(@"{% comment %}");
-            sb.AppendLine(@"This is an example dotLiquid template that shows the capabilities of a custom template.");
-            sb.AppendLine(@"Method and class are optional and not provided if null");
+            sb.AppendLine(@"This is an example dotLiquid template that shows the capabilities of a custom template. ");
+            sb.AppendLine(@"Everything inside this comment tag will not show up in the output.");
             sb.AppendLine(@"{% endcomment %}");
-            sb.AppendLine(@"This is an example template. See the online doc at https://github.com/suterma/CopyForReview/wiki for more information.");
+            sb.AppendLine(@"This is an example template. See the online doc at https://github.com/suterma/CopyForReview/wiki/Template-format for more information.");
+            sb.AppendLine(@"");
+            sb.AppendLine(@"Here is an example with the source code deindented as much as possible and some additional information:");
+            sb.AppendLine(@"Method and class are optional and not provided if null:");
             sb.AppendLine(@"8<------------------------------------------------------------------------------");
             sb.AppendLine(@"{{DeindentedSelectedText}}");
-            sb.AppendLine(@"8<------------------------------------------------------------------------------");
             sb.AppendLine(@"{% if Methodname %}in method ""{{Methodname}}""");
             sb.AppendLine(@"{% endif %}{% if FullClassname %}in class ""{{FullClassname}}""");
             sb.AppendLine(@"{% endif %}in file {{FullFilename}}");
             sb.AppendLine(@"on lines {{LineNumberTop}} to {{LineNumberBottom}}");
+            sb.AppendLine(@"8<------------------------------------------------------------------------------");
+            sb.AppendLine(@"");
+            sb.AppendLine(@"If you want, you can also only provide the file name without path:");
+            sb.AppendLine(@"{{Filename}}");
+            sb.AppendLine(@"Or only the file extension:");
+            sb.AppendLine(@"{{FileExtension}}");
+            sb.AppendLine(@"");
+            sb.AppendLine(@"Here is the selected text, with the original indentation");
+            sb.AppendLine(@"8<------------------------------------------------------------------------------");
+            sb.AppendLine(@"{{SelectedText}}");
+            sb.AppendLine(@"8<------------------------------------------------------------------------------");
+            sb.AppendLine(@"");
+            sb.AppendLine(@"You can also print out the individual lines, for example if you need specific HTML around each line:");
+            sb.AppendLine(@"8<------------------------------------------------------------------------------");
+            sb.AppendLine(@"{% for Line in DeindentedLines %}");
+            sb.AppendLine(@"<span>{{Line}}</span>");
+            sb.AppendLine(@"{% endfor %}");
+            sb.AppendLine(@"8<------------------------------------------------------------------------------");
+            sb.AppendLine(@"");
+            sb.AppendLine(@"Or, with the original indentation");
+            sb.AppendLine(@"8<------------------------------------------------------------------------------");
+            sb.AppendLine(@"<pre>");
+            sb.AppendLine(@"{% for Line in Lines %}");
+            sb.AppendLine(@"> {{Line}}");
+            sb.AppendLine(@"{% endfor %}");
+            sb.AppendLine(@"</pre>");
+            sb.AppendLine(@"8<------------------------------------------------------------------------------");
+
             CustomFormatterTemplateSource = sb.ToString();
         }
     }
