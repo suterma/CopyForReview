@@ -22,6 +22,10 @@ build/
 [Bb]in/
 [Oo]bj/
 
+# But not the top level current release
+!Release/Codeministry.CopyForReview.vsix
+
+
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
