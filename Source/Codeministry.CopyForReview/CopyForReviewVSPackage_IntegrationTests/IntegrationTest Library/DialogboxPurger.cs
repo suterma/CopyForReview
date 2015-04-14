@@ -21,7 +21,6 @@ using System.Text;
 using System.Threading;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VsSDK.IntegrationTestLibrary;
 
 namespace Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library {
     /// <summary>

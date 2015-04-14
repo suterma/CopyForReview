@@ -17,9 +17,9 @@
 
 using System;
 using System.IO;
+using Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library;
 using EnvDTE;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.VsSDK.IntegrationTestLibrary;
 using Microsoft.VSSDK.Tools.VsIdeTesting;
 
 namespace Codeministry.CopyForReview_IntegrationTests {

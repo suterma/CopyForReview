@@ -79,9 +79,9 @@ namespace Codeministry.CopyForReview.Controls {
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void ButtonFormatter_Click(object sender, RoutedEventArgs e) {
-            //find the formatter in question and invoke it
+            //find the formatter in question and invoke it (suggested improvement: use better matching, possibly using a GUID)
             var button = sender as FormatterButton;
-            SelectedFormatter = Formatters.Single(item => item.Name == button.Formatter.Name); //TODO later use better matching, possibly using a GUID
+            SelectedFormatter = Formatters.Single(item => item.Name == button.Formatter.Name); 
             DialogResult = true;
             Close();
         }

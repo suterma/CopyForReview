@@ -16,7 +16,6 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.CodeDom;
 using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Runtime.InteropServices;
@@ -24,19 +23,21 @@ using Microsoft.VisualStudio.Shell;
 
 namespace Codeministry.CopyForReview {
     /// <summary>
-    /// A dialog page containing the option for Copy for Review
+    ///     A dialog page containing the option for Copy for Review
     /// </summary>
-    /// <devdoc>Later create more complex options using
-    /// https://msdn.microsoft.com/en-us/library/cc138529.aspx
+    /// <devdoc>
+    ///     Later create more complex options using
+    ///     https://msdn.microsoft.com/en-us/library/cc138529.aspx
     /// </devdoc>
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [CLSCompliant(false), ComVisible(true)]
-   
     public class OptionPageGrid : DialogPage {
+        private string _customFormatterTemplateSource;
+
         [Category("Copy For Review")]
         [DisplayName("Selected formatter")]
         [Description("Name of the selected formatter")]
-        [DefaultValue(typeof(String), "Send by email")]
+        [DefaultValue(typeof (String), "Send by email")]
         public string SelectedFormatterName { get; set; }
 
         /// <summary>
@@ -60,22 +61,25 @@ namespace Codeministry.CopyForReview {
         [Category("Copy For Review")]
         [DisplayName("Custom formatter template")]
         [Description("Defines the template for the custom formatter. See online docs for more information.")]
-        [EditorAttribute(typeof(MultilineStringEditor),
-                 typeof(System.Drawing.Design.UITypeEditor))]
-        [DefaultValue(typeof(String), @"This is an example template. See the online doc at https://github.com/suterma/CopyForReview/wiki for more information.")]
-        public string CustomFormatterTemplateSource { get; set; }
-
+        [Editor(typeof (MultilineStringEditor),
+            typeof (System.Drawing.Design.UITypeEditor))]
+        public string CustomFormatterTemplateSource {
+            get {
+                //Apply initial value if emtpy
+                if (String.IsNullOrEmpty(_customFormatterTemplateSource)) {
+                    _customFormatterTemplateSource = InitialCustomTemplateSource();
+                }
+                return
+                    _customFormatterTemplateSource;
+            }
+            set { _customFormatterTemplateSource = value; }
+        }
 
         /// <summary>
-        ///     Reset settings to their default values.
+        ///     Returns the initial custom template source.
         /// </summary>
-        public override void ResetSettings() {
-            base.ResetSettings();
-
-            //TODO does this work?
-            SelectFullLines = true;
-            SelectedFormatterName = "Send by email";
-            var sb = new System.Text.StringBuilder(1861);
+        private string InitialCustomTemplateSource() {
+            var sb = new System.Text.StringBuilder(1912);
             sb.AppendLine(@"{% comment %}");
             sb.AppendLine(@"This is an example dotLiquid template that shows the capabilities of a custom template. ");
             sb.AppendLine(@"Everything inside this comment tag will not show up in the output.");
@@ -104,21 +108,30 @@ namespace Codeministry.CopyForReview {
             sb.AppendLine(@"");
             sb.AppendLine(@"You can also print out the individual lines, for example if you need specific HTML around each line:");
             sb.AppendLine(@"8<------------------------------------------------------------------------------");
-            sb.AppendLine(@"{% for Line in DeindentedLines %}");
-            sb.AppendLine(@"<span>{{Line}}</span>");
+            sb.AppendLine(@"{% for Line in DeindentedLines %}<span>{{Line}}</span>");
             sb.AppendLine(@"{% endfor %}");
             sb.AppendLine(@"8<------------------------------------------------------------------------------");
             sb.AppendLine(@"");
-            sb.AppendLine(@"Or, with the original indentation");
+            sb.AppendLine(@"Or, with the original indentation and a simple greater-than symbol on each new line:");
             sb.AppendLine(@"8<------------------------------------------------------------------------------");
-            sb.AppendLine(@"<pre>");
-            sb.AppendLine(@"{% for Line in Lines %}");
-            sb.AppendLine(@"> {{Line}}");
-            sb.AppendLine(@"{% endfor %}");
+            sb.AppendLine(@"<pre>{% for Line in Lines %}");
+            sb.AppendLine(@"> {{Line}}{% endfor %}");
             sb.AppendLine(@"</pre>");
             sb.AppendLine(@"8<------------------------------------------------------------------------------");
 
-            CustomFormatterTemplateSource = sb.ToString();
+            return sb.ToString();
+        }
+
+        /// <summary>
+        ///     Reset settings to their default values.
+        /// </summary>
+        public override void ResetSettings() {
+            base.ResetSettings();
+
+            //possible improvement: Reset Settings seems not to be called initially, how to property set initial values?
+            SelectFullLines = true;
+            SelectedFormatterName = "Send by email";
+            CustomFormatterTemplateSource = InitialCustomTemplateSource();
         }
     }
 }

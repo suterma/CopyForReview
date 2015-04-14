@@ -18,7 +18,6 @@
 using Codeministry.CopyForReview;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.VsSDK.UnitTestLibrary;
 
 namespace Codeministry.CopyForReview_UnitTests {
     [TestClass()]
@@ -32,24 +31,6 @@ namespace Codeministry.CopyForReview_UnitTests {
         public void IsIVsPackage() {
             CopyForReviewPackage package = new CopyForReviewPackage();
             Assert.IsNotNull(package as IVsPackage, "The object does not implement IVsPackage");
-        }
-
-        [TestMethod()]
-        [Ignore]
-        //Marcel: This test does not work, due to unknown reasons
-        public void SetSite() {
-            // Create the package
-            IVsPackage package = new CopyForReviewPackage() as IVsPackage;
-            Assert.IsNotNull(package, "The object does not implement IVsPackage");
-
-            // Create a basic service provider
-            OleServiceProvider serviceProvider = OleServiceProvider.CreateOleServiceProviderWithBasicServices();
-
-            // Site the package
-            Assert.AreEqual(0, package.SetSite(serviceProvider), "SetSite did not return S_OK");
-
-            // Unsite the package
-            Assert.AreEqual(0, package.SetSite(null), "SetSite(null) did not return S_OK");
         }
     }
 }

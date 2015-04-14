@@ -16,9 +16,9 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library;
 using EnvDTE;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.VsSDK.IntegrationTestLibrary;
 using Microsoft.VSSDK.Tools.VsIdeTesting;
 
 namespace Codeministry.CopyForReview_IntegrationTests {

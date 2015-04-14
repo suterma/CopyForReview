@@ -15,9 +15,9 @@
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.VsSDK.IntegrationTestLibrary;
 using Microsoft.VSSDK.Tools.VsIdeTesting;
 
 namespace Codeministry.CopyForReview_IntegrationTests {

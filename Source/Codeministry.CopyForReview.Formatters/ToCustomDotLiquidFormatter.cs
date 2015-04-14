@@ -20,16 +20,16 @@ using System.Drawing;
 
 namespace Codeministry.CopyForReview.Formatters {
     /// <summary>
-    ///     A customizable formatter, using a custom template source.
+    ///     A customizable formatter, using a custom dotLiquid template source.
     /// </summary>
-    public class ToCustom : DotLiquidFormatter {
+    public class ToCustomDotLiquidFormatter : DotLiquidFormatter {
         private readonly String _templateSource;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ToCustom" /> class.
+        ///     Initializes a new instance of the <see cref="ToCustomDotLiquidFormatter" /> class.
         /// </summary>
         /// <param name="templateSource">The template source.</param>
-        public ToCustom(String templateSource) {
+        public ToCustomDotLiquidFormatter(String templateSource) {
             _templateSource = templateSource;
         }
 
@@ -70,7 +70,7 @@ namespace Codeministry.CopyForReview.Formatters {
         ///     The icon image.
         /// </value>
         public override Bitmap IconImage {
-            get { return GetBitmapResource("Codeministry.CopyForReview.Formatters.applixware_48x48.png"); }
+            get { return GetBitmapResource("Codeministry.CopyForReview.Formatters.kblackbox_48x48.png"); }
         }
     }
 }

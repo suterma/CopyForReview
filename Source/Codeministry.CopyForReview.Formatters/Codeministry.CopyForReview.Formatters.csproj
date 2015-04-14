@@ -60,7 +60,7 @@
     <Compile Include="ToEmailClient.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ToCustom.cs" />
+    <Compile Include="ToCustomDotLiquidFormatter.cs" />
     <Compile Include="ToText.cs" />
     <Compile Include="ToStackOverflow.cs" />
     <Compile Include="ToFoswiki.cs" />
@@ -95,7 +95,7 @@
     <EmbeddedResource Include="so-icon_48x48.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ToCustom.txt" />
+    <EmbeddedResource Include="kblackbox_48x48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

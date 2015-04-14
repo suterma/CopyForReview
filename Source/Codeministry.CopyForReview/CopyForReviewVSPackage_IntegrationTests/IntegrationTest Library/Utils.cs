@@ -27,9 +27,8 @@ using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VSSDK.Tools.VsIdeTesting;
-using IOleServiceProvider = Microsoft.VisualStudio.OLE.Interop.IServiceProvider;
 
-namespace Microsoft.VsSDK.IntegrationTestLibrary {
+namespace Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library {
     /// <summary>
     /// </summary>
     public class TestUtils {

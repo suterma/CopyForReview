@@ -39,14 +39,14 @@ namespace Codeministry.CopyForReview.Formatters {
         }
 
         /// <summary>
-        ///     Gets the available formatters, plus one for each template URI.
+        ///     Gets the available built-in formatters, plus a custom one for each additional template source.
         /// </summary>
-        /// <param name="templateSources">The template sources.</param>
+        /// <param name="templateSources">The additional template sources, which is expected to be in dotLiquid markup.</param>
         /// <returns></returns>
         public static IEnumerable<IFormatter> GetFormatters(IEnumerable<String> templateSources) {
             var formatters = GetFormatters();
             foreach (var templateSource in templateSources) {
-                formatters.Add(new ToCustom(templateSource));
+                formatters.Add(new ToCustomDotLiquidFormatter(templateSource));
             }
             return formatters;
         }

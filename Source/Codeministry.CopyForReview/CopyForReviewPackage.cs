@@ -21,7 +21,6 @@ using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.InteropServices;
-using System.Windows.Documents;
 using Codeministry.CopyForReview.Controls;
 using EnvDTE;
 using EnvDTE80;
@@ -81,6 +80,8 @@ namespace Codeministry.CopyForReview {
             }
         }
 
+
+
         #endregion
 
         /////////////////////////////////////////////////////////////////////////////
@@ -98,34 +99,33 @@ namespace Codeministry.CopyForReview {
             if (dte.ActiveDocument == null) {
                 return;
             }
+            OptionPageGrid page =
+                (OptionPageGrid) GetDialogPage(typeof (OptionPageGrid));
+
 
             //Apply the stored options to the selector
-            EnvDTE.Properties props =
-                dte.get_Properties("Copy For Review", "General");
-
-            var selectedFormatterName = (String) props.Item("SelectedFormatterName").Value;
-            var selectFullLines = (bool)props.Item("SelectFullLines").Value;
+            string selectedFormatterName = page.SelectedFormatterName;
+            bool selectFullLines = page.SelectFullLines;
 
             List<String> templateSources = new List<String>
             {
-                (String)props.Item("CustomFormatterTemplateSource").Value
+                page.CustomFormatterTemplateSource
             };
             FormatSelector formatSelector = new FormatSelector(selectedFormatterName, Formatters.Factory.GetFormatters(templateSources));
 
 
             // Show the dialog. 
             if (formatSelector.ShowDialog() == true) {
-                using (new WaitCursor()) {
-                    var snippet = new CodeModelExaminer(dte).GetSnippet(selectFullLines);
-                    var output = formatSelector.SelectedFormatter.Format(snippet);
+                var snippet = new CodeModelExaminer(dte).GetSnippet(selectFullLines);
+                var output = formatSelector.SelectedFormatter.Format(snippet);
 
-                    if (!String.IsNullOrEmpty(output)) {
-                        System.Windows.Clipboard.SetDataObject(output);
-                    }
-
-                    //Apply the eventually changed options
-                    props.Item("SelectedFormatterName").Value = formatSelector.SelectedFormatter.Name;
+                if (!String.IsNullOrEmpty(output)) {
+                    System.Windows.Clipboard.SetDataObject(output);
                 }
+
+                //Apply the eventually changed options
+                page.SelectedFormatterName = formatSelector.SelectedFormatter.Name;
+                page.SaveSettingsToStorage();
             }
         }
     }
