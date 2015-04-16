@@ -156,8 +156,5 @@ $RECYCLE.BIN/
 .DS_Store
 
 # owncloud sync
-.csync_journal.db
-.csync_journal.db-shm
-.csync_journal.db-wal
-.csync_journal.db-shm
-.csync_journal.db
+.csync_journal.*
+
