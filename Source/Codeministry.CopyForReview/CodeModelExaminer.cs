@@ -21,11 +21,13 @@ using Codeministry.CopyForReview.Data;
 using EnvDTE;
 using EnvDTE80;
 
-namespace Codeministry.CopyForReview {
+namespace Codeministry.CopyForReview
+{
     /// <summary>
     ///     Examines a code model by looking for the required information to compile a snippet.
     /// </summary>
-    public class CodeModelExaminer {
+    public class CodeModelExaminer
+    {
         /// <summary>
         ///     The application object to use to examine the code.
         /// </summary>
@@ -44,11 +46,11 @@ namespace Codeministry.CopyForReview {
         /// </summary>
         /// <param name="codeLocationInfo">The code location information.</param>
         private void SetSelectionLineRange(ISnippet codeLocationInfo) {
-            //get the text document
-            TextDocument txt = (TextDocument) _applicationObject.ActiveDocument.Object("TextDocument");
-
-            codeLocationInfo.LineNumberTop = txt.Selection.TopLine;
-            codeLocationInfo.LineNumberBottom = txt.Selection.BottomLine;
+            TextSelection selection = GetTextSelection();
+            if (selection != null) {
+                codeLocationInfo.LineNumberTop = selection.TopLine;
+                codeLocationInfo.LineNumberBottom = selection.BottomLine;
+            }
         }
 
 
@@ -58,19 +60,36 @@ namespace Codeministry.CopyForReview {
         /// <param name="isSelectFullLines">if set to <c>true</c> full lines are selected before copying.</param>
         /// <returns></returns>
         private String CopySelection(bool isSelectFullLines) {
-            //get the text document
-            TextDocument txt = (TextDocument) _applicationObject.ActiveDocument.Object("TextDocument");
+            TextSelection selection = GetTextSelection();
 
+            if (selection == null) {
+                //TODO later fail earlier with a nice dialog.
+                return "The currently active document (" + GetFilename() + " in window " + GetWindowCaption() + ") does not support text selections";
+            }
             if (isSelectFullLines) {
-                var topLine = txt.Selection.TopLine;
-                var bottomLine = txt.Selection.BottomLine;
+                var topLine = selection.TopLine;
+                var bottomLine = selection.BottomLine;
 
                 //Adapt the selection to include only full lines
-                txt.Selection.GotoLine(topLine, true);
-                txt.Selection.MoveTo(bottomLine, 0, true);
-                txt.Selection.EndOfLine(true);
+                selection.GotoLine(topLine, true);
+                selection.MoveTo(bottomLine, 0, true);
+                selection.EndOfLine(true);
             }
-            return txt.Selection.Text;
+            return selection.Text;
+        }
+
+        /// <summary>
+        ///     Gets the text selection from the currently active document.
+        /// </summary>
+        /// <remarks>
+        ///     This may be null, in case the currently active document is not a text document.
+        ///     <para>
+        ///         An example for a non-text document is the annotation view from subversion.
+        ///     </para>
+        /// </remarks>
+        /// <returns></returns>
+        private TextSelection GetTextSelection() {
+            return (TextSelection) _applicationObject.ActiveDocument.Selection;
         }
 
         /// <summary>
@@ -83,7 +102,11 @@ namespace Codeministry.CopyForReview {
         }
 
 
-        // examine an item
+        /// <summary>
+        ///     Examines the item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <param name="codeLocationInfo">The code location information.</param>
         private static void ExamineItem(ProjectItem item, ISnippet codeLocationInfo) {
             FileCodeModel2 model = (FileCodeModel2) item.FileCodeModel;
             if (model == null) {
@@ -96,7 +119,11 @@ namespace Codeministry.CopyForReview {
             }
         }
 
-        // recursively examine code elements
+        /// <summary>
+        ///     Recursively examines the code elements.
+        /// </summary>
+        /// <param name="codeElement">The code element.</param>
+        /// <param name="codeLocationInfo">The code location information.</param>
         private static void ExamineCodeElement(CodeElement codeElement, ISnippet codeLocationInfo) {
             try {
                 if (codeElement.Kind == vsCMElement.vsCMElementClass) {
@@ -115,8 +142,7 @@ namespace Codeministry.CopyForReview {
                 foreach (CodeElement childElement in codeElement.Children) {
                     ExamineCodeElement(childElement, codeLocationInfo);
                 }
-            }
-            catch {
+            } catch {
                 //just swallow, leave codeLocationInfo as is
             }
         }
@@ -146,6 +172,14 @@ namespace Codeministry.CopyForReview {
         }
 
         /// <summary>
+        ///     Gets the caption of the currently active window.
+        /// </summary>
+        /// <returns>The caption</returns>
+        private string GetWindowCaption() {
+            return _applicationObject.ActiveWindow.Caption;
+        }
+
+        /// <summary>
         ///     Gets the full filename of the currently active document.
         /// </summary>
         /// <returns>The filename</returns>
@@ -154,14 +188,12 @@ namespace Codeministry.CopyForReview {
         }
 
         /// <summary>
-        /// Gets the snippet using the DTE
+        ///     Gets the snippet using the DTE
         /// </summary>
         /// <param name="isSelectionFullLines">if set to <c>true</c> the selection will be expanded to full lines.</param>
         /// <returns></returns>
-        public ISnippet GetSnippet(bool isSelectionFullLines)
-        {
-            var snippet = new Snippet
-            {
+        public ISnippet GetSnippet(bool isSelectionFullLines) {
+            var snippet = new Snippet {
                 FullFilename = GetFullFilename(),
                 Filename = GetFilename(),
                 FileExtension = GetFileExtension(),
@@ -173,11 +205,10 @@ namespace Codeministry.CopyForReview {
         }
 
         /// <summary>
-        /// Gets the file extension.
+        ///     Gets the file extension.
         /// </summary>
         /// <returns></returns>
-        private string GetFileExtension()
-        {
+        private string GetFileExtension() {
             return Path.GetExtension(_applicationObject.ActiveDocument.FullName);
         }
     }
