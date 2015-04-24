@@ -1,4 +1,13 @@
 ﻿_______________________________________________________________________________
+Release 1.5.0
+Updated April 25, 2015 (Build)
+
+- Adds a custom formatter. 
+- Fixes a Null-Reference-Exception in the Annotated view
+- Docs updated
+- Simplified the options
+
+_______________________________________________________________________________
 Release 1.4.1-beta
 Updated March 26, 2015 (Build)
 
