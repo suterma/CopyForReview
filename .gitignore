@@ -158,3 +158,5 @@ $RECYCLE.BIN/
 # owncloud sync
 .csync_journal.*
 
+.csync_journal.db-shm
+.csync_journal.db-wal
