@@ -11,7 +11,7 @@
 Install it directly from the [Visual Studio Gallery](https://visualstudiogallery.msdn.microsoft.com/5d17a777-0964-47e3-a6e5-3eed5b31ea93).
 
 ## Custom template format
-The templates use the [liquid markup](http://liquidmarkup.org/). The [default custom formatter template](https://github.com/suterma/CopyForReview/blob/master/Source/Codeministry.CopyForReview.Formatters/ToCustom.txt) shows how you can use the supported fields:
+The templates use the [liquid markup](http://liquidmarkup.org/). The default custom formatter shows how you can use the various supported fields:
 - **DeindentedSelectedText**
 The selected text, with the indentation removed as much as possible.
 
