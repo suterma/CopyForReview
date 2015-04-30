@@ -10,4 +10,39 @@
 
 Install it directly from the [Visual Studio Gallery](https://visualstudiogallery.msdn.microsoft.com/5d17a777-0964-47e3-a6e5-3eed5b31ea93).
 
+## Custom template format
+The templates use the [liquid markup](http://liquidmarkup.org/). The [default custom formatter template](https://github.com/suterma/CopyForReview/blob/master/Source/Codeministry.CopyForReview.Formatters/ToCustom.txt) shows how you can use the supported fields:
+- **DeindentedSelectedText**
+The selected text, with the indentation removed as much as possible.
+
+- **FullFilename**
+The the full filename, with path and extension.
+
+- **Filename**
+The filename, without path.
+
+- **LineNumberTop**
+The line number of the topmost line.
+
+- **LineNumberBottom**
+The line number of the bottommost line.
+
+- **FullClassname**
+The fully qualified class name where the snippet is in (if any).
+
+- **Methodname**
+The method name where the snippet is in (if any).
+
+- **Lines**
+The individual code lines of the snippet.
+
+- **DeindentedLines**
+The individual code lines of the snippet with the indentation removed as much as possible.
+
+- **SelectedText**
+The selected text.
+
+- **FileExtension**
+The file extension.
+
 Feedback is highly welcome. Please email to marcel@codeministry.ch. Contribute, review, comment on [GitHub](https://github.com/suterma/CopyForReview).
