@@ -9,6 +9,6 @@ Here's how you use it:
 3. Select the format (output goes to the clipboard)
 4. Paste
 
-To use it, install it directly from the [Visual Studio Gallery][https://visualstudiogallery.msdn.microsoft.com/5d17a777-0964-47e3-a6e5-3eed5b31ea93].
+To use it, install it directly from the [Visual Studio Gallery](https://visualstudiogallery.msdn.microsoft.com/5d17a777-0964-47e3-a6e5-3eed5b31ea93).
 
-Feedback is highly welcome. Please email to marcel@codeministry.ch. Contribute, review, comment on the [CopyForReview GitHub page][https://github.com/suterma/CopyForReview].
+Feedback is highly welcome. Please email to marcel@codeministry.ch. Contribute, review, comment on the [CopyForReview GitHub page](https://github.com/suterma/CopyForReview).
