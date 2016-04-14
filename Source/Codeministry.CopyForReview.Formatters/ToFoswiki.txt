@@ -1,9 +1,10 @@
 ﻿{% comment %}
 This is a dotLiquid template that allows to output a code snippet in a foswiki formatted style. 
-It uses the foswiki plugin "SyntaxHighlightingPlugin".
+It is compatible to the foswiki plugin "DpSyntaxHighlighterPlugin".
+Website: http://foswiki.org/Extensions/DpSyntaxHighlighterPlugin
 Method and class are optional and not provided if null
 {% endcomment %}
-%CODE_DP{lang="C#" firstline="{{LineNumberTop}}"}%
+%CODE_DP{lang="csharp" firstline="{{LineNumberTop}}"}%
 {{DeindentedSelectedText}}
 %ENDCODE%
 {% if Methodname %}_in method_ ={{Methodname}}= <br> {% endif %}{% if FullClassname %}_in class_ ={{FullClassname}}= {% endif %}<br> _in file <a href="{{FullFilename}}">{{FullFilename}}</a>_ <br> _on lines {{LineNumberTop}} to {{LineNumberBottom}}_ <br> 

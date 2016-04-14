@@ -1,4 +1,10 @@
 ﻿_______________________________________________________________________________
+Release 1.5.1
+Updated April 14, 2016 (Build)
+
+- Changed the C# language attribute to "csharp" to maintain compatibility with the DpSyntaxHighlighterPlugin from http://foswiki.org/Extensions/DpSyntaxHighlighterPlugin
+
+_______________________________________________________________________________
 Release 1.5.0
 Updated April 25, 2015 (Build)
 
@@ -15,7 +21,7 @@ Small changes:
 - Added Keyboard Shortcut CTRL+R, CTRC+C
 - Fixed Null-Reference-Exception when invoked without active document
 
-_____________________________________________________________________________________________
+_______________________________________________________________________________
 Release 1.4-beta
 Updated March 25, 2015 (Build)
 
