@@ -1,18 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeministry.CopyForReview", "Codeministry.CopyForReview\Codeministry.CopyForReview.csproj", "{6F8DA4FD-CCE6-4025-B66E-F346E562FE23}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeministry.CopyForReview_IntegrationTests", "Codeministry.CopyForReview\CopyForReviewVSPackage_IntegrationTests\Codeministry.CopyForReview_IntegrationTests.csproj", "{D9A80A5E-B9E3-4933-AE95-8E6A13EC30E6}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C471F987-69CD-40A2-920C-42282B62FE20}"
 	ProjectSection(SolutionItems) = preProject
 		Solution Items\CommonAssemblyInfo.cs = Solution Items\CommonAssemblyInfo.cs
 		IntegrationTests.testsettings = IntegrationTests.testsettings
 		UnitTests.testsettings = UnitTests.testsettings
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeministry.CopyForReview", "Codeministry.CopyForReview\Codeministry.CopyForReview.csproj", "{6F8DA4FD-CCE6-4025-B66E-F346E562FE23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeministry.CopyForReview_IntegrationTests", "Codeministry.CopyForReview\CopyForReviewVSPackage_IntegrationTests\Codeministry.CopyForReview_IntegrationTests.csproj", "{D9A80A5E-B9E3-4933-AE95-8E6A13EC30E6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeministry.CopyForReview_UnitTests", "Codeministry.CopyForReview\CopyForReviewVSPackage_UnitTests\Codeministry.CopyForReview_UnitTests.csproj", "{AB8F42FD-B8A8-4DF0-B566-5DECDBE82AE0}"
 EndProject

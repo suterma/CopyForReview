@@ -16,7 +16,8 @@ namespace Codeministry.CopyForReview_IntegrationTests
         [Ignore] //because this is just for visual testing
         public void TestVisualAppearance() {
             FormatSelector target = new FormatSelector("test", new List<Codeministry.CopyForReview.Formatters.IFormatter>());
-            target.ShowDialog();
+            //TODO use VS 2015 compatible window type 
+            //target.ShowDialog();
             Assert.Inconclusive("Test for visual inspection");
         }
     }
