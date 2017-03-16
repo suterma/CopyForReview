@@ -1,6 +1,8 @@
-﻿// 
+﻿#region copyright
+
+// 
 //     Copy for review, code sharing made simple.
-//     Copyright (C) 2015 by marcel suter, marcel@codeministry.ch
+//     Copyright (C) 2017 by marcel suter, marcel@codeministry.ch
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -14,6 +16,8 @@
 // 
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#endregion
 
 using System.ComponentModel.Design;
 using System.Reflection;
@@ -46,9 +50,9 @@ namespace Codeministry.CopyForReview_UnitTests.MenuItemTests {
 
             //Verify that the menu command can be found
             CommandID menuCommandID = new CommandID(GuidList.GuidCopyForReviewCmdSet, (int) PkgCmdIDList.cmdidCopyForReview);
-            System.Reflection.MethodInfo info = typeof (Package).GetMethod("GetService", BindingFlags.Instance | BindingFlags.NonPublic);
+            System.Reflection.MethodInfo info = typeof(Package).GetMethod("GetService", BindingFlags.Instance | BindingFlags.NonPublic);
             Assert.IsNotNull(info);
-            OleMenuCommandService mcs = info.Invoke(package, new object[] {(typeof (IMenuCommandService))}) as OleMenuCommandService;
+            OleMenuCommandService mcs = info.Invoke(package, new object[] {(typeof(IMenuCommandService))}) as OleMenuCommandService;
             Assert.IsNotNull(mcs.FindCommand(menuCommandID));
         }
 
@@ -65,7 +69,7 @@ namespace Codeministry.CopyForReview_UnitTests.MenuItemTests {
 
             // Create a UIShell service mock and proffer the service so that it can called from the MenuItemCallback method
             BaseMock uishellMock = UIShellServiceMock.GetUiShellInstance();
-            serviceProvider.AddService(typeof (SVsUIShell), uishellMock, true);
+            serviceProvider.AddService(typeof(SVsUIShell), uishellMock, true);
 
             // Site the package
             Assert.AreEqual(0, package.SetSite(serviceProvider), "SetSite did not return S_OK");
@@ -76,7 +80,7 @@ namespace Codeministry.CopyForReview_UnitTests.MenuItemTests {
             info.Invoke(package, new object[] {null, null});
 
             //Clean up services
-            serviceProvider.RemoveService(typeof (SVsUIShell));
+            serviceProvider.RemoveService(typeof(SVsUIShell));
         }
     }
 }

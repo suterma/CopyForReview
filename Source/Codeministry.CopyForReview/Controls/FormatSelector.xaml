@@ -3,11 +3,10 @@
                              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                              xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.12.0"
                              Title="Copy for..." SizeToContent="WidthAndHeight"
-                             ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
-                             >
+                             ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel>
-            <StackPanel Name="StackPanelFormatters" x:FieldModifier="private" Margin="2"/>
+            <StackPanel Name="StackPanelFormatters" x:FieldModifier="private" Margin="2" />
         </StackPanel>
     </Grid>
 </platformUi:VsUIDialogWindow>

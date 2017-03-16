@@ -1,6 +1,8 @@
-﻿// 
+﻿#region copyright
+
+// 
 //     Copy for review, code sharing made simple.
-//     Copyright (C) 2015 by marcel suter, marcel@codeministry.ch
+//     Copyright (C) 2017 by marcel suter, marcel@codeministry.ch
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -14,6 +16,8 @@
 // 
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#endregion
 
 using System;
 using System.ComponentModel;
@@ -37,7 +41,7 @@ namespace Codeministry.CopyForReview {
         [Category("Copy For Review")]
         [DisplayName("Selected formatter")]
         [Description("Name of the selected formatter")]
-        [DefaultValue(typeof (String), "Send by email")]
+        [DefaultValue(typeof(String), "Send by email")]
         public string SelectedFormatterName { get; set; }
 
         /// <summary>
@@ -52,7 +56,7 @@ namespace Codeministry.CopyForReview {
         [Category("Copy For Review")]
         [DisplayName("Select full lines")]
         [Description("Determines whether the selection is expanded to contain full lines")]
-        [DefaultValue(typeof (bool), "True")]
+        [DefaultValue(typeof(bool), "True")]
         public bool SelectFullLines { get; set; }
 
         /// <summary>
@@ -61,8 +65,8 @@ namespace Codeministry.CopyForReview {
         [Category("Copy For Review")]
         [DisplayName("Custom formatter template")]
         [Description("Defines the template for the custom formatter. See online docs for more information.")]
-        [Editor(typeof (MultilineStringEditor),
-            typeof (System.Drawing.Design.UITypeEditor))]
+        [Editor(typeof(MultilineStringEditor),
+            typeof(System.Drawing.Design.UITypeEditor))]
         public string CustomFormatterTemplateSource {
             get {
                 //Apply initial value if emtpy

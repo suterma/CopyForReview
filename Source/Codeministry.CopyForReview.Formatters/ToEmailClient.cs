@@ -1,6 +1,8 @@
-﻿// 
+﻿#region copyright
+
+// 
 //     Copy for review, code sharing made simple.
-//     Copyright (C) 2015 by marcel suter, marcel@codeministry.ch
+//     Copyright (C) 2017 by marcel suter, marcel@codeministry.ch
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -15,11 +17,10 @@
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#endregion
+
 using System;
 using System.Drawing;
-using System.Runtime.Remoting.Channels;
-using System.Security.Policy;
-using System.Web;
 using Codeministry.CopyForReview.Data;
 
 namespace Codeministry.CopyForReview.Formatters {
@@ -68,7 +69,7 @@ namespace Codeministry.CopyForReview.Formatters {
         }
 
         /// <summary>
-        /// Formats the specified snippet.
+        ///     Formats the specified snippet.
         /// </summary>
         /// <param name="snippet">The snippet.</param>
         /// <returns></returns>
@@ -88,7 +89,7 @@ namespace Codeministry.CopyForReview.Formatters {
         }
 
         /// <summary>
-        /// Encodes a string for usage as part of a mailto URL.
+        ///     Encodes a string for usage as part of a mailto URL.
         /// </summary>
         /// <param name="input">The input.</param>
         /// <returns>The input as encoded string</returns>
@@ -96,7 +97,6 @@ namespace Codeministry.CopyForReview.Formatters {
         private String MailToEncode(string input) {
             if (input != null) {
                 input = Uri.EscapeUriString(input);
-             
             }
             return input;
         }

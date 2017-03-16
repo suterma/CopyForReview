@@ -1,6 +1,8 @@
-﻿// 
+﻿#region copyright
+
+// 
 //     Copy for review, code sharing made simple.
-//     Copyright (C) 2015 by marcel suter, marcel@codeministry.ch
+//     Copyright (C) 2017 by marcel suter, marcel@codeministry.ch
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -14,6 +16,8 @@
 // 
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#endregion
 
 using System;
 using System.Runtime.InteropServices;
@@ -149,7 +153,7 @@ namespace Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library {
         /// </summary>
         internal void Start() {
             // We ask for the uishell here since we cannot do that on the therad that we will spawn.
-            IVsUIShell uiShell = Package.GetGlobalService(typeof (SVsUIShell)) as IVsUIShell;
+            IVsUIShell uiShell = Package.GetGlobalService(typeof(SVsUIShell)) as IVsUIShell;
 
             if (uiShell == null) {
                 throw new InvalidOperationException("Could not get the uiShell from the serviceProvider");
@@ -243,7 +247,7 @@ namespace Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library {
                             IntPtr unmanagedMemoryLocation = IntPtr.Zero;
                             string dialogBoxText = String.Empty;
                             try {
-                                unmanagedMemoryLocation = Marshal.AllocHGlobal(10*1024);
+                                unmanagedMemoryLocation = Marshal.AllocHGlobal(10 * 1024);
                                 NativeMethods.EnumChildWindows(hwnds[hwndIndex], new NativeMethods.CallBack(FindMessageBoxString), unmanagedMemoryLocation);
                                 dialogBoxText = Marshal.PtrToStringUni(unmanagedMemoryLocation);
                             }
@@ -321,9 +325,9 @@ namespace Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library {
 
                         // Since unicode characters are copied check if we are out of the allocated length.
                         // If not add the end terminating zero.
-                        if ((2*stringAsArray.Length) + 1 < 2048) {
+                        if ((2 * stringAsArray.Length) + 1 < 2048) {
                             Marshal.Copy(stringAsArray, 0, unmanagedMemoryLocation, stringAsArray.Length);
-                            Marshal.WriteInt32(unmanagedMemoryLocation, 2*stringAsArray.Length, 0);
+                            Marshal.WriteInt32(unmanagedMemoryLocation, 2 * stringAsArray.Length, 0);
                         }
                     }
                     finally {

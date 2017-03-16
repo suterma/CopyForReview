@@ -1,6 +1,8 @@
-﻿// 
+﻿#region copyright
+
+// 
 //     Copy for review, code sharing made simple.
-//     Copyright (C) 2015 by marcel suter, marcel@codeministry.ch
+//     Copyright (C) 2017 by marcel suter, marcel@codeministry.ch
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -14,6 +16,8 @@
 // 
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#endregion
 
 using System;
 using System.Collections.Generic;
@@ -59,10 +63,8 @@ namespace Codeministry.CopyForReview.Controls {
         }
 
 
-
-
         /// <summary>
-        /// Initializes a new instance of the <see cref="FormatSelector" /> class.
+        ///     Initializes a new instance of the <see cref="FormatSelector" /> class.
         /// </summary>
         /// <param name="selectedFormatterName">Name of the selected formatter.</param>
         /// <param name="formatters">The available formatters.</param>
@@ -74,23 +76,23 @@ namespace Codeministry.CopyForReview.Controls {
         }
 
         /// <summary>
-        /// Handles the Click event of the ButtonFormatted control.
+        ///     Handles the Click event of the ButtonFormatted control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void ButtonFormatter_Click(object sender, RoutedEventArgs e) {
             //find the formatter in question and invoke it (suggested improvement: use better matching, possibly using a GUID)
             var button = sender as FormatterButton;
-            SelectedFormatter = Formatters.Single(item => item.Name == button.Formatter.Name); 
+            SelectedFormatter = Formatters.Single(item => item.Name == button.Formatter.Name);
             DialogResult = true;
             Close();
         }
 
         /// <summary>
-        /// Gets or sets the available formatters.
+        ///     Gets or sets the available formatters.
         /// </summary>
         /// <value>
-        /// The formatters.
+        ///     The formatters.
         /// </value>
         protected IEnumerable<IFormatter> Formatters { get; set; }
     }

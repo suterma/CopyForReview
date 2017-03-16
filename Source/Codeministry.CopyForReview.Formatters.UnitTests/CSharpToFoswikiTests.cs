@@ -1,6 +1,8 @@
-﻿// 
+﻿#region copyright
+
+// 
 //     Copy for review, code sharing made simple.
-//     Copyright (C) 2015 by marcel suter, marcel@codeministry.ch
+//     Copyright (C) 2017 by marcel suter, marcel@codeministry.ch
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -15,6 +17,8 @@
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#endregion
+
 using Codeministry.CopyForReview.Data;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -26,8 +30,7 @@ namespace Codeministry.CopyForReview.Formatters.UnitTests {
         public void TestFormatMultiline1() {
             //Arrange
             const string selectedText = "class test";
-            var testSnippet = new Snippet
-            {
+            var testSnippet = new Snippet {
                 SelectedText = selectedText,
                 FullClassname = "testnamespace.TestClass",
                 LineNumberTop = 10,
@@ -52,8 +55,7 @@ namespace Codeministry.CopyForReview.Formatters.UnitTests {
             selectedText.AppendLine(@"");
             selectedText.AppendLine(@"        public static readonly Guid guidCopyForReviewCmdSet = new Guid(guidCopyForReviewCmdSetString);");
             ;
-            var testSnippet = new Snippet
-            {
+            var testSnippet = new Snippet {
                 SelectedText = selectedText.ToString(),
                 FullClassname = "Company.CopyForReview.GuidList",
                 LineNumberTop = 10,

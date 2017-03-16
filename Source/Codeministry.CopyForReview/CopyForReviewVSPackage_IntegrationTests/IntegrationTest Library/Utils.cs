@@ -1,6 +1,8 @@
-﻿// 
+﻿#region copyright
+
+// 
 //     Copy for review, code sharing made simple.
-//     Copyright (C) 2015 by marcel suter, marcel@codeministry.ch
+//     Copyright (C) 2017 by marcel suter, marcel@codeministry.ch
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -14,6 +16,8 @@
 // 
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#endregion
 
 using System;
 using System.ComponentModel.Design;
@@ -218,7 +222,7 @@ namespace Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library {
             string solutionDirectory = GetNewDirectoryName(directory, solutionName);
 
             // Create and force save solution
-            IVsSolution solutionService = (IVsSolution) VsIdeTestHostContext.ServiceProvider.GetService(typeof (IVsSolution));
+            IVsSolution solutionService = (IVsSolution) VsIdeTestHostContext.ServiceProvider.GetService(typeof(IVsSolution));
             solutionService.CreateSolution(solutionDirectory, solutionName, (uint) __VSCREATESOLUTIONFLAGS.CSF_SILENT);
             solutionService.SaveSolutionElement((uint) __VSSLNSAVEOPTIONS.SLNSAVEOPT_ForceSave, null, 0);
             DTE dte = VsIdeTestHostContext.Dte;
@@ -227,7 +231,7 @@ namespace Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library {
 
         public void CloseCurrentSolution(__VSSLNSAVEOPTIONS saveoptions) {
             // Get solution service
-            IVsSolution solutionService = (IVsSolution) VsIdeTestHostContext.ServiceProvider.GetService(typeof (IVsSolution));
+            IVsSolution solutionService = (IVsSolution) VsIdeTestHostContext.ServiceProvider.GetService(typeof(IVsSolution));
 
             // Close already open solution
             solutionService.CloseSolutionElement((uint) saveoptions, null, 0);
@@ -235,7 +239,7 @@ namespace Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library {
 
         public void ForceSaveSolution() {
             // Get solution service
-            IVsSolution solutionService = (IVsSolution) VsIdeTestHostContext.ServiceProvider.GetService(typeof (IVsSolution));
+            IVsSolution solutionService = (IVsSolution) VsIdeTestHostContext.ServiceProvider.GetService(typeof(IVsSolution));
 
             // Force-save the solution
             solutionService.SaveSolutionElement((uint) __VSSLNSAVEOPTIONS.SLNSAVEOPT_ForceSave, null, 0);
@@ -247,7 +251,7 @@ namespace Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library {
         /// <returns></returns>
         public int ProjectCount() {
             // Get solution service
-            IVsSolution solutionService = (IVsSolution) VsIdeTestHostContext.ServiceProvider.GetService(typeof (IVsSolution));
+            IVsSolution solutionService = (IVsSolution) VsIdeTestHostContext.ServiceProvider.GetService(typeof(IVsSolution));
             object projectCount;
             solutionService.GetProperty((int) __VSPROPID.VSPROPID_ProjectCount, out projectCount);
             return (int) projectCount;
@@ -265,7 +269,7 @@ namespace Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library {
         /// <param name="language">language</param>
         /// <returns>New project.</returns>
         public void CreateProjectFromTemplate(string projectName, string templateName, string language, bool exclusive) {
-            DTE dte = (DTE) VsIdeTestHostContext.ServiceProvider.GetService(typeof (DTE));
+            DTE dte = (DTE) VsIdeTestHostContext.ServiceProvider.GetService(typeof(DTE));
 
             Solution2 sol = dte.Solution as Solution2;
             string projectTemplate = sol.GetProjectTemplate(templateName, language);
@@ -297,7 +301,7 @@ namespace Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library {
                 throw new ArgumentException("name");
             }
 
-            DTE dte = (DTE) VsIdeTestHostContext.ServiceProvider.GetService(typeof (DTE));
+            DTE dte = (DTE) VsIdeTestHostContext.ServiceProvider.GetService(typeof(DTE));
 
             Solution2 sol = dte.Solution as Solution2;
 
@@ -314,7 +318,7 @@ namespace Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library {
         /// <param name="documentMoniker">for filebased documents this is the full path to the document</param>
         public void SaveDocument(string documentMoniker) {
             // Get document cookie and hierarchy for the file
-            IVsRunningDocumentTable runningDocumentTableService = (IVsRunningDocumentTable) VsIdeTestHostContext.ServiceProvider.GetService(typeof (IVsRunningDocumentTable));
+            IVsRunningDocumentTable runningDocumentTableService = (IVsRunningDocumentTable) VsIdeTestHostContext.ServiceProvider.GetService(typeof(IVsRunningDocumentTable));
             uint docCookie;
             IntPtr docData;
             IVsHierarchy hierarchy;
@@ -328,13 +332,13 @@ namespace Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library {
                 out docCookie);
 
             // Save the document
-            IVsSolution solutionService = (IVsSolution) VsIdeTestHostContext.ServiceProvider.GetService(typeof (IVsSolution));
+            IVsSolution solutionService = (IVsSolution) VsIdeTestHostContext.ServiceProvider.GetService(typeof(IVsSolution));
             solutionService.SaveSolutionElement((uint) __VSSLNSAVEOPTIONS.SLNSAVEOPT_ForceSave, hierarchy, docCookie);
         }
 
         public void CloseInEditorWithoutSaving(string fullFileName) {
             // Get the RDT service
-            IVsRunningDocumentTable runningDocumentTableService = (IVsRunningDocumentTable) VsIdeTestHostContext.ServiceProvider.GetService(typeof (IVsRunningDocumentTable));
+            IVsRunningDocumentTable runningDocumentTableService = (IVsRunningDocumentTable) VsIdeTestHostContext.ServiceProvider.GetService(typeof(IVsRunningDocumentTable));
             Assert.IsNotNull(runningDocumentTableService, "Failed to get the Running Document Table Service");
 
             // Get our document cookie and hierarchy for the file
@@ -351,7 +355,7 @@ namespace Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library {
                 out docCookie);
 
             // Get the SolutionService
-            IVsSolution solutionService = VsIdeTestHostContext.ServiceProvider.GetService(typeof (IVsSolution)) as IVsSolution;
+            IVsSolution solutionService = VsIdeTestHostContext.ServiceProvider.GetService(typeof(IVsSolution)) as IVsSolution;
             Assert.IsNotNull(solutionService, "Failed to get IVsSolution service");
 
             // Close the document
@@ -366,7 +370,7 @@ namespace Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library {
         #region Methods: Handling Toolwindows
 
         public bool CanFindToolwindow(Guid persistenceGuid) {
-            IVsUIShell uiShellService = VsIdeTestHostContext.ServiceProvider.GetService(typeof (SVsUIShell)) as IVsUIShell;
+            IVsUIShell uiShellService = VsIdeTestHostContext.ServiceProvider.GetService(typeof(SVsUIShell)) as IVsUIShell;
             Assert.IsNotNull(uiShellService);
             IVsWindowFrame windowFrame;
             int hr = uiShellService.FindToolWindow((uint) __VSFINDTOOLWIN.FTW_fFindFirst, ref persistenceGuid, out windowFrame);
@@ -380,7 +384,7 @@ namespace Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library {
         #region Methods: Loading packages
 
         public IVsPackage LoadPackage(Guid packageGuid) {
-            IVsShell shellService = (IVsShell) VsIdeTestHostContext.ServiceProvider.GetService(typeof (SVsShell));
+            IVsShell shellService = (IVsShell) VsIdeTestHostContext.ServiceProvider.GetService(typeof(SVsShell));
             IVsPackage package;
             shellService.LoadPackage(ref packageGuid, out package);
             Assert.IsNotNull(package, "Failed to load package");

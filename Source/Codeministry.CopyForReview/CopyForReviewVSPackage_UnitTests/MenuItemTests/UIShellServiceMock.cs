@@ -1,6 +1,8 @@
-﻿// 
+﻿#region copyright
+
+// 
 //     Copy for review, code sharing made simple.
-//     Copyright (C) 2015 by marcel suter, marcel@codeministry.ch
+//     Copyright (C) 2017 by marcel suter, marcel@codeministry.ch
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -14,6 +16,8 @@
 // 
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#endregion
 
 using System;
 using Microsoft.VisualStudio;
@@ -32,7 +36,7 @@ namespace Codeministry.CopyForReview_UnitTests.MenuItemTests {
         /// <returns></returns>
         internal static BaseMock GetUiShellInstance() {
             if (uiShellFactory == null) {
-                uiShellFactory = new GenericMockFactory("UiShell", new Type[] {typeof (IVsUIShell), typeof (IVsUIShellOpenDocument)});
+                uiShellFactory = new GenericMockFactory("UiShell", new Type[] {typeof(IVsUIShell), typeof(IVsUIShellOpenDocument)});
             }
             BaseMock uiShell = uiShellFactory.GetInstance();
             return uiShell;
@@ -44,13 +48,13 @@ namespace Codeministry.CopyForReview_UnitTests.MenuItemTests {
         /// <returns>uishell mock</returns>
         internal static BaseMock GetUiShellInstance0() {
             BaseMock uiShell = GetUiShellInstance();
-            string name = string.Format("{0}.{1}", typeof (IVsUIShell).FullName, "SetWaitCursor");
+            string name = string.Format("{0}.{1}", typeof(IVsUIShell).FullName, "SetWaitCursor");
             uiShell.AddMethodCallback(name, new EventHandler<CallbackArgs>(SetWaitCursorCallBack));
 
-            name = string.Format("{0}.{1}", typeof (IVsUIShell).FullName, "SaveDocDataToFile");
+            name = string.Format("{0}.{1}", typeof(IVsUIShell).FullName, "SaveDocDataToFile");
             uiShell.AddMethodCallback(name, new EventHandler<CallbackArgs>(SaveDocDataToFileCallBack));
 
-            name = string.Format("{0}.{1}", typeof (IVsUIShell).FullName, "ShowMessageBox");
+            name = string.Format("{0}.{1}", typeof(IVsUIShell).FullName, "ShowMessageBox");
             uiShell.AddMethodCallback(name, new EventHandler<CallbackArgs>(ShowMessageBoxCallBack));
             return uiShell;
         }

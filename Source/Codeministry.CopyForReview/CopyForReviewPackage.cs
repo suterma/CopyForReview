@@ -1,6 +1,8 @@
-﻿// 
+﻿#region copyright
+
+// 
 //     Copy for review, code sharing made simple.
-//     Copyright (C) 2015 by marcel suter, marcel@codeministry.ch
+//     Copyright (C) 2017 by marcel suter, marcel@codeministry.ch
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -14,6 +16,8 @@
 // 
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#endregion
 
 using System;
 using System.Collections.Generic;
@@ -45,7 +49,7 @@ namespace Codeministry.CopyForReview {
     // This attribute is needed to let the shell know that this package exposes some menus.
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(GuidList.GuidCopyForReviewPkgString)]
-    [ProvideOptionPage(typeof (OptionPageGrid),
+    [ProvideOptionPage(typeof(OptionPageGrid),
         "Copy For Review", "General", 0, 0, true)]
     public sealed class CopyForReviewPackage : Package {
         /// <summary>
@@ -70,7 +74,7 @@ namespace Codeministry.CopyForReview {
             base.Initialize();
 
             // Add our command handlers for menu (commands must exist in the .vsct file)
-            OleMenuCommandService mcs = GetService(typeof (IMenuCommandService)) as OleMenuCommandService;
+            OleMenuCommandService mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
             if (null != mcs) {
                 // Create the command for the menu item.
                 CommandID menuCommandID = new CommandID(GuidList.GuidCopyForReviewCmdSet,
@@ -79,8 +83,6 @@ namespace Codeministry.CopyForReview {
                 mcs.AddCommand(menuItem);
             }
         }
-
-
 
         #endregion
 
@@ -93,22 +95,21 @@ namespace Codeministry.CopyForReview {
         ///     the OleMenuCommandService service and the MenuCommand class.
         /// </summary>
         private void MenuItemCallback(object sender, EventArgs e) {
-            DTE2 dte = (DTE2) GetService(typeof (DTE));
+            DTE2 dte = (DTE2) GetService(typeof(DTE));
 
             //Check prerequisites
             if (dte.ActiveDocument == null) {
                 return;
             }
             OptionPageGrid page =
-                (OptionPageGrid) GetDialogPage(typeof (OptionPageGrid));
+                (OptionPageGrid) GetDialogPage(typeof(OptionPageGrid));
 
 
             //Apply the stored options to the selector
             string selectedFormatterName = page.SelectedFormatterName;
             bool selectFullLines = page.SelectFullLines;
 
-            List<String> templateSources = new List<String>
-            {
+            List<String> templateSources = new List<String> {
                 page.CustomFormatterTemplateSource
             };
             FormatSelector formatSelector = new FormatSelector(selectedFormatterName, Formatters.Factory.GetFormatters(templateSources));

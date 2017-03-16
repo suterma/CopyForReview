@@ -1,6 +1,8 @@
-﻿// 
+﻿#region copyright
+
+// 
 //     Copy for review, code sharing made simple.
-//     Copyright (C) 2015 by marcel suter, marcel@codeministry.ch
+//     Copyright (C) 2017 by marcel suter, marcel@codeministry.ch
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -14,6 +16,8 @@
 // 
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#endregion
 
 using System;
 using Codeministry.CopyForReview_IntegrationTests.IntegrationTest_Library;
@@ -78,8 +82,7 @@ namespace Codeministry.CopyForReview_IntegrationTests {
         [HostType("VS IDE")]
         [TestMethod]
         public void VBWinformsApplication() {
-            UIThreadInvoker.Invoke((ThreadInvoker) delegate()
-            {
+            UIThreadInvoker.Invoke((ThreadInvoker) delegate() {
                 //Solution and project creation parameters
                 string solutionName = "VBWinApp";
                 string projectName = "VBWinApp";
@@ -90,7 +93,7 @@ namespace Codeministry.CopyForReview_IntegrationTests {
                 string itemTemplateName = "CodeFile.zip";
                 string newFileName = "Test.vb";
 
-                DTE dte = (DTE) VsIdeTestHostContext.ServiceProvider.GetService(typeof (DTE));
+                DTE dte = (DTE) VsIdeTestHostContext.ServiceProvider.GetService(typeof(DTE));
 
                 TestUtils testUtils = new TestUtils();
 
