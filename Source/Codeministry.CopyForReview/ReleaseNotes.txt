@@ -1,4 +1,11 @@
 ﻿_______________________________________________________________________________
+Release 1.6.0
+Updated March 16, 2017 (Build)
+
+- Upgraded Solution to VS2015
+- Supported VS2015, VS1017 Community Editions as target
+- Cleanup of code
+_______________________________________________________________________________
 Release 1.5.1
 Updated April 14, 2016 (Build)
 
