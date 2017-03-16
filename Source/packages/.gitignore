@@ -1,0 +1,15 @@
+#################
+## Visual Studio (remove packages from git commit)
+#################
+
+# ignore all files
+*
+
+# do not ignore directories
+!*/
+
+# do not ignore repositories.config
+!repositories.config
+
+# do not ignore gitignore
+!*.gitignore
