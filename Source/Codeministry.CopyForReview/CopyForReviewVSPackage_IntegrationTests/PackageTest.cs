@@ -1,6 +1,8 @@
-﻿// 
+﻿#region copyright
+
+// 
 //     Copy for review, code sharing made simple.
-//     Copyright (C) 2015 by marcel suter, marcel@codeministry.ch
+//     Copyright (C) 2017 by marcel suter, marcel@codeministry.ch
 // 
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
@@ -14,6 +16,8 @@
 // 
 //     You should have received a copy of the GNU General Public License
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#endregion
 
 using System;
 using Codeministry.CopyForReview;
@@ -43,10 +47,9 @@ namespace Codeministry.CopyForReview_IntegrationTests {
         [TestMethod]
         [HostType("VS IDE")]
         public void PackageLoadTest() {
-            UIThreadInvoker.Invoke((ThreadInvoker) delegate()
-            {
+            UIThreadInvoker.Invoke((ThreadInvoker) delegate() {
                 //Get the Shell Service
-                IVsShell shellService = VsIdeTestHostContext.ServiceProvider.GetService(typeof (SVsShell)) as IVsShell;
+                IVsShell shellService = VsIdeTestHostContext.ServiceProvider.GetService(typeof(SVsShell)) as IVsShell;
                 Assert.IsNotNull(shellService);
 
                 //Validate package load
