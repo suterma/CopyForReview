@@ -45,4 +45,4 @@ The selected text.
 - **FileExtension**
 The file extension.
 
-Feedback is highly welcome. Please email to marcel@codeministry.ch. Contribute, review, comment on [GitHub](https://github.com/suterma/CopyForReview).
+Feedback is highly welcome. Please email to mail@marcelsuter.ch. Contribute, review, comment on [GitHub](https://github.com/suterma/CopyForReview).
