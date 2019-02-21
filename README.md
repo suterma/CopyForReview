@@ -1,5 +1,8 @@
 # CopyForReview
 ![License](https://img.shields.io/github/license/suterma/CopyForReview.svg)
+![GitHub All Releases](https://img.shields.io/github/downloads/suterma/CopyForReview/total.svg)
+![Release](https://img.shields.io/github/release/suterma/CopyForReview.svg)
+![Language](https://img.shields.io/github/languages/top/suterma/CopyForReview.svg)
 
 **CopyForReview** is a _Visual Studio_ Extension that allows to copy code with a formatting. It removes unecessary whitespace, adds file, class, method and line info, suitable for sharing code or writing code reviews. Five output formats are currently supported: Text, Send via Email, Stack Overflow Markdown, Foswiki Markup and a customizable formatter.
 
